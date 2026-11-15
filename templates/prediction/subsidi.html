@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+
+{% block title %}Panduan & Plafon Rumah Subsidi PUPR - IndoPrice{% endblock %}
+{% block page_title %}Informasi Plafon Rumah Subsidi PUPR{% endblock %}
+{% block page_subtitle %}Batas maksimal harga jual Rumah Sejahtera Tapak FLPP / BP Tapera Tahun 2024 per zonasi wilayah{% endblock %}
+
+{% block content %}
+<!-- Banner edukasi regulasi domain properti -->
+<div class="card-soft mb-4" style="background: linear-gradient(135deg, rgba(219, 234, 254, 0.4) 0%, #FFFFFF 100%); border-left: 5px solid var(--color-accent);">
+    <div class="d-flex align-items-start gap-3">
+        <div class="stat-icon-wrapper sky" style="width: 48px; height: 48px; font-size: 1.25rem;">
+            <i class="fa-solid fa-scale-balanced"></i>
+        </div>
+        <div>
+            <h6 class="fw-bold mb-1" style="color: var(--color-primary);">Mengapa Rumah Subsidi Dipisahkan dari Model Regresi?</h6>
+            <p class="text-muted small mb-0" style="line-height: 1.6;">
+                Berbeda dengan rumah komersil yang harganya bergerak dinamis mengikuti luas fisik dan mekanisme pasar, harga rumah subsidi di Indonesia diatur secara ketat oleh <strong>Keputusan Menteri PUPR</strong> berdasarkan zonasi wilayah. Variasi fisik seperti luas tanah atau kamar tidak mengubah harga plafon resmi pemerintah.
+            </p>
+        </div>
+    </div>
+</div>
+
+<!-- Tabel batasan harga jual per zonasi wilayah -->
+<div class="card-soft mb-4">
+    <div class="d-flex align-items-center mb-3">
+        <div class="stat-icon-wrapper blue me-3" style="width: 40px; height: 40px; font-size: 1.1rem;">
+            <i class="fa-solid fa-table-cells"></i>
+        </div>
+        <div>
+            <h5 class="fw-bold mb-0" style="color: var(--color-primary); font-size: 1.05rem;">
+                Batasan Harga Jual Rumah Sejahtera Tapak (2024)
+            </h5>
+            <small class="text-muted">Plafon harga tertinggi yang boleh dijual oleh pengembang terdaftar</small>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table-custom">
+            <thead>
+                <tr>
+                    <th>Zonasi Wilayah</th>
+                    <th>Cakupan Provinsi / Daerah</th>
+                    <th>Tipe Hunian Standar</th>
+                    <th>Plafon Harga Maksimal</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for z in subsidi_zones %}
+                <tr>
+                    <td>
+                        <strong style="color: var(--color-primary);">{{ z.zona }}</strong>
+                    </td>
+                    <td class="text-muted small">
+                        {{ z.wilayah }}
+                    </td>
+                    <td>
+                        <span class="badge-pill-soft">{{ z.tipe_standar }}</span>
+                    </td>
+                    <td>
+                        <span class="badge-pill-soft green" style="font-size: 0.88rem;">
+                            {{ z.plafon_2024 }}
+                        </span>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- informasi syarat dan ketentuan FLPP -->
+<div class="row g-4">
+    <div class="col-md-6">
+        <div class="card-soft h-100">
+            <h6 class="fw-bold mb-3" style="color: var(--color-primary);">
+                <i class="fa-solid fa-circle-check me-2 text-primary"></i>Kriteria Penerima Manfaat FLPP
+            </h6>
+            <ul class="list-unstyled small text-muted mb-0">
+                <li class="mb-2 d-flex align-items-start gap-2">
+                    <i class="fa-solid fa-check text-success mt-1"></i>
+                    <span>Warga Negara Indonesia (WNI) berusia minimal 21 tahun atau telah menikah.</span>
+                </li>
+                <li class="mb-2 d-flex align-items-start gap-2">
+                    <i class="fa-solid fa-check text-success mt-1"></i>
+                    <span>Penghasilan maksimal Rp 8.000.000,- per bulan (untuk pemohon atau pasangan).</span>
+                </li>
+                <li class="mb-2 d-flex align-items-start gap-2">
+                    <i class="fa-solid fa-check text-success mt-1"></i>
+                    <span>Pemohon atau pasangan belum pernah memiliki rumah tinggal milik pribadi.</span>
+                </li>
+                <li class="mb-2 d-flex align-items-start gap-2">
+                    <i class="fa-solid fa-check text-success mt-1"></i>
+                    <span>Belum pernah menerima subsidi kepemilikan perumahan dari pemerintah.</span>
+                </li>
+                <li class="d-flex align-items-start gap-2">
+                    <i class="fa-solid fa-check text-success mt-1"></i>
+                    <span>Memiliki NPWP dan bukti pelaporan SPT Tahunan PPh Orang Pribadi.</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card-soft h-100">
+            <h6 class="fw-bold mb-3" style="color: var(--color-primary);">
+                <i class="fa-solid fa-hand-holding-dollar me-2 text-primary"></i>Ketentuan Fasilitas Pembiayaan
+            </h6>
+            <ul class="list-unstyled small text-muted mb-0">
+                <li class="mb-2 d-flex align-items-start gap-2">
+                    <i class="fa-solid fa-star text-warning mt-1"></i>
+                    <span><strong>Suku Bunga Tetap (Fixed):</strong> 5% per tahun flat sepanjang masa tenor kredit.</span>
+                </li>
+                <li class="mb-2 d-flex align-items-start gap-2">
+                    <i class="fa-solid fa-star text-warning mt-1"></i>
+                    <span><strong>Tenor Jangka Panjang:</strong> Jangka waktu cicilan KPR hingga 20 tahun.</span>
+                </li>
+                <li class="mb-2 d-flex align-items-start gap-2">
+                    <i class="fa-solid fa-star text-warning mt-1"></i>
+                    <span><strong>Uang Muka (DP) Terjangkau:</strong> Mulai dari 1% dari total nilai transaksi properti.</span>
+                </li>
+                <li class="mb-2 d-flex align-items-start gap-2">
+                    <i class="fa-solid fa-star text-warning mt-1"></i>
+                    <span><strong>Bebas PPN:</strong> Dibebaskan dari pengenaan Pajak Pertambahan Nilai 11%.</span>
+                </li>
+                <li class="d-flex align-items-start gap-2">
+                    <i class="fa-solid fa-star text-warning mt-1"></i>
+                    <span><strong>Bantuan Uang Muka (SBUM):</strong> Subsidi bantuan tunai hingga Rp 4.000.000,-.</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

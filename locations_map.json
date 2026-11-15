@@ -1,0 +1,2296 @@
+{
+  "ACEH": {
+    "KAB ACEH BARAT": [
+      "Johan Pahwalan",
+      "Meureubo"
+    ],
+    "KAB ACEH BESAR": [
+      "Baitussalam",
+      "Blang Bintang",
+      "Krueng Barona Jaya",
+      "Peukan Bada"
+    ],
+    "KAB ACEH SINGKIL": [
+      "Gunung Meriah"
+    ],
+    "KAB ACEH TAMIANG": [
+      "Kejuruan Muda",
+      "Rantau"
+    ],
+    "KAB ACEH TENGGARA": [
+      "Badar"
+    ],
+    "KAB ACEH UTARA": [
+      "Dewantara"
+    ],
+    "KAB BENER MERIAH": [
+      "Bukit"
+    ],
+    "KAB BIREUEN": [
+      "Jeumpa",
+      "Kota Juang"
+    ],
+    "KAB PIDIE": [
+      "Pidie"
+    ],
+    "KOTA BANDA ACEH": [
+      "Jaya Baru",
+      "Meuraxa",
+      "Syiah Kuala"
+    ],
+    "KOTA LANGSA": [
+      "Langsa Barat",
+      "Langsa Baro",
+      "Langsa Kota"
+    ],
+    "KOTA LHOKSEUMAWE": [
+      "Banda Sakti",
+      "Blang Mangat",
+      "Muara Dua",
+      "Muara Satu"
+    ]
+  },
+  "BALI": {
+    "KAB BADUNG": [
+      "Kuta Selatan"
+    ],
+    "KAB BANGLI": [
+      "Susut"
+    ],
+    "KAB BULELENG": [
+      "Banjar",
+      "Buleleng",
+      "Gerokgak",
+      "Sawan",
+      "Seririt",
+      "Sukasada",
+      "Tejakula"
+    ],
+    "KAB GIANYAR": [
+      "Sukawati"
+    ],
+    "KAB JEMBRANA": [
+      "Jembrana",
+      "Negara"
+    ],
+    "KAB KARANGASEM": [
+      "Abang"
+    ],
+    "KAB KLUNGKUNG": [
+      "Dawan"
+    ],
+    "KAB TABANAN": [
+      "Kediri",
+      "Kerambitan",
+      "Salamadeg Timur",
+      "Tabanan"
+    ],
+    "KOTA DENPASAR": [
+      "Denpasar Selatan"
+    ]
+  },
+  "BANTEN": {
+    "KAB LEBAK": [
+      "Bayah",
+      "Cibadak",
+      "Cipanas",
+      "Kalanganyar",
+      "Maja",
+      "Rangkasbitung",
+      "Warunggunung"
+    ],
+    "KAB PANDEGLANG": [
+      "Jiput",
+      "Kaduhejo",
+      "Karang Tanjung",
+      "Majasari",
+      "Pandeglang",
+      "Panimbang"
+    ],
+    "KAB SERANG": [
+      "Anyar",
+      "Bandung",
+      "Baros",
+      "Bojonegara",
+      "Cikande",
+      "Cikeusal",
+      "Cinangka",
+      "Ciruas",
+      "Jawilan",
+      "Kibin",
+      "Kragilan",
+      "Kramatwatu",
+      "Pabuaran",
+      "Pamarayan",
+      "Waringinkurung"
+    ],
+    "KAB TANGERANG": [
+      "Balaraja",
+      "Cikupa",
+      "Cisauk",
+      "Cisoka",
+      "Curug",
+      "Jambe",
+      "Kelapa Dua",
+      "Kosambi",
+      "Kresek",
+      "Legok",
+      "Mauk",
+      "Pagedangan",
+      "Panongan",
+      "Pasar Kemis",
+      "Rajeg",
+      "Sepatan",
+      "Sepatan Timur",
+      "Sindang Jaya",
+      "Solear",
+      "Sukadiri",
+      "Sukamulya",
+      "Teluknaga",
+      "Tigaraksa"
+    ],
+    "KOTA CILEGON": [
+      "Cibeber",
+      "Cilegon",
+      "Citangkil",
+      "Gerogol",
+      "Jombang"
+    ],
+    "KOTA SERANG": [
+      "Cipocok Jaya",
+      "Curug",
+      "Kasemen",
+      "Serang",
+      "Taktakan",
+      "Walantaka"
+    ],
+    "KOTA TANGERANG": [
+      "Batuceper",
+      "Benda",
+      "Cibodas",
+      "Ciledug",
+      "Cipondoh",
+      "Jatiuwung",
+      "Karang Tengah",
+      "Karawaci",
+      "Larangan",
+      "Neglasari",
+      "Periuk",
+      "Pinang",
+      "Tangerang"
+    ],
+    "KOTA TANGERANG SELATAN": [
+      "Ciputat",
+      "Ciputat Timur",
+      "Pamulang",
+      "Pondok Aren",
+      "Serpong",
+      "Serpong Utara",
+      "Setu"
+    ]
+  },
+  "BENGKULU": {
+    "KAB BENGKULU SELATAN": [
+      "Kota Manna",
+      "Pino Raya"
+    ],
+    "KAB BENGKULU TENGAH": [
+      "Pondok Kubang"
+    ],
+    "KAB LEBONG": [
+      "Pelabai"
+    ],
+    "KAB REJANG LEBONG": [
+      "Curup Tengah"
+    ],
+    "KOTA BENGKULU": [
+      "Gading Cempaka",
+      "Kampung Melayu",
+      "Muara Bangka Hulu",
+      "Ratu Agung",
+      "Ratu Samban",
+      "Selebar"
+    ]
+  },
+  "DAERAH ISTIMEWA YOGYAKARTA": {
+    "KAB BANTUL": [
+      "Banguntapan",
+      "Kasihan",
+      "Pajangan",
+      "Pandak",
+      "Pleret",
+      "Sedayu",
+      "Sewon"
+    ],
+    "KAB GUNUNGKIDUL": [
+      "Karangmojo",
+      "Patuk",
+      "Playen",
+      "Semin",
+      "Wonosari"
+    ],
+    "KAB KULON PROGO": [
+      "Sentolo",
+      "Wates"
+    ],
+    "KAB SLEMAN": [
+      "Depok",
+      "Gamping",
+      "Godean",
+      "Kalasan",
+      "Mlati",
+      "Moyudan",
+      "Ngaglik",
+      "Ngemplak",
+      "Seyegan",
+      "Sleman"
+    ],
+    "KOTA YOGYAKARTA": [
+      "Umbulharjo",
+      "Wirobrajan"
+    ]
+  },
+  "DKI JAKARTA": {
+    "KOTA ADM JAKARTA BARAT": [
+      "Cengkareng",
+      "Grogol Petamburan",
+      "Kalideres",
+      "Kembangan"
+    ],
+    "KOTA ADM JAKARTA SELATAN": [
+      "Cilandak",
+      "Jagakarsa",
+      "Kebayoran Baru",
+      "Mampang Prapatan",
+      "Pasar Minggu",
+      "Pesanggrahan"
+    ],
+    "KOTA ADM JAKARTA TIMUR": [
+      "Cakung",
+      "Cipayung",
+      "Ciracas",
+      "Duren Sawit",
+      "Makasar",
+      "Pasar Rebo"
+    ],
+    "KOTA ADM JAKARTA UTARA": [
+      "Cilincing",
+      "Kelapa Gading",
+      "Koja",
+      "Penjaringan"
+    ]
+  },
+  "GORONTALO": {
+    "KAB GORONTALO": [
+      "Limboto",
+      "Telaga",
+      "Telaga Biru",
+      "Tilango"
+    ],
+    "KAB PAHUWATO": [
+      "Marisa"
+    ],
+    "KOTA GORONTALO": [
+      "Kota Barat",
+      "Kota Utara",
+      "Sipatana"
+    ]
+  },
+  "JAMBI": {
+    "KAB BUNGO": [
+      "Bathin III",
+      "Bungo Dani",
+      "Rimbo Tengah"
+    ],
+    "KAB MERANGIN": [
+      "Nalo Tatan"
+    ],
+    "KAB MUARO JAMBI": [
+      "Jambi Luar Kota",
+      "Kumpeh Ulu",
+      "Mestong",
+      "Sekernan",
+      "Sungai Gelam"
+    ],
+    "KAB SAROLANGUN": [
+      "Sarolangun"
+    ],
+    "KAB TANJUNG JABUNG BARAT": [
+      "Betara"
+    ],
+    "KAB TEBO": [
+      "Rimbo Bujang"
+    ],
+    "KOTA JAMBI": [
+      "Alam Barajo",
+      "Jambi Timur",
+      "Jelutung",
+      "Kota Baru",
+      "Paal Merah",
+      "Telanaipura"
+    ]
+  },
+  "JAWA BARAT": {
+    "KAB BANDUNG": [
+      "Arjasari",
+      "Baleendah",
+      "Banjaran",
+      "Bojongsoang",
+      "Cangkuang",
+      "Cicalengka",
+      "Cikancung",
+      "Cilengkrang",
+      "Cileunyi",
+      "Cimaung",
+      "Cimenyan",
+      "Ciparay",
+      "Ciwidey",
+      "Dayeuhkolot",
+      "Katapang",
+      "Margaasih",
+      "Margahayu",
+      "Nagreg",
+      "Pacet",
+      "Pameungpeuk",
+      "Paseh",
+      "Pasirjambu",
+      "Rancaekek",
+      "Solokanjeruk",
+      "Soreang"
+    ],
+    "KAB BANDUNG BARAT": [
+      "Batujajar",
+      "Cihampelas",
+      "Cililin",
+      "Cipatat",
+      "Cisarua",
+      "Lembang",
+      "Ngamprah",
+      "Padalarang",
+      "Parongpong",
+      "Saguling"
+    ],
+    "KAB BEKASI": [
+      "Babelan",
+      "Cibarusah",
+      "Cibitung",
+      "Cikarang Barat",
+      "Cikarang Pusat",
+      "Cikarang Selatan",
+      "Cikarang Timur",
+      "Cikarang Utara",
+      "Karang Bahagia",
+      "Kedung Waringin",
+      "Serang Baru",
+      "Setu",
+      "Sukatani",
+      "Sukawangi",
+      "Tambun Selatan",
+      "Tambun Utara",
+      "Tarumajaya"
+    ],
+    "KAB BOGOR": [
+      "Babakan Madang",
+      "Bojong Gede",
+      "Caringin",
+      "Cariu",
+      "Ciampea",
+      "Ciawi",
+      "Cibinong",
+      "Cibungbulang",
+      "Cigombong",
+      "Cijeruk",
+      "Cileungsi",
+      "Ciomas",
+      "Ciseeng",
+      "Citeureup",
+      "Dramaga",
+      "Gunung Putri",
+      "Gunung Sindur",
+      "Jonggol",
+      "Kemang",
+      "Klapanunggal",
+      "Leuwiliang",
+      "Leuwisadeng",
+      "Parung",
+      "Parung Panjang",
+      "Ranca Bungur",
+      "Rumpin",
+      "Sukaraja",
+      "Tajurhalang",
+      "Tamansari",
+      "Tenjo"
+    ],
+    "KAB CIAMIS": [
+      "Banjarsari",
+      "Baregbeg",
+      "Ciamis",
+      "Cijeungjing",
+      "Cikoneng",
+      "Cimaragas",
+      "Cisaga",
+      "Jatinagara",
+      "Panjalu",
+      "Sindangkasih",
+      "Sukamantri"
+    ],
+    "KAB CIANJUR": [
+      "Cianjur",
+      "Cibeber",
+      "Cikalongkulon",
+      "Cilaku",
+      "Gekbrong",
+      "Karangtengah",
+      "Mande",
+      "Pacet",
+      "Sukaluyu",
+      "Warungkondang"
+    ],
+    "KAB CIREBON": [
+      "Arjawinangun",
+      "Babakan",
+      "Beber",
+      "Dukupuntang",
+      "Gunung Jati",
+      "Kedawung",
+      "Lemahabang",
+      "Mundu",
+      "Pabuaran",
+      "Palimanan",
+      "Plered",
+      "Plumbon",
+      "Sumber",
+      "Susukan Lebak",
+      "Talun",
+      "Tengah Tani"
+    ],
+    "KAB GARUT": [
+      "Banyuresmi",
+      "Bl Limbangan",
+      "Cibatu",
+      "Cibiuk",
+      "Cikelet",
+      "Cilawu",
+      "Garut Kota",
+      "Karangpawitan",
+      "Leles",
+      "Leuwigoong",
+      "Malangbong",
+      "Samarang",
+      "Selaawi",
+      "Sucinaraja",
+      "Tarogong Kaler",
+      "Tarogong Kidul",
+      "Wanaraja"
+    ],
+    "KAB INDRAMAYU": [
+      "Anjatan",
+      "Balongan",
+      "Bangodua",
+      "Gantar",
+      "Indramayu",
+      "Jatibarang",
+      "Kandanghaur",
+      "Karangampel",
+      "Kroya",
+      "Patrol",
+      "Sindang",
+      "Trisi"
+    ],
+    "KAB KARAWANG": [
+      "Cikampek",
+      "Cilamaya Wetan",
+      "Karawang Barat",
+      "Karawang Timur",
+      "Klari",
+      "Kota Baru",
+      "Majalaya",
+      "Purwasari",
+      "Rengasdengklok",
+      "Telukjambe Barat",
+      "Telukjambe Timur",
+      "Tirtamulya"
+    ],
+    "KAB KUNINGAN": [
+      "Ciawigebang",
+      "Cigugur",
+      "Cilimus",
+      "Kadugede",
+      "Kuningan",
+      "Lebakwangi",
+      "Mandirancan",
+      "Sindang Agung"
+    ],
+    "KAB MAJALENGKA": [
+      "Cigasong",
+      "Dawuan",
+      "Jatitujuh",
+      "Jatiwangi",
+      "Kasokandel",
+      "Leuwimunding",
+      "Ligung",
+      "Majalengka",
+      "Palasah",
+      "Sindangwangi",
+      "Sukahaji",
+      "Sumberjaya",
+      "Talaga"
+    ],
+    "KAB PANGANDARAN": [
+      "Cijulang",
+      "Padaherang",
+      "Pangandaran",
+      "Parigi",
+      "Sidamulih"
+    ],
+    "KAB PURWAKARTA": [
+      "Babakancikao",
+      "Bungursari",
+      "Campaka",
+      "Jatiluhur"
+    ],
+    "KAB SUBANG": [
+      "Cibogo",
+      "Cipeundeuy",
+      "Cipunagara",
+      "Dawuan",
+      "Jalancagak",
+      "Kalijati",
+      "Pagaden",
+      "Pagaden Barat",
+      "Purwadadi",
+      "Subang"
+    ],
+    "KAB SUKABUMI": [
+      "Caringin",
+      "Ciambar",
+      "Cibadak",
+      "Cicantayan",
+      "Cicurug",
+      "Cidahu",
+      "Cikembar",
+      "Cisaat",
+      "Jampangkulon",
+      "Kebonpedes",
+      "Nagrak",
+      "Palabuhanratu",
+      "Parakansalak",
+      "Parungkuda",
+      "Simpenan",
+      "Sukabumi",
+      "Sukaraja",
+      "Warungkiara"
+    ],
+    "KAB SUMEDANG": [
+      "Cimalaka",
+      "Cimanggung",
+      "Cisarua",
+      "Ganeas",
+      "Jatinangor",
+      "Situraja",
+      "Sumedang Selatan",
+      "Sumedang Utara",
+      "Tanjungkerta",
+      "Tanjungsari",
+      "Tomo"
+    ],
+    "KAB TASIKMALAYA": [
+      "Bantarkalong",
+      "Cipatujah",
+      "Cisayong",
+      "Karangnunggal",
+      "Leuwisari",
+      "Mangunreja",
+      "Manonjaya",
+      "Rajapolah",
+      "Singaparna"
+    ],
+    "KOTA BANDUNG": [
+      "Andir",
+      "Antapani",
+      "Arcamanik",
+      "Bandung Kidul",
+      "Bandung Kulon",
+      "Batununggal",
+      "Bojongloa Kidul",
+      "Buahbatu",
+      "Cibeunying Kidul",
+      "Cibiru",
+      "Cicendo",
+      "Cidadap",
+      "Cinambo",
+      "Coblong",
+      "Gedebage",
+      "Mandalajati",
+      "Rancasari",
+      "Sukasari",
+      "Ujungberung"
+    ],
+    "KOTA BANJAR": [
+      "Banjar",
+      "Langensari",
+      "Pataruman"
+    ],
+    "KOTA BEKASI": [
+      "Bantargebang",
+      "Bekasi Barat",
+      "Bekasi Selatan",
+      "Bekasi Timur",
+      "Bekasi Utara",
+      "Jatiasih",
+      "Jatisampurna",
+      "Medansatria",
+      "Mustikajaya",
+      "Pondokgede",
+      "Pondokmelati",
+      "Rawalumbu"
+    ],
+    "KOTA BOGOR": [
+      "Bogor Barat",
+      "Bogor Selatan",
+      "Bogor Timur",
+      "Bogor Utara",
+      "Tanah Sareal"
+    ],
+    "KOTA CIMAHI": [
+      "Cimahi Selatan",
+      "Cimahi Utara"
+    ],
+    "KOTA CIREBON": [
+      "Harjamukti",
+      "Kejaksan",
+      "Kesambi"
+    ],
+    "KOTA DEPOK": [
+      "Beji",
+      "Bojongsari",
+      "Cilodong",
+      "Cimanggis",
+      "Cinere",
+      "Limo",
+      "Pancoran Mas",
+      "Sawangan",
+      "Sukmajaya",
+      "Tapos"
+    ],
+    "KOTA SUKABUMI": [
+      "Cibeureum",
+      "Cikole",
+      "Warudoyong"
+    ],
+    "KOTA TASIKMALAYA": [
+      "Bungursari",
+      "Cibeureum",
+      "Cihideung",
+      "Cipedes",
+      "Indihiang",
+      "Kawalu",
+      "Mangkubumi",
+      "Purbaratu",
+      "Tamansari",
+      "Tawang"
+    ]
+  },
+  "JAWA TENGAH": {
+    "KAB BANJARNEGARA": [
+      "Banjarnegara",
+      "Karangkobar",
+      "Purworeja Klampok"
+    ],
+    "KAB BANYUMAS": [
+      "Ajibarang",
+      "Baturraden",
+      "Kalibagor",
+      "Karanglewas",
+      "Kedungbanteng",
+      "Kembaran",
+      "Patikraja",
+      "Purwokerto Barat",
+      "Purwokerto Selatan",
+      "Purwokerto Timur",
+      "Purwokerto Utara",
+      "Sokaraja",
+      "Sumbang"
+    ],
+    "KAB BATANG": [
+      "Bandar",
+      "Batang",
+      "Gringsing",
+      "Kandeman",
+      "Limpung",
+      "Subah",
+      "Tulis",
+      "Warungasem"
+    ],
+    "KAB BLORA": [
+      "Cepu",
+      "Sambong",
+      "Tunjungan"
+    ],
+    "KAB BOYOLALI": [
+      "Ampel",
+      "Banyudono",
+      "Karanggede",
+      "Mojosongo",
+      "Musuk",
+      "Ngemplak",
+      "Sambi",
+      "Teras"
+    ],
+    "KAB BREBES": [
+      "Brebes",
+      "Bulakamba",
+      "Bumiayu",
+      "Jatibarang",
+      "Kersana",
+      "Sirampog",
+      "Songgom",
+      "Tanjung",
+      "Tonjong",
+      "Wanasari"
+    ],
+    "KAB CILACAP": [
+      "Cilacap Selatan",
+      "Cilacap Tengah",
+      "Cilacap Utara",
+      "Cimanggu",
+      "Gandrungmangu",
+      "Jeruklegi",
+      "Karangpucung",
+      "Kawunganten",
+      "Kroya"
+    ],
+    "KAB DEMAK": [
+      "Demak",
+      "Karangawen",
+      "Mranggen",
+      "Wonosalam"
+    ],
+    "KAB GROBOGAN": [
+      "Grobogan",
+      "Purwodadi",
+      "Toroh",
+      "Wirosari"
+    ],
+    "KAB JEPARA": [
+      "Batealit",
+      "Jepara",
+      "Mayong",
+      "Mlonggo",
+      "Pecangaan",
+      "Tahunan"
+    ],
+    "KAB KARANGANYAR": [
+      "Colomadu",
+      "Gondangrejo",
+      "Jaten",
+      "Jumantono",
+      "Karanganyar",
+      "Kebakkramat",
+      "Mojogedang",
+      "Tasikmadu"
+    ],
+    "KAB KEBUMEN": [
+      "Kebumen",
+      "Sempor"
+    ],
+    "KAB KENDAL": [
+      "Boja",
+      "Kaliwungu",
+      "Kaliwungu Selatan",
+      "Kangkung",
+      "Kendal",
+      "Limbangan",
+      "Ringinarum",
+      "Weleri"
+    ],
+    "KAB KLATEN": [
+      "Bayat",
+      "Delanggu",
+      "Jogonalan",
+      "Karanganom",
+      "Klaten Selatan",
+      "Klaten Tengah",
+      "Manisrenggo",
+      "Ngawen",
+      "Pedan",
+      "Prambanan"
+    ],
+    "KAB KUDUS": [
+      "Bae",
+      "Kaliwungu",
+      "Kota Kudus",
+      "Mejobo"
+    ],
+    "KAB MAGELANG": [
+      "Grabag",
+      "Mertoyudan",
+      "Salaman",
+      "Windusari"
+    ],
+    "KAB PATI": [
+      "Gembong",
+      "Jakenan",
+      "Margorejo",
+      "Margoyoso",
+      "Pati",
+      "Tlogowungu",
+      "Wedarijaksa"
+    ],
+    "KAB PEKALONGAN": [
+      "Bojong",
+      "Buaran",
+      "Kajen",
+      "Karanganyar",
+      "Kedungwuni",
+      "Paninggaran",
+      "Sragi",
+      "Tirto",
+      "Wiradesa",
+      "Wonopringgo"
+    ],
+    "KAB PEMALANG": [
+      "Ampelgading",
+      "Belik",
+      "Moga",
+      "Pemalang",
+      "Petarukan",
+      "Randudongkal",
+      "Taman"
+    ],
+    "KAB PURBALINGGA": [
+      "Bojongsari",
+      "Kalimanah",
+      "Kemangkon",
+      "Kutasari",
+      "Mrebet",
+      "Padamara",
+      "Purbalingga"
+    ],
+    "KAB PURWOREJO": [
+      "Bagelen",
+      "Gebang"
+    ],
+    "KAB REMBANG": [
+      "Rembang"
+    ],
+    "KAB SEMARANG": [
+      "Ambarawa",
+      "Bawen",
+      "Kaliwungu",
+      "Pringapus",
+      "Tengaran",
+      "Tuntang",
+      "Ungaran Barat",
+      "Ungaran Timur"
+    ],
+    "KAB SRAGEN": [
+      "Gemolong",
+      "Kalijambe",
+      "Karangmalang",
+      "Masaran",
+      "Ngrampal",
+      "Sidoharjo",
+      "Sragen"
+    ],
+    "KAB SUKOHARJO": [
+      "Baki",
+      "Bendosari",
+      "Gatak",
+      "Grogol",
+      "Kartasura",
+      "Mojolaban",
+      "Nguter",
+      "Polokarto",
+      "Sukoharjo"
+    ],
+    "KAB TEGAL": [
+      "Dukuhturi",
+      "Dukuhwaru",
+      "Kramat",
+      "Margasari",
+      "Pangkah",
+      "Slawi",
+      "Suradadi",
+      "Talang",
+      "Tarub"
+    ],
+    "KAB TEMANGGUNG": [
+      "Bulu",
+      "Kaloran",
+      "Kranggan",
+      "Temanggung",
+      "Tembarak"
+    ],
+    "KAB WONOGIRI": [
+      "Baturetno",
+      "Ngadirojo",
+      "Selogiri",
+      "Wonogiri",
+      "Wuryantoro"
+    ],
+    "KAB WONOSOBO": [
+      "Kertek",
+      "Mojotengah",
+      "Selomerto",
+      "Wonosobo"
+    ],
+    "KOTA MAGELANG": [
+      "Magelang Tengah"
+    ],
+    "KOTA PEKALONGAN": [
+      "Pekalongan Barat",
+      "Pekalongan Selatan",
+      "Pekalongan Timur",
+      "Pekalongan Utara"
+    ],
+    "KOTA SALATIGA": [
+      "Argomulyo",
+      "Sidomukti",
+      "Sidorejo"
+    ],
+    "KOTA SEMARANG": [
+      "Banyumanik",
+      "Gayamsari",
+      "Genuk",
+      "Gunungpati",
+      "Mijen",
+      "Ngaliyan",
+      "Pedurungan",
+      "Semarang Barat",
+      "Semarang Utara",
+      "Tembalang",
+      "Tugu"
+    ],
+    "KOTA TEGAL": [
+      "Margadana",
+      "Tegal Barat"
+    ]
+  },
+  "JAWA TIMUR": {
+    "KAB BANGKALAN": [
+      "Bangkalan",
+      "Burneh",
+      "Kamal",
+      "Kwanyar",
+      "Labang",
+      "Socah",
+      "Tanah Merah",
+      "Tragah"
+    ],
+    "KAB BANYUWANGI": [
+      "Banyuwangi",
+      "Blimbingsari",
+      "Gambiran",
+      "Genteng",
+      "Giri",
+      "Glenmore",
+      "Kabat",
+      "Kalibaru",
+      "Kalipuro",
+      "Pesanggaran",
+      "Rogojampi",
+      "Sempu",
+      "Siliragung",
+      "Singojuruh"
+    ],
+    "KAB BLITAR": [
+      "Gandusari",
+      "Garum",
+      "Kanigoro",
+      "Ponggok",
+      "Sanankulon",
+      "Srengat",
+      "Talun"
+    ],
+    "KAB BOJONEGORO": [
+      "Baureno",
+      "Bojonegoro",
+      "Dander",
+      "Kepohbaru"
+    ],
+    "KAB BONDOWOSO": [
+      "Bondowoso",
+      "Curahdami",
+      "Grujugan",
+      "Prajekan",
+      "Tegalampel",
+      "Tenggarang",
+      "Wonosari"
+    ],
+    "KAB GRESIK": [
+      "Bungah",
+      "Cerme",
+      "Driyorejo",
+      "Duduksampeyan",
+      "Kebomas",
+      "Kedamean",
+      "Manyar",
+      "Menganti",
+      "Sidayu",
+      "Ujungpangkah",
+      "Wringinanom"
+    ],
+    "KAB JEMBER": [
+      "Ajung",
+      "Ambulu",
+      "Balung",
+      "Bangsalsari",
+      "Jombang",
+      "Kalisat",
+      "Kaliwates",
+      "Panti",
+      "Patrang",
+      "Rambipuji",
+      "Sukorambi",
+      "Sukowono",
+      "Sumberbaru",
+      "Sumbersari",
+      "Wuluhan"
+    ],
+    "KAB JOMBANG": [
+      "Bandarkedungmulyo",
+      "Bareng",
+      "Diwek",
+      "Jogoroto",
+      "Jombang",
+      "Kabuh",
+      "Kesamben",
+      "Mojoagung",
+      "Mojowarno",
+      "Ngoro",
+      "Perak",
+      "Peterongan",
+      "Ploso",
+      "Sumobito",
+      "Tembelang"
+    ],
+    "KAB KEDIRI": [
+      "Banyakan",
+      "Gampengrejo",
+      "Gurah",
+      "Kandat",
+      "Kras",
+      "Ngadiluwih",
+      "Ngancar",
+      "Ngasem",
+      "Pare",
+      "Puncu",
+      "Semen"
+    ],
+    "KAB LAMONGAN": [
+      "Babat",
+      "Glagah",
+      "Kembangbahu",
+      "Lamongan",
+      "Mantup",
+      "Ngimbang",
+      "Paciran",
+      "Sukodadi",
+      "Tikung"
+    ],
+    "KAB LUMAJANG": [
+      "Kedungjajang",
+      "Kunir",
+      "Lumajang",
+      "Pasirian",
+      "Rowokangkung",
+      "Senduro",
+      "Sukodono",
+      "Sumbersuko",
+      "Tekung",
+      "Tempeh"
+    ],
+    "KAB MADIUN": [
+      "Dolopo",
+      "Geger",
+      "Jiwan",
+      "Madiun",
+      "Mejayan",
+      "Pilangkenceng",
+      "Sawahan",
+      "Wungu"
+    ],
+    "KAB MAGETAN": [
+      "Kawedanan",
+      "Magetan",
+      "Ngariboyo",
+      "Sukomoro",
+      "Takeran"
+    ],
+    "KAB MALANG": [
+      "Bululawang",
+      "Dau",
+      "Gondanglegi",
+      "Karang Ploso",
+      "Kepanjen",
+      "Lawang",
+      "Pakis",
+      "Pakisaji",
+      "Singosari",
+      "Tajinan",
+      "Tumpang",
+      "Turen",
+      "Wagir",
+      "Wajak"
+    ],
+    "KAB MOJOKERTO": [
+      "Bangsal",
+      "Dawarblandong",
+      "Gedeg",
+      "Jetis",
+      "Kemlagi",
+      "Kutorejo",
+      "Mojoanyar",
+      "Mojosari",
+      "Pacet",
+      "Pungging",
+      "Puri",
+      "Sooko"
+    ],
+    "KAB NGANJUK": [
+      "Bagor",
+      "Baron",
+      "Berbek",
+      "Kertosono",
+      "Lengkong",
+      "Loceret",
+      "Ngronggot",
+      "Pace",
+      "Prambon"
+    ],
+    "KAB NGAWI": [
+      "Geneng",
+      "Kwadungan",
+      "Ngawi",
+      "Paron",
+      "Widodaren"
+    ],
+    "KAB PACITAN": [
+      "Pacitan"
+    ],
+    "KAB PAMEKASAN": [
+      "Pademawu",
+      "Proppo",
+      "Tlanakan"
+    ],
+    "KAB PASURUAN": [
+      "Bangil",
+      "Beji",
+      "Gempol",
+      "Grati",
+      "Kejayan",
+      "Kraton",
+      "Pandaan",
+      "Pohjentrek",
+      "Prigen",
+      "Purwodadi",
+      "Purwosari",
+      "Rembang",
+      "Sukorejo"
+    ],
+    "KAB PONOROGO": [
+      "Babadan",
+      "Jenangan",
+      "Ponorogo",
+      "Siman",
+      "Slahung",
+      "Sukorejo"
+    ],
+    "KAB PROBOLINGGO": [
+      "Besuk",
+      "Dringu",
+      "Kraksaan",
+      "Paiton",
+      "Pejarakan",
+      "Wonomerto"
+    ],
+    "KAB SAMPANG": [
+      "Sampang",
+      "Torjun"
+    ],
+    "KAB SIDOARJO": [
+      "Balongbendo",
+      "Buduran",
+      "Candi",
+      "Gedangan",
+      "Krembung",
+      "Krian",
+      "Prambon",
+      "Sedati",
+      "Sidoarjo",
+      "Sukodono",
+      "Taman",
+      "Tanggulangin",
+      "Tulangan",
+      "Waru",
+      "Wonoayu"
+    ],
+    "KAB SITUBONDO": [
+      "Banyuputih",
+      "Besuki",
+      "Mangaran",
+      "Panarukan",
+      "Panji",
+      "Situbondo"
+    ],
+    "KAB SUMENEP": [
+      "Kalianget",
+      "Kota Sumenep",
+      "Saronggi"
+    ],
+    "KAB TRENGGALEK": [
+      "Karangan"
+    ],
+    "KAB TUBAN": [
+      "Jenu",
+      "Kenduruan",
+      "Merakurak",
+      "Palang",
+      "Semanding",
+      "Senori",
+      "Tuban"
+    ],
+    "KAB TULUNGAGUNG": [
+      "Boyolangu",
+      "Karangrejo",
+      "Kedungwaru",
+      "Ngunut",
+      "Sumbergempol",
+      "Tulungagung"
+    ],
+    "KOTA BATU": [
+      "Batu",
+      "Junrejo"
+    ],
+    "KOTA BLITAR": [
+      "Kepanjenkidul",
+      "Sananwetan",
+      "Sukorejo"
+    ],
+    "KOTA KEDIRI": [
+      "Kota",
+      "Mojoroto",
+      "Pesantren"
+    ],
+    "KOTA MADIUN": [
+      "Manguharjo",
+      "Taman"
+    ],
+    "KOTA MALANG": [
+      "Blimbing",
+      "Kedungkandang",
+      "Lowokwaru",
+      "Sukun"
+    ],
+    "KOTA MOJOKERTO": [
+      "Kranggan",
+      "Prajuritkulon"
+    ],
+    "KOTA PASURUAN": [
+      "Bugul Kidul",
+      "Gadingrejo",
+      "Purworejo"
+    ],
+    "KOTA PROBOLINGGO": [
+      "Kademangan",
+      "Kanigaran",
+      "Kedopok",
+      "Wonoasih"
+    ],
+    "KOTA SURABAYA": [
+      "Benowo",
+      "Bulak",
+      "Gayungan",
+      "Gubeng",
+      "Gunung Anyar",
+      "Karangpilang",
+      "Kenjeran",
+      "Lakarsantri",
+      "Mulyorejo",
+      "Pakal",
+      "Rungkut",
+      "Sambikerep",
+      "Sukolilo",
+      "Sukomanunggal",
+      "Tambaksari",
+      "Tandes",
+      "Tenggilis Mejoyo",
+      "Wiyung",
+      "Wonokromo"
+    ]
+  },
+  "KALIMANTAN BARAT": {
+    "KAB BENGKAYANG": [
+      "Bengkayang"
+    ],
+    "KAB KAPUAS HULU": [
+      "Putussibau Utara",
+      "Semitau"
+    ],
+    "KAB KAYONG UTARA": [
+      "Sukadana"
+    ],
+    "KAB KETAPANG": [
+      "Benua Kayong",
+      "Delta Pawan",
+      "Nanga Tayap",
+      "Sandai"
+    ],
+    "KAB KUBU RAYA": [
+      "Rasau Jaya",
+      "Sungai Ambawang",
+      "Sungai Kakap",
+      "Sungai Raya"
+    ],
+    "KAB LANDAK": [
+      "Ngabang"
+    ],
+    "KAB MEMPAWAH": [
+      "Mempawah Hilir",
+      "Sungai Pinyuh"
+    ],
+    "KAB SAMBAS": [
+      "Sambas"
+    ],
+    "KAB SANGGAU": [
+      "Kembayan",
+      "Tayan Hilir"
+    ],
+    "KAB SINTANG": [
+      "Sintang",
+      "Sungai Tebelian"
+    ],
+    "KOTA PONTIANAK": [
+      "Pontianak Barat",
+      "Pontianak Kota",
+      "Pontianak Selatan",
+      "Pontianak Tenggara",
+      "Pontianak Timur",
+      "Pontianak Utara"
+    ],
+    "KOTA SINGKAWANG": [
+      "Singkawang Tengah",
+      "Singkawang Timur",
+      "Singkawang Utara"
+    ]
+  },
+  "KALIMANTAN SELATAN": {
+    "KAB BANJAR": [
+      "Gambut",
+      "Karang Intan",
+      "Kertak Hanyar",
+      "Martapura",
+      "Simpang Empat"
+    ],
+    "KAB BARITO KUALA": [
+      "Alalak",
+      "Marabahan"
+    ],
+    "KAB HULU SUNGAI SELATAN": [
+      "Kandangan",
+      "Sungai Raya"
+    ],
+    "KAB HULU SUNGAI TENGAH": [
+      "Barabai",
+      "Labuan Amas Selatan"
+    ],
+    "KAB KOTABARU": [
+      "Kelumpang Hilir",
+      "Pulaulaut Tengah"
+    ],
+    "KAB TABALONG": [
+      "Murung Pudak",
+      "Tanta"
+    ],
+    "KAB TANAH BUMBU": [
+      "Simpang Empat"
+    ],
+    "KAB TANAH LAUT": [
+      "Bati Bati",
+      "Kintap",
+      "Pelaihari"
+    ],
+    "KAB TAPIN": [
+      "Lokpaikat"
+    ],
+    "KOTA BANJARBARU": [
+      "Banjarbaru Selatan",
+      "Banjarbaru Utara",
+      "Cempaka",
+      "Landasan Ulin",
+      "Liang Anggang"
+    ],
+    "KOTA BANJARMASIN": [
+      "Banjarmasin Selatan",
+      "Banjarmasin Timur",
+      "Banjarmasin Utara"
+    ]
+  },
+  "KALIMANTAN TENGAH": {
+    "KAB BARITO SELATAN": [
+      "Dusun Selatan"
+    ],
+    "KAB BARITO TIMUR": [
+      "Dusun Timur"
+    ],
+    "KAB BARITO UTARA": [
+      "Teweh Tengah"
+    ],
+    "KAB GUNUNG MAS": [
+      "Kurun"
+    ],
+    "KAB KAPUAS": [
+      "Selat"
+    ],
+    "KAB KATINGAN": [
+      "Katingan Hilir"
+    ],
+    "KAB KOTAWARINGIN BARAT": [
+      "Arut Selatan",
+      "Kumai"
+    ],
+    "KAB KOTAWARINGIN TIMUR": [
+      "Baamang",
+      "Mentawa Baru Ketapang"
+    ],
+    "KAB MURUNG RAYA": [
+      "Murung"
+    ],
+    "KAB SUKAMARA": [
+      "Balai Riam",
+      "Sukamara"
+    ],
+    "KOTA PALANGKARAYA": [
+      "Jekan Raya",
+      "Pahandut",
+      "Sabangau"
+    ]
+  },
+  "KALIMANTAN TIMUR": {
+    "KAB BERAU": [
+      "Tanjung Redeb",
+      "Teluk Bayur"
+    ],
+    "KAB KUTAI BARAT": [
+      "Barong Tongkok"
+    ],
+    "KAB KUTAI KARTANEGARA": [
+      "Kota Bangun",
+      "Loa Kulu",
+      "Tenggarong",
+      "Tenggarong Seberang"
+    ],
+    "KAB KUTAI TIMUR": [
+      "Sangatta Utara"
+    ],
+    "KAB PASER": [
+      "Kuaro",
+      "Long Ikis",
+      "Long Kali",
+      "Tanah Grogot"
+    ],
+    "KAB PENAJAM PASER UTARA": [
+      "Babulu",
+      "Penajam"
+    ],
+    "KOTA BALIKPAPAN": [
+      "Balikpapan Barat",
+      "Balikpapan Kota",
+      "Balikpapan Selatan",
+      "Balikpapan Timur",
+      "Balikpapan Utara"
+    ],
+    "KOTA SAMARINDA": [
+      "Loa Janan Ilir",
+      "Palaran",
+      "Samarinda Ulu",
+      "Samarinda Utara",
+      "Sambutan",
+      "Sungai Kunjang",
+      "Sungai Pinang"
+    ]
+  },
+  "KALIMANTAN UTARA": {
+    "KAB BULUNGAN": [
+      "Tanjung Selor"
+    ],
+    "KAB MALINAU": [
+      "Malinau Kota"
+    ],
+    "KAB NUNUKAN": [
+      "Nunukan"
+    ],
+    "KOTA TARAKAN": [
+      "Tarakan Barat",
+      "Tarakan Utara"
+    ]
+  },
+  "KEPULAUAN BANGKA BELITUNG": {
+    "KAB BANGKA": [
+      "Merawang",
+      "Pemali",
+      "Sungailiat"
+    ],
+    "KAB BANGKA SELATAN": [
+      "Toboali"
+    ],
+    "KAB BANGKA TENGAH": [
+      "Pangkalan Baru"
+    ],
+    "KAB BELITUNG": [
+      "Tanjung Pandan"
+    ],
+    "KAB BELITUNG TIMUR": [
+      "Manggar"
+    ],
+    "KOTA PANGKAL PINANG": [
+      "Bukitintan",
+      "Gabek",
+      "Gerunggang",
+      "Pangkal Balam",
+      "Rangkui"
+    ]
+  },
+  "KEPULAUAN RIAU": {
+    "KAB BINTAN": [
+      "Bintan Timur",
+      "Bintan Utara",
+      "Seri Kuala Lobam",
+      "Toapaya"
+    ],
+    "KAB KARIMUN": [
+      "Karimun",
+      "Meral",
+      "Tebing"
+    ],
+    "KOTA BATAM": [
+      "Batu Aji",
+      "Nongsa",
+      "Sagulung",
+      "Sei Beduk",
+      "Sekupang"
+    ],
+    "KOTA TANJUNG PINANG": [
+      "Bukit Bestari",
+      "Tanjung Pinang Timur"
+    ]
+  },
+  "LAMPUNG": {
+    "KAB LAMPUNG SELATAN": [
+      "Jati Agung",
+      "Natar",
+      "Tanjung Bintang"
+    ],
+    "KAB LAMPUNG TENGAH": [
+      "Gunung Sugih",
+      "Kalirejo",
+      "Terbanggi Besar",
+      "Way Pangubuan"
+    ],
+    "KAB LAMPUNG UTARA": [
+      "Abung Selatan",
+      "Kotabumi Selatan"
+    ],
+    "KAB PESAWARAN": [
+      "Gedong Tataan"
+    ],
+    "KAB PRINGSEWU": [
+      "Pringsewu"
+    ],
+    "KAB TANGGAMUS": [
+      "Gisting"
+    ],
+    "KOTA BANDAR LAMPUNG": [
+      "Kedamaian",
+      "Kemiling",
+      "Rajabasa",
+      "Sukabumi",
+      "Sukarame",
+      "Tanjung Senang",
+      "Tanjungkarang Barat",
+      "Telukbetung Selatan",
+      "Telukbetung Timur"
+    ],
+    "KOTA METRO": [
+      "Metro Barat",
+      "Metro Timur"
+    ]
+  },
+  "MALUKU": {
+    "KAB BURU": [
+      "Namlea"
+    ],
+    "KAB MALUKU TENGAH": [
+      "Amahai",
+      "Salahutu"
+    ],
+    "KOTA AMBON": [
+      "Baguala"
+    ],
+    "KOTA TUAL": [
+      "Pulau Dullah Selatan"
+    ]
+  },
+  "MALUKU UTARA": {
+    "KAB HALMAHERA BARAT": [
+      "Jailolo"
+    ],
+    "KOTA TERNATE": [
+      "Kota Ternate Selatan",
+      "Kota Ternate Utara"
+    ],
+    "KOTA TIDORE KEPULAUAN": [
+      "Oba Utara"
+    ]
+  },
+  "NUSA TENGGARA BARAT": {
+    "KAB BIMA": [
+      "Woha"
+    ],
+    "KAB DOMPU": [
+      "Dompu",
+      "Manggalewa"
+    ],
+    "KAB LOMBOK BARAT": [
+      "Batu Layar",
+      "Gerung",
+      "Gunungsari",
+      "Kediri",
+      "Kuripan",
+      "Labuapi",
+      "Lembar",
+      "Lingsar",
+      "Narmada"
+    ],
+    "KAB LOMBOK TENGAH": [
+      "Praya",
+      "Praya Barat",
+      "Praya Tengah"
+    ],
+    "KAB LOMBOK TIMUR": [
+      "Keruak",
+      "Selong"
+    ],
+    "KAB LOMBOK UTARA": [
+      "Gangga"
+    ],
+    "KAB SUMBAWA": [
+      "Moyo Hilir",
+      "Sumbawa",
+      "Unter Iwes"
+    ],
+    "KAB SUMBAWA BARAT": [
+      "Maluk"
+    ],
+    "KOTA BIMA": [
+      "Mpunda"
+    ],
+    "KOTA MATARAM": [
+      "Ampenan",
+      "Cakranegara",
+      "Sandubaya",
+      "Sekarbela"
+    ]
+  },
+  "NUSA TENGGARA TIMUR": {
+    "KAB BELU": [
+      "Atambua Barat",
+      "Kakuluk Mesak"
+    ],
+    "KAB FLORES TIMUR": [
+      "Larantuka"
+    ],
+    "KAB KUPANG": [
+      "Kupang Barat",
+      "Kupang Tengah",
+      "Kupang Timur"
+    ],
+    "KAB MANGGARAI BARAT": [
+      "Komodo"
+    ],
+    "KAB MANGGARAI TIMUR": [
+      "Borong"
+    ],
+    "KAB ROTE NDAO": [
+      "Lobalain"
+    ],
+    "KAB SIKKA": [
+      "Kangae",
+      "Waigete"
+    ],
+    "KAB SUMBA BARAT": [
+      "Loli"
+    ],
+    "KAB SUMBA TIMUR": [
+      "Kambera",
+      "Kanatang"
+    ],
+    "KAB TIMOR TENGAH SELATAN": [
+      "Kota Soe"
+    ],
+    "KAB TIMOR TENGAH UTARA": [
+      "Kota Kefamenanu"
+    ],
+    "KOTA KUPANG": [
+      "Alak",
+      "Kelapa Lima",
+      "Kota Raja",
+      "Maulafa",
+      "Oebobo"
+    ]
+  },
+  "PAPUA": {
+    "KAB JAYAPURA": [
+      "Sentani",
+      "Waibu"
+    ],
+    "KAB MERAUKE": [
+      "Merauke"
+    ],
+    "KAB MIMIKA": [
+      "Kuala Kencana",
+      "Mimika Baru",
+      "Wania"
+    ],
+    "KOTA JAYAPURA": [
+      "Abepura",
+      "Jayapura Selatan",
+      "Muara Tami"
+    ]
+  },
+  "PAPUA BARAT": {
+    "KAB KAIMANA": [
+      "Kaimana"
+    ],
+    "KAB MANOKWARI": [
+      "Manokwari Barat",
+      "Manokwari Selatan"
+    ],
+    "KAB SORONG": [
+      "Aimas",
+      "Mariat"
+    ],
+    "KOTA SORONG": [
+      "Sorong Manoi",
+      "Sorong Timur"
+    ]
+  },
+  "RIAU": {
+    "KAB BENGKALIS": [
+      "Bathin Solapan",
+      "Mandau",
+      "Pinggir"
+    ],
+    "KAB INDRAGIRI HILIR": [
+      "Tembilahan"
+    ],
+    "KAB INDRAGIRI HULU": [
+      "Siberida"
+    ],
+    "KAB KAMPAR": [
+      "Siak Hulu",
+      "Tambang",
+      "Tapung"
+    ],
+    "KAB KUANTAN SINGINGI": [
+      "Kuantan Tengah"
+    ],
+    "KAB PELALAWAN": [
+      "Bandar Petalangan",
+      "Pangkalan Kerinci"
+    ],
+    "KAB ROKAN HULU": [
+      "Rambah"
+    ],
+    "KAB SIAK": [
+      "Siak"
+    ],
+    "KOTA DUMAI": [
+      "Dumai Barat",
+      "Dumai Timur",
+      "Medang Kampai",
+      "Sungai Sembilan"
+    ],
+    "KOTA PEKANBARU": [
+      "Bukit Raya",
+      "Marpoyan Damai",
+      "Payung Sekaki",
+      "Rumbai",
+      "Rumbai Pesisir",
+      "Sail",
+      "Tampan",
+      "Tenayan Raya"
+    ]
+  },
+  "SULAWESI BARAT": {
+    "KAB MAJENE": [
+      "Banggae Timur"
+    ],
+    "KAB MAMUJU": [
+      "Mamuju",
+      "Simboro dan Kepulauan"
+    ],
+    "KAB MAMUJU TENGAH": [
+      "Tobadak",
+      "Topoyo"
+    ],
+    "KAB MAMUJU UTARA": [
+      "Pasangkayu"
+    ],
+    "KAB POLEWALI MANDAR": [
+      "Binuang",
+      "Matakali",
+      "Polewali"
+    ]
+  },
+  "SULAWESI SELATAN": {
+    "KAB BANTAENG": [
+      "Bissappu",
+      "Pajukukang"
+    ],
+    "KAB BARRU": [
+      "Barru"
+    ],
+    "KAB BONE": [
+      "Tanete Riattang",
+      "Tanete Riattang Barat",
+      "Tanete Riattang Timur"
+    ],
+    "KAB BULUKUMBA": [
+      "Ujung Bulu"
+    ],
+    "KAB ENREKANG": [
+      "Cendana",
+      "Enrekang"
+    ],
+    "KAB GOWA": [
+      "Bajeng",
+      "Barombong",
+      "Bontomarannu",
+      "Palangga",
+      "Pattalasang",
+      "Somba Upu"
+    ],
+    "KAB JENEPONTO": [
+      "Bangkala",
+      "Tarowang"
+    ],
+    "KAB LUWU TIMUR": [
+      "Tomoni",
+      "Wotu"
+    ],
+    "KAB LUWU UTARA": [
+      "Tana Lili"
+    ],
+    "KAB MAROS": [
+      "Mandai",
+      "Marusu",
+      "Moncong Loe",
+      "Tanralili"
+    ],
+    "KAB PANGKAJENE KEPULAUAN": [
+      "Bungoro",
+      "Pangkajene",
+      "Segeri"
+    ],
+    "KAB PINRANG": [
+      "Mattiro Bulu",
+      "Paleteang",
+      "Watang Sawito"
+    ],
+    "KAB SIDENRENG RAPPANG": [
+      "Dua Pitue",
+      "Maritengngae"
+    ],
+    "KAB SINJAI": [
+      "Sinjai Timur"
+    ],
+    "KAB SOPPENG": [
+      "Lalabata"
+    ],
+    "KAB TAKALAR": [
+      "Galesong Utara",
+      "Pattallassang",
+      "Polombangkeng Utara"
+    ],
+    "KAB WAJO": [
+      "Pammana",
+      "Sabangparu",
+      "Tempe"
+    ],
+    "KOTA MAKASSAR": [
+      "Biringkanaya",
+      "Makassar",
+      "Mamajang",
+      "Manggala",
+      "Mariso",
+      "Panakkukang",
+      "Rappocini",
+      "Tallo",
+      "Tamalanrea",
+      "Tamalate"
+    ],
+    "KOTA PALOPO": [
+      "Bara",
+      "Sendana",
+      "Telluwanua",
+      "Wara",
+      "Wara Selatan",
+      "Wara Timur",
+      "Wara Utara"
+    ],
+    "KOTA PARE PARE": [
+      "Bacukiki"
+    ]
+  },
+  "SULAWESI TENGAH": {
+    "KAB BANGGAI": [
+      "Toili"
+    ],
+    "KAB MOROWALI": [
+      "Bahodopi",
+      "Bumi Raya",
+      "Bungku Tengah"
+    ],
+    "KAB MOROWALI UTARA": [
+      "Lembo"
+    ],
+    "KAB PARIGI MOUTONG": [
+      "Parigi"
+    ],
+    "KAB POSO": [
+      "Poso Kota"
+    ],
+    "KAB SIGI": [
+      "Marawola",
+      "Sigi Biromaru"
+    ],
+    "KAB TOJO UNA UNA": [
+      "Ratolindo"
+    ],
+    "KAB TOLI TOLI": [
+      "Baolan"
+    ],
+    "KOTA PALU": [
+      "Mantikulore",
+      "Palu Selatan",
+      "Palu Utara"
+    ]
+  },
+  "SULAWESI TENGGARA": {
+    "KAB BUTON TENGAH": [
+      "Lakudo"
+    ],
+    "KAB KOLAKA": [
+      "Baula",
+      "Kolaka"
+    ],
+    "KAB KOLAKA TIMUR": [
+      "Tirawuta"
+    ],
+    "KAB KOLAKA UTARA": [
+      "Lasusua"
+    ],
+    "KAB KONAWE SELATAN": [
+      "Konda",
+      "Ranomeeto"
+    ],
+    "KAB KONAWE UTARA": [
+      "Andowia"
+    ],
+    "KAB MUNA": [
+      "Lasalepa"
+    ],
+    "KAB MUNA BARAT": [
+      "Sawerigadi",
+      "Tiworo Kepulauan"
+    ],
+    "KOTA BAU BAU": [
+      "Betoambari",
+      "Kokalukuna",
+      "Wolio"
+    ],
+    "KOTA KENDARI": [
+      "Baruga",
+      "Kadia",
+      "Mandonga",
+      "Poasia",
+      "Puuwatu",
+      "Wua-Wua"
+    ]
+  },
+  "SULAWESI UTARA": {
+    "KAB MINAHASA": [
+      "Mandolang",
+      "Pineleng",
+      "Sonder",
+      "Tombulu",
+      "Tondano Barat"
+    ],
+    "KAB MINAHASA UTARA": [
+      "Dimembe",
+      "Kalawat",
+      "Kauditan",
+      "Talawaan",
+      "Wori"
+    ],
+    "KOTA BITUNG": [
+      "Matuari",
+      "Ranowulu"
+    ],
+    "KOTA KOTAMOBAGU": [
+      "Kotamobagu Selatan"
+    ],
+    "KOTA MANADO": [
+      "Malalayang",
+      "Mapanget",
+      "Paal Dua",
+      "Sario",
+      "Wanea",
+      "Wenang"
+    ],
+    "KOTA TOMOHON": [
+      "Tomohon Barat",
+      "Tomohon Selatan"
+    ]
+  },
+  "SUMATERA BARAT": {
+    "KAB AGAM": [
+      "Tanjung Mutiara"
+    ],
+    "KAB DHARMASRAYA": [
+      "Koto Baru",
+      "Pulau Punjung",
+      "Sitiung",
+      "Sungai Rumbai"
+    ],
+    "KAB LIMA PULUH KOTA": [
+      "Harau"
+    ],
+    "KAB PADANG PARIAMAN": [
+      "Batang Anai",
+      "Enam Lingkung",
+      "Lubuk Alung",
+      "Nan Sabaris",
+      "Sintuak Toboh Gadang",
+      "Sungai Limau"
+    ],
+    "KAB PASAMAN BARAT": [
+      "Lembah Melintang"
+    ],
+    "KAB PESISIR SELATAN": [
+      "Basa Ampek Balai Tapan",
+      "IV Jurai",
+      "Linggo Sari Baganti"
+    ],
+    "KAB SIJUNJUNG": [
+      "IV Nagari",
+      "Kamang Baru",
+      "Koto VII",
+      "Sijunjung"
+    ],
+    "KAB SOLOK": [
+      "Gunung Talang",
+      "Kubung"
+    ],
+    "KAB TANAH DATAR": [
+      "Lima Kaum"
+    ],
+    "KOTA PADANG": [
+      "Koto Tangah",
+      "Kuranji",
+      "Lubuk Begalung",
+      "Lubuk Kilangan",
+      "Padang Timur",
+      "Padang Utara",
+      "Pauh"
+    ],
+    "KOTA PARIAMAN": [
+      "Pariaman Selatan",
+      "Pariaman Utara"
+    ],
+    "KOTA PAYAKUMBUH": [
+      "Payakumbuh Barat",
+      "Payakumbuh Timur"
+    ],
+    "KOTA SAWAHLUNTO": [
+      "Barangin"
+    ],
+    "KOTA SOLOK": [
+      "Lubuk Sikarah",
+      "Tanjung Harapan"
+    ]
+  },
+  "SUMATERA SELATAN": {
+    "KAB BANYUASIN": [
+      "Rambutan",
+      "Talang Kelapa"
+    ],
+    "KAB EMPAT LAWANG": [
+      "Tebing Tinggi"
+    ],
+    "KAB LAHAT": [
+      "Lahat"
+    ],
+    "KAB MUARA ENIM": [
+      "Lawang Kidul",
+      "Muara Enim"
+    ],
+    "KAB MUSI BANYUASIN": [
+      "Bayung Lencir",
+      "Sekayu",
+      "Sungai Lilin"
+    ],
+    "KAB OGAN ILIR": [
+      "Indralaya",
+      "Pemulutan"
+    ],
+    "KAB OGAN KOMERING ILIR": [
+      "Jejawi",
+      "Kayu Agung"
+    ],
+    "KAB OGAN KOMERING ULU": [
+      "Baturaja Barat",
+      "Baturaja Timur",
+      "Lubuk Batang"
+    ],
+    "KAB OGAN KOMERING ULU TIMUR": [
+      "Martapura"
+    ],
+    "KAB PENUKAL ABAB LEMATANG ILIR": [
+      "Talang Ubi"
+    ],
+    "KOTA LUBUK LINGGAU": [
+      "Lubuk Linggau Barat I",
+      "Lubuk Linggau Selatan I",
+      "Lubuk Linggau Selatan II",
+      "Lubuk Linggau Utara II"
+    ],
+    "KOTA PALEMBANG": [
+      "Alang-alang Lebar",
+      "Gandus",
+      "Ilir Barat I",
+      "Ilir Timur II",
+      "Ilir Timur Tiga",
+      "Kalidoni",
+      "Kemuning",
+      "Kertapati",
+      "Plaju",
+      "Sako",
+      "Seberang Ulu II",
+      "Sematang Borang",
+      "Sukarami"
+    ],
+    "KOTA PRABUMULIH": [
+      "Cambai",
+      "Prabumulih Timur"
+    ]
+  },
+  "SUMATERA UTARA": {
+    "KAB ASAHAN": [
+      "Kota Kisaran Barat",
+      "Kota Kisaran Timur",
+      "Pulo Bandring",
+      "Simpang Empat"
+    ],
+    "KAB BATU BARA": [
+      "Air Putih",
+      "Sei Balai",
+      "Sei Suka"
+    ],
+    "KAB DELI SERDANG": [
+      "Batang Kuis",
+      "Beringin",
+      "Kutalimbaru",
+      "Lubuk Pakam",
+      "Namorambe",
+      "Pancur Batu",
+      "Patumbak",
+      "Percut Sei Tuan",
+      "STM Hilir",
+      "Sibiru-biru",
+      "Sunggal",
+      "Tanjung Morawa"
+    ],
+    "KAB KARO": [
+      "Berastagi",
+      "Simpang Empat"
+    ],
+    "KAB LABUHANBATU": [
+      "Bilah Hulu",
+      "Rantau Selatan"
+    ],
+    "KAB LABUHANBATU SELATAN": [
+      "Kotapinang"
+    ],
+    "KAB LANGKAT": [
+      "Binjai",
+      "Kuala",
+      "Pangkalan Susu",
+      "Sei Bingei",
+      "Sei Lepan",
+      "Stabat",
+      "Tanjung Pura"
+    ],
+    "KAB PADANG LAWAS UTARA": [
+      "Halongonan Timur"
+    ],
+    "KAB SERDANG BEDAGAI": [
+      "Sei Rampah"
+    ],
+    "KAB SIMALUNGUN": [
+      "Bandar",
+      "Gunung Maligas",
+      "Siantar",
+      "Tapian Dolok"
+    ],
+    "KAB TAPANULI TENGAH": [
+      "Pandan"
+    ],
+    "KAB TAPANULI UTARA": [
+      "Siborong-Borong"
+    ],
+    "KOTA BINJAI": [
+      "Binjai Barat",
+      "Binjai Selatan",
+      "Binjai Timur",
+      "Binjai Utara"
+    ],
+    "KOTA MEDAN": [
+      "Medan Barat",
+      "Medan Deli",
+      "Medan Denai",
+      "Medan Helvetia",
+      "Medan Johor",
+      "Medan Labuhan",
+      "Medan Maimun",
+      "Medan Marelan",
+      "Medan Perjuangan",
+      "Medan Polonia",
+      "Medan Selayang",
+      "Medan Sunggal",
+      "Medan Tembung",
+      "Medan Timur",
+      "Medan Tuntungan"
+    ],
+    "KOTA PADANGSIDIMPUAN": [
+      "Padangsidimpuan Batunadua",
+      "Padangsidimpuan Tenggara"
+    ],
+    "KOTA PEMATANGSIANTAR": [
+      "Siantar Barat",
+      "Siantar Martoba",
+      "Siantar Sitalasari"
+    ],
+    "KOTA TANJUNG BALAI": [
+      "Datuk Bandar",
+      "Datuk Bandar Timur",
+      "Sei Tualang Raso"
+    ],
+    "KOTA TEBING TINGGI": [
+      "Padang Hilir",
+      "Rambutan"
+    ]
+  }
+}

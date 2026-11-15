@@ -1,0 +1,28 @@
+# IndoPrice AI - Python Dependencies
+# Sistem Prediksi Harga Rumah di Indonesia Berbasis ML & Generative AI
+
+# Core Web Framework
+django>=4.2,<6.0
+
+# Database Driver (PostgreSQL Supabase)
+psycopg2-binary>=2.9.9
+dj-database-url>=2.1.0
+
+# Data Science & Machine Learning
+numpy>=1.24.0
+pandas>=2.0.0
+scikit-learn>=1.3.0
+joblib>=1.3.0
+lightgbm>=4.1.0
+
+# Visualisasi Data Interaktif
+plotly>=5.18.0
+
+# Generative AI (Gemini API)
+google-generativeai>=0.8.0
+
+# Environment Variables Management
+python-dotenv>=1.0.0
+
+# HTTP Requests & Utilities
+requests>=2.31.0
