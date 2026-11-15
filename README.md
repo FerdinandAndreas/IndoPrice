@@ -1,7 +1,7 @@
-# 🏡 IndoPrice - Sistem Prediksi & Analisis Nilai Wajar Properti Indonesia
+# IndoPrice - Sistem Prediksi dan Analisis Nilai Wajar Properti di Indonesia
 
-> **Tugas Akhir Mata Kuliah Sistem Cerdas (Pertemuan 14)**  
-> **Pengembang:** Ferdinand Andreas Saputra (NIM: 253307027)
+> **Tugas Mata Kuliah Sistem Cerdas Pertemuan 14**  
+> **Nama:** Ferdinand Andreas Saputra (NIM: 253307027)
 
 ---
 
