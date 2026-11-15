@@ -4,9 +4,11 @@ import os
 import sys
 
 def main():
-    """Run administrative tasks."""
+    """Menjalankan perintah administratif Django."""
+    # Tentukan Modul Pengaturan Django ('core.settings')
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'core.settings')
     try:
+        # Import Handler Perintah Command Line Django
         from django.core.management import execute_from_command_line
     except ImportError as exc:
         raise ImportError(
@@ -14,6 +16,7 @@ def main():
             "available on your PYTHONPATH environment variable? Did you "
             "forget to activate a virtual environment?"
         ) from exc
+    # Eksekusi Perintah CLI 
     execute_from_command_line(sys.argv)
 
 if __name__ == '__main__':

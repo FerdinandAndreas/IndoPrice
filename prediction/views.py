@@ -18,7 +18,10 @@ def get_clean_data_path():
 
 def dashboard_view(request):
     """Halaman Utama / Dashboard Analisis Properti"""
+    # Menentukan path lokasi file dataset bersih
     clean_csv = get_clean_data_path()
+
+    # Inisialisasi nilai default statistik dashboard
     stats = {
         'total_properties': 0,
         'avg_price': "Rp 0",
@@ -36,6 +39,7 @@ def dashboard_view(request):
 
     if os.path.exists(clean_csv):
         try:
+            # Baca File CSV dan bersihkan kolom numerik
             df = pd.read_csv(clean_csv, usecols=['province', 'city_regency', 'price_idr', 'land_area_m2', 'building_area_m2'])
 
             # Memastikan tipe numerik terdefinisi dengan bersih
@@ -43,6 +47,7 @@ def dashboard_view(request):
             df['building_area_m2'] = pd.to_numeric(df['building_area_m2'], errors='coerce')
             df = df.dropna(subset=['price_idr', 'building_area_m2', 'province'])
 
+            # Hitung rata Rata, median, dan format tampilan angka
             mean_val = df['price_idr'].mean()
             stats['total_properties'] = f"{len(df):,}"
             stats['avg_price'] = f"Rp {mean_val:,.0f}"
@@ -56,7 +61,7 @@ def dashboard_view(request):
             stats['r2_score'] = "0.87"
             stats['r2_percentage'] = "87%"
 
-            # Grafik Top 8 Provinsi Rata rata harga tertinggi
+            # Siapkan grafik top 8 Provinsi rata rata harga tertinggi (Plotly Bar Chart)
             prov_grouped = df.groupby('province')['price_idr'].agg(['mean', 'count']).reset_index()
             # Menampilkan hanya 5 provinsi dengan harga rata tertinggi
             prov_grouped = prov_grouped[prov_grouped['count'] >= 5]
@@ -116,7 +121,7 @@ def dashboard_view(request):
             )
             chart_prov_json = pio.to_json(fig1)
 
-            # Grafik Korelasi Luas Bangunan vs Harga Pasar
+            # Siapkan grafik korelasi luas bangunan vs harga pasar (Plotly Scatter Plot)
             scatter_df = df[
                 (df['building_area_m2'] >= 20) & (df['building_area_m2'] <= 400) &
                 (df['price_idr'] >= 100_000_000) & (df['price_idr'] <= 10_000_000_000)
@@ -166,6 +171,7 @@ def dashboard_view(request):
         except Exception as e:
             print("Dashboard calculation error:", e)
 
+    # Ambil riwayat prediksi terbaru dan render halaman dashboard
     recent_predictions = PredictionHistory.objects.all()[:5]
 
     context = {
@@ -178,6 +184,7 @@ def dashboard_view(request):
 
 def predict_view(request):
     """Halaman Form Estimasi Harga Rumah Komersil dengan Explainable AI (XAI) & Analisis Pasar"""
+    # Inisialisasi data wilayah dan variabel penampung prediksi
     locations = PredictionConfig.locations or {}
     provinces = sorted(list(locations.keys()))
 
@@ -187,6 +194,7 @@ def predict_view(request):
     chart_factors_json = None
     comp_stats = {}
 
+    # Tangani form submission (POST) dan parsing spesifikasi rumah
     if request.method == 'POST':
         prov = request.POST.get('province', '').strip()
         city = request.POST.get('city_regency', '').strip()
@@ -210,6 +218,7 @@ def predict_view(request):
                 'floors': floors
             }
 
+            # Identifikasi algoritma regresi dan siapkan input DataFrame
             if PredictionConfig.model is not None:
                 model_pipeline = PredictionConfig.model
 
@@ -237,11 +246,11 @@ def predict_view(request):
                     'floors': floors
                 }])
 
-                # 1) Prediksi Utama 
+                # Prediksi utama nilai wajar rumah 
                 pred_log = model_pipeline.predict(input_df)[0]
                 pred_price = int(np.expm1(pred_log))
 
-                # 2) Rentang Estimasi Berbasis Ensemble Quantile Decision Trees 
+                # Rentang estimasi berbasis ensemble Quantile Decision Trees 
                 try:
                     X_trans = preprocessor.transform(input_df)
                     if hasattr(regressor, 'estimators_'):
@@ -264,11 +273,11 @@ def predict_view(request):
                 if price_high <= pred_price:
                     price_high = int(pred_price * 1.12)
 
-                # 3) Metrik Valuasi per Meter Persegi
+                # Metrik valuasi per Meter Persegi (Bangunan dan Tanah)
                 price_per_m2_building = int(pred_price / building) if building > 0 else 0
                 price_per_m2_land = int(pred_price / land) if land > 0 else 0
 
-                # 4) Visualisasi 1 Distribusi Harga Properti Sejenis
+                # Filter Data Pembanding Lokal Berjenjang 
                 clean_csv = get_clean_data_path()
                 top_pos_factors = []
                 top_neg_factors = []
@@ -388,7 +397,7 @@ def predict_view(request):
                             'diff_median_pct': diff_median_pct
                         }
 
-                        # Plotly Distribution Chart 
+                        # Buat Visualisasi Plotly Distribusi Harga Pasar Pembanding (Histogram)
                         pred_juta = round(pred_price / 1_000_000, 1)
                         median_juta = comp_stats['median_juta']
                         q1_juta = comp_stats['q1_juta']
@@ -452,7 +461,7 @@ def predict_view(request):
                     except Exception as e:
                         print("Error peer comps:", e)
 
-                # 5) Visualisasi Faktor Penentu Nilai Wajar 
+                # Analisis Faktor Penentu Nilai Wajar 
                 xai_summary = {}
                 try:
                     # Model Baseline Representasi median rumah komersil nasional
@@ -532,7 +541,7 @@ def predict_view(request):
                     bar_colors = ['#2563EB' if d >= 0 else '#94A3B8' for d in deltas_list]
                     max_abs_delta = max([abs(d) for d in deltas_list]) if deltas_list and max([abs(d) for d in deltas_list]) > 0 else 50
 
-                    # Pisahka ke dua trace tern bar positif dan negatif pisah supaya label tidak nabrak
+                    # Buat Visualisasi Dampak Fitur (Plotly Dual Bar Chart XAI)
                     pos_x = [d if d >= 0 else None for d in deltas_list]
                     neg_x = [d if d < 0 else None for d in deltas_list]
                     pos_text = [f"+Rp {int(d):,} Jt" if d is not None else "" for d in pos_x]
@@ -554,7 +563,7 @@ def predict_view(request):
                         showlegend=False
                     ))
 
-                    # Trace 2 Bar negatif (label di luar kiri, offset agar tidak terpotong)
+                    # Trace 2 Bar negatif (label di luar kiri)
                     fig_factors.add_trace(go.Bar(
                         x=neg_x,
                         y=labels_list,
@@ -570,7 +579,7 @@ def predict_view(request):
 
                     fig_factors.add_vline(x=0, line_width=1.5, line_color="#0F2744")
 
-                    # Hitung range dinamis: sisi negatif butuh lebih banyak ruang untuk label teks
+                    # Hitung range dinamis 
                     max_neg = max([abs(d) for d in deltas_list if d < 0]) if any(d < 0 for d in deltas_list) else 0
                     neg_range = max(max_neg * 3.5, max_abs_delta * 0.35)
 
@@ -610,7 +619,7 @@ def predict_view(request):
                 except Exception as e:
                     print("Error calculating factor contribution:", e)
 
-                # Simpan ke riwayat database
+                # Simpan Riwayat ke Database SQLite dan Siapkan Konteks AI ke Session
                 history = PredictionHistory.objects.create(
                     province=prov,
                     city_regency=city,
@@ -625,7 +634,7 @@ def predict_view(request):
                     price_high=price_high
                 )
 
-                # Simpan konteks AI ke session untuk dipanggil on-demand via tombol
+                # Siapkan data konteks AI
                 ai_data = {
                     **input_data,
                     'model_name': actual_model_name,
@@ -649,6 +658,7 @@ def predict_view(request):
                 # Simpan ai_data ke session supaya bisa dipanggil on-demand
                 request.session['last_ai_data'] = ai_data
 
+                # Kembalikan Context Hasil Prediksi dan Render Template
                 result = {
                     'predicted_price': f"Rp {pred_price:,.0f}",
                     'price_low': f"Rp {price_low:,.0f}",
@@ -680,7 +690,7 @@ def predict_view(request):
 
 def subsidi_view(request):
     """Halaman Knowledge Base Rumah Subsidi PUPR"""
-    # Regulasi Kepmen PUPR Batasan Harga Rumah Subsidi Tapak
+    # Definisikan Regulasi Plafon Rumah Subsidi Berdasarkan Kepmen PUPR
     subsidi_zones = [
         {
             'zona': 'Zona 1 (Jawa & Sumatera)',
@@ -714,6 +724,7 @@ def subsidi_view(request):
         }
     ]
 
+    # Render Halaman Edukasi Rumah Subsidi ke Template
     context = {
         'subsidi_zones': subsidi_zones
     }
@@ -721,12 +732,15 @@ def subsidi_view(request):
 
 def history_view(request):
     """Riwayat Prediksi Pengguna"""
+    # Ambil 50 Riwayat Estimasi Terakhir dari Database SQLite
     histories = PredictionHistory.objects.all()[:50]
+    # Render Halaman Riwayat Prediksi ke Template
     return render(request, 'prediction/history.html', {'histories': histories})
 
 # API Endpoints
 def api_get_cities(request):
     """Kembalikan daftar kabupaten/kota untuk provinsi tertentu"""
+    # Endpoint AJAX Kembalikan Daftar Kabupaten/Kota Berdasarkan Provinsi
     province = request.GET.get('province', '').strip()
     locations = PredictionConfig.locations or {}
     cities = list(locations.get(province, {}).keys())
@@ -734,6 +748,7 @@ def api_get_cities(request):
 
 def api_get_districts(request):
     """Kembalikan daftar kecamatan untuk kabupaten/kota tertentu"""
+    # Endpoint AJAX: Kembalikan Daftar Kecamatan Berdasarkan Kabupaten/Kota
     province = request.GET.get('province', '').strip()
     city = request.GET.get('city', '').strip()
     locations = PredictionConfig.locations or {}
@@ -743,6 +758,7 @@ def api_get_districts(request):
 @csrf_exempt
 def api_ai_explain(request):
     """Endpoint untuk analisis AI dinamis (grafik dashboard)"""
+    # Endpoint AJAX: Analisis AI Dinamis pada Grafik Dashboard
     if request.method == 'POST':
         try:
             data = json.loads(request.body)
@@ -765,6 +781,7 @@ def api_ai_explain(request):
 @csrf_exempt
 def api_ai_predict_explain(request):
     """Endpoint untuk analisis AI on-demand dari hasil prediksi (dipanggil via tombol)"""
+    # Endpoint AJAX: Analisis AI On-Demand pada Hasil Prediksi
     if request.method == 'POST':
         try:
             # Ambil ai_data dari session yang disimpan saat prediksi

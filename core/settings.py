@@ -5,10 +5,10 @@ Django settings for IndoPrice project.
 from pathlib import Path
 import os
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+# Menentukan Path Root Direktori Proyek 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Load environment variables if .env file exists
+# Membaca Variabel dari File .env jika ada
 env_path = BASE_DIR / '.env'
 if env_path.exists():
     try:
@@ -17,16 +17,12 @@ if env_path.exists():
     except ImportError:
         pass
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
-
+# Konfigurasi keamanan untuk SECRET_KEY, DEBUG, ALLOWED_HOSTS
 SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-indopriceai-sistem-cerdas-p14-secret-key-2024')
-
 DEBUG = os.getenv('DEBUG', 'True').lower() in ('true', '1', 't')
-
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '127.0.0.1,localhost').split(',')
 
-# Application definition
+# Daftar aplikasi yang terpasang 
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -34,10 +30,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # App Aplikasi IndoPrice
+    # App Aplikasi utama IndoPrice
     'prediction.apps.PredictionConfig',
 ]
 
+# Konfigurasi Middleware Keamanan dan Session
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -48,8 +45,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+# Konfigurasi routing URL utama 
 ROOT_URLCONF = 'core.urls'
 
+# Konfigurasi template engine HTML 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -66,9 +65,10 @@ TEMPLATES = [
     },
 ]
 
+# Konfigurasi server WSGI (WSGI_APPLICATION)
 WSGI_APPLICATION = 'core.wsgi.application'
 
-# Database SQLite
+# Konfigurasi database lokal SQLite (DATABASES)
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -84,7 +84,7 @@ if database_url:
     except ImportError:
         pass
 
-# Password validation
+# Konfigurasi validasi password pengguna
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
     {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
@@ -92,13 +92,13 @@ AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
 ]
 
-# Internationalization
+# Konfigurasi waktu dan bahasa 
 LANGUAGE_CODE = 'id-id'
 TIME_ZONE = 'Asia/Jakarta'
 USE_I18N = True
 USE_TZ = True
 
-# Static files (CSS, JavaScript, Images)
+# Konfigurasi file statis (CSS, JavaScript, dan Images)
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
@@ -106,8 +106,8 @@ STATICFILES_DIRS = [
 ]
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-# Default primary key field type
+# Tipe field kunci utama default (Primary Key)
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Google Gemini API Key 
+# Konfigurasi Google Gemini API Key
 GEMINI_API_KEY = os.getenv('GEMINI_API_KEY', '')

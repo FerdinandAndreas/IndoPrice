@@ -11,6 +11,7 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
+        # Operasi Migrasi: Pembuatan Tabel AIAnalysisLog
         migrations.CreateModel(
             name='AIAnalysisLog',
             fields=[
@@ -26,6 +27,7 @@ class Migration(migrations.Migration):
                 'ordering': ['-created_at'],
             },
         ),
+        # Operasi Migrasi: Pembuatan Tabel PredictionHistory
         migrations.CreateModel(
             name='PredictionHistory',
             fields=[

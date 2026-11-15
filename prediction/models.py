@@ -1,5 +1,6 @@
 from django.db import models
 
+# Tabel riwayat prediksi pengguna
 class PredictionHistory(models.Model):
     """Mencatat riwayat prediksi harga yang dilakukan pengguna"""
     province = models.CharField(max_length=100, verbose_name="Provinsi")
@@ -25,6 +26,7 @@ class PredictionHistory(models.Model):
     def __str__(self):
         return f"{self.city_regency} ({self.land_area_m2}m²/{self.building_area_m2}m²) - Rp {self.predicted_price:,.0f}"
 
+#  Tabel log riwayat analisis AI
 class AIAnalysisLog(models.Model):
     """Mencatat interaksi analisis dari Gemini AI"""
     topic = models.CharField(max_length=200, verbose_name="Topik Analisis")

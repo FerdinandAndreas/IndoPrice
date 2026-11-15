@@ -12,25 +12,25 @@ def clean_data(input_csv="dataset.csv"):
     print("IndoPrice AI - Memulai Pembersihan Dataset...")
     print("=" * 60)
 
-    # 1) Load data
+    # Load data
     print(f"Membaca '{input_csv}'...")
     df = pd.read_csv(input_csv, low_memory=False)
     initial_rows = len(df)
     print(f"Total baris mentah: {initial_rows:,}")
 
-    # Standardisasi nama kolom & nilai string dasar
+    # Standardisasi nama kolom dan nilai string dasar
     df.columns = [c.strip() for c in df.columns]
     if 'subsidy_status' in df.columns:
         df['subsidy_status'] = df['subsidy_status'].astype(str).str.strip().str.lower()
 
-    # 2) Segmentasi Komersil vs Subsidi
+    # Segmentasi Komersil vs Subsidi
     df_komersil = df[df['subsidy_status'] == 'komersil'].copy()
     df_subsidi = df[df['subsidy_status'] == 'subsidi'].copy()
     print(f"\n[Segmentasi]")
     print(f"- Data Komersil : {len(df_komersil):,} baris")
     print(f"- Data Subsidi  : {len(df_subsidi):,} baris")
 
-    # 3) Pembersihan Data Komersil (Fokus Machine Learning)
+    # Pembersihan Data Komersil (Fokus Machine Learning)
     print(f"\n[Pembersihan Data Komersil]")
 
     # Hapus harga tidak valid (<= 0 atau NaN)
@@ -79,7 +79,7 @@ def clean_data(input_csv="dataset.csv"):
     is_null_island = (df_komersil['latitude'].between(-0.01, 0.01)) & (df_komersil['longitude'].between(-0.01, 0.01))
     df_komersil.loc[is_null_island, ['latitude', 'longitude']] = np.nan
 
-    # Hapus kolom tanpa variansi dan kolom kebocoran target
+    # Hapus Kolom Kebocoran Target dan Kolom Tanpa Variansi
     cols_to_drop = [
         'property_type',           # 100% Rumah Tapak
         'price_per_m2_land',       # Data leakage
@@ -87,7 +87,7 @@ def clean_data(input_csv="dataset.csv"):
     ]
     df_komersil = df_komersil.drop(columns=[c for c in cols_to_drop if c in df_komersil.columns])
 
-    # 5) Ekspor Data Bersihh
+    # Ekspor Data Bersih
     output_komersil = "dataset_komersil_clean.csv"
     output_subsidi = "dataset_subsidi_clean.csv"
 
