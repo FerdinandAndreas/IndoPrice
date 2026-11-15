@@ -82,7 +82,7 @@ def train():
         ('cat', cat_pipeline, cat_features)
     ])
 
-    # 5) Algoritma Pembanding
+    # 5) Algoritmaa Pembanding
     models = {
         "Ridge Regression (Baseline)": Ridge(alpha=1.0),
         "Random Forest Regressor": RandomForestRegressor(n_estimators=100, max_depth=15, n_jobs=-1, random_state=42)

@@ -1,8 +1,8 @@
-# IndoPrice AI - Sistem Cerdas untuk Prediksi Harga Properti di Indonesia
+# IndoPrice AI Machine Learning untuk Prediksi Harga Properti di Indonesia
 # Core Web Framework
 django>=4.2,<6.0
 
-# Database Driver (PostgreSQL Supabase)
+# Database Driver
 psycopg2-binary>=2.9.9
 dj-database-url>=2.1.0
 

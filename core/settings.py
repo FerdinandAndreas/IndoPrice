@@ -109,5 +109,5 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Google Gemini API Key (Dikelola via .env untuk keamanan kredensial)
+# Google Gemini API Key 
 GEMINI_API_KEY = os.getenv('GEMINI_API_KEY', '')

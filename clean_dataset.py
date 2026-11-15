@@ -87,7 +87,7 @@ def clean_data(input_csv="dataset.csv"):
     ]
     df_komersil = df_komersil.drop(columns=[c for c in cols_to_drop if c in df_komersil.columns])
 
-    # 5) Ekspor Data Bersih
+    # 5) Ekspor Data Bersihh
     output_komersil = "dataset_komersil_clean.csv"
     output_subsidi = "dataset_subsidi_clean.csv"
 

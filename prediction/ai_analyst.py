@@ -176,7 +176,7 @@ ATURAN FORMAT & GAYA BAHASA (WAJIB DIPATUHI):
                 logger.warning(f"Model {model_name} error: {e}")
                 continue
 
-    # 3) Fallback: Tampilan ringkas, rapi, dan to the point
+    # 3) Fallback Tampilan 
     fallback_text = generate_fallback_analysis(context_type, context_data)
 
     return f"""
