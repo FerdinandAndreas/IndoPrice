@@ -1,14 +1,3 @@
-/* ==========================================================================
-   IndoPrice - Modern Light Blue & Airy Palette
-   Palette Inspiration:
-   - Primary Text/Structure: #0F2744 (Deep Slate Navy, high contrast, non-oppressive)
-   - Accent: #2563EB (Electric Royal Blue)
-   - Secondary: #60A5FA (Sky Blue) & #3B82F6
-   - Surface / Borders: #DBEAFE (Soft Blue Tint) & #EFF6FF
-   - Canvas Background: #F0F7FF (Airy Ice Blue)
-   - Light Sidebar: Clean, bright, airy with soft rounded pills
-   ========================================================================== */
-
 :root {
     /* Main Spectrum */
     --color-primary: #0F2744;
@@ -81,10 +70,6 @@ body {
     }
 }
 
-/* ==========================================================================
-   Left Navigation Sidebar (Light, Airy, Soft Blue Tint)
-   - Completely avoids dark gloomy colors; clean, friendly, modern
-   ========================================================================== */
 .sidebar {
     width: 230px;
     background: var(--color-surface-soft);
@@ -228,9 +213,6 @@ body {
     box-shadow: 0 0 8px #10B981;
 }
 
-/* ==========================================================================
-   Main Content Stage Area
-   ========================================================================== */
 .main-stage {
     flex: 1;
     background: #FFFFFF;
@@ -328,9 +310,6 @@ body {
     }
 }
 
-/* ==========================================================================
-   Cards & Widgets (Soft Airy Aesthetic)
-   ========================================================================== */
 .card-soft {
     background: #FFFFFF;
     border-radius: 16px;
@@ -490,9 +469,7 @@ body {
     letter-spacing: 0.5px;
 }
 
-/* ==========================================================================
-   Forms & Inputs
-   ========================================================================== */
+/* Forms & Inputs */
 .form-label-custom {
     font-size: 0.82rem;
     font-weight: 700;
@@ -527,9 +504,7 @@ body {
     color: #94A3B8;
 }
 
-/* ==========================================================================
-   Tables
-   ========================================================================== */
+
 .table-custom {
     width: 100%;
     margin-bottom: 0;

@@ -1,6 +1,4 @@
-# IndoPrice AI - Python Dependencies
-# Sistem Prediksi Harga Rumah di Indonesia Berbasis ML & Generative AI
-
+# IndoPrice AI - Sistem Cerdas untuk Prediksi Harga Properti di Indonesia
 # Core Web Framework
 django>=4.2,<6.0
 

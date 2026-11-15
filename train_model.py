@@ -1,16 +1,3 @@
-"""
-IndoPrice AI - Baseline Model Training Script
---------------------------------------------
-Script ini melatih model regresi harga rumah komersil:
-1. Membaca 'dataset_komersil_clean.csv' hasil dari clean_dataset.py.
-2. Memisahkan fitur (Fitur Geografis & Fisik) dan target (price_idr dengan log1p).
-3. Melakukan training & perbandingan model (Linear Regression, Random Forest, LightGBM).
-4. Menghitung metrik evaluasi: MAE, RMSE, R2, dan MAPE.
-5. Mengekspor:
-   - 'best_model.joblib' (Pipeline model siap pakai untuk Django).
-   - 'locations_map.json' (Hierarki Provinsi -> Kabupaten -> Kecamatan untuk form web).
-"""
-
 import os
 import json
 import numpy as np
@@ -46,7 +33,7 @@ def train():
     df = pd.read_csv(clean_csv, low_memory=False)
     print(f"Total sampel: {len(df):,} baris")
 
-    # 1. Ekspor Hierarki Lokasi untuk Dropdown Form Django
+    # 1) Ekspor Hierarki Lokasi untuk Dropdown Form Django
     print("\nMenyimpan hierarki dropdown lokasi...")
     locations = {}
     for prov, p_group in df.groupby('province'):
@@ -61,7 +48,7 @@ def train():
         json.dump(locations, f, ensure_ascii=False, indent=2)
     print("-> Selesai: 'locations_map.json' tersimpan.")
 
-    # 2. Pemilihan Fitur
+    # 2) Pemilihan Fitur
     cat_features = ['province', 'city_regency']
     num_features = ['land_area_m2', 'building_area_m2', 'bedrooms', 'bathrooms', 'floors']
     target_col = 'price_idr'
@@ -72,14 +59,14 @@ def train():
     # Log transformation pada target
     y_log = np.log1p(y)
 
-    # 3. Train-Test Split (80% Train, 20% Test)
+    # 3) Train-Test Split (80% Train, 20% Test)
     X_train, X_test, y_train_log, y_test_log, y_train_real, y_test_real = train_test_split(
         X, y_log, y, test_size=0.2, random_state=42
     )
 
     print(f"Data Latih: {len(X_train):,} sampel | Data Uji: {len(X_test):,} sampel")
 
-    # 4. Pipeline Preprocessing
+    # 4) Pipeline Preprocessing
     num_pipeline = Pipeline([
         ('imputer', SimpleImputer(strategy='median')),
         ('scaler', StandardScaler())
@@ -95,7 +82,7 @@ def train():
         ('cat', cat_pipeline, cat_features)
     ])
 
-    # 5. Algoritma Pembanding
+    # 5) Algoritma Pembanding
     models = {
         "Ridge Regression (Baseline)": Ridge(alpha=1.0),
         "Random Forest Regressor": RandomForestRegressor(n_estimators=100, max_depth=15, n_jobs=-1, random_state=42)
@@ -147,14 +134,14 @@ def train():
             best_model_name = name
             best_pipeline = pipeline
 
-    # 6. Tampilkan Hasil
+    # 6) Tampilkan Hasil
     print("\n" + "=" * 60)
     print("HASIL PERBANDINGAN MODEL:")
     print("=" * 60)
     res_df = pd.DataFrame(results)
     print(res_df.to_string(index=False))
 
-    # 7. Simpan Model Terbaik
+    # 7) Simpan Model Terbaik
     joblib.dump(best_pipeline, "best_model.joblib")
     print(f"\n-> Model terbaik ({best_model_name}) berhasil disimpan ke: 'best_model.joblib'")
     print("Artefak ini siap digunakan langsung oleh backend Django untuk inference real-time.")

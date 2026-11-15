@@ -10,7 +10,7 @@ import requests
 
 logger = logging.getLogger(__name__)
 
-# Kunci API Gemini default sesuai penugasan dosen
+# Kunci API Gemini default (dikosongkan untuk keamanan GitHub, dikonfigurasi via file .env)
 DEFAULT_GEMINI_API_KEY = ''
 
 def format_markdown_to_html(text: str) -> str:
@@ -18,7 +18,7 @@ def format_markdown_to_html(text: str) -> str:
     if not text:
         return ""
     
-    # Ubah heading markdown (misal ### Judul atau ## Judul) menjadi teks tebal bersih
+    # Ubah heading markdown 
     text = re.sub(r'^#{1,6}\s*(.*)$', r'<strong>\1</strong>', text, flags=re.MULTILINE)
     
     # Bold **text** -> <strong>text</strong>
@@ -80,7 +80,7 @@ def generate_ai_explanation(context_type: str, context_data: dict) -> str:
     """
     api_key = getattr(settings, 'GEMINI_API_KEY', '') or DEFAULT_GEMINI_API_KEY
 
-    # 1. Bangun Prompt untuk Analisis
+    # 1) Bangun Prompt untuk Analisis
     if context_type == 'prediction':
         pos_factors_text = "; ".join(context_data.get('top_pos_factors', [])) or "Kesesuaian lokasi dan spesifikasi luas bangunan"
         neg_factors_text = "; ".join(context_data.get('top_neg_factors', [])) or "Keterbatasan dimensi atau jumlah fasilitas"
@@ -136,7 +136,7 @@ ATURAN FORMAT & GAYA BAHASA (WAJIB DIPATUHI):
     else:
         prompt = f"Analisis data properti secara ringkas dan langsung ke inti: {context_data}"
 
-    # 2. Panggil Google Gemini API via REST Endpoint
+    # 2) Panggil Google Gemini API via REST Endpoint
     if api_key:
         models_to_try = ['gemini-3.1-flash-lite', 'gemini-flash-lite-latest', 'gemini-2.5-flash', 'gemini-3.5-flash']
         payload = {
@@ -176,7 +176,7 @@ ATURAN FORMAT & GAYA BAHASA (WAJIB DIPATUHI):
                 logger.warning(f"Model {model_name} error: {e}")
                 continue
 
-    # 3. Fallback: Tampilan ringkas, rapi, dan to the point
+    # 3) Fallback: Tampilan ringkas, rapi, dan to the point
     fallback_text = generate_fallback_analysis(context_type, context_data)
 
     return f"""
