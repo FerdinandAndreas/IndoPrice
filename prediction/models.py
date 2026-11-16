@@ -23,8 +23,26 @@ class PredictionHistory(models.Model):
         verbose_name = "Riwayat Prediksi"
         verbose_name_plural = "Riwayat Prediksi"
 
+    @property
+    def formatted_predicted_price(self):
+        if self.predicted_price is not None:
+            return f"{self.predicted_price:,}".replace(",", ".")
+        return "-"
+
+    @property
+    def formatted_price_low(self):
+        if self.price_low is not None:
+            return f"{self.price_low:,}".replace(",", ".")
+        return "-"
+
+    @property
+    def formatted_price_high(self):
+        if self.price_high is not None:
+            return f"{self.price_high:,}".replace(",", ".")
+        return "-"
+
     def __str__(self):
-        return f"{self.city_regency} ({self.land_area_m2}m²/{self.building_area_m2}m²) - Rp {self.predicted_price:,.0f}"
+        return f"{self.city_regency} ({self.land_area_m2}m²/{self.building_area_m2}m²) - Rp {self.formatted_predicted_price}"
 
 #  Tabel log riwayat analisis AI
 class AIAnalysisLog(models.Model):

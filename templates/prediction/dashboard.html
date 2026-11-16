@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load rupiah_tags %}
 
 {% block title %}Dashboard Pasar Properti - IndoPrice{% endblock %}
 {% block page_title %}Dashboard Pasar Properti{% endblock %}
@@ -115,7 +116,7 @@
             <span class="banner-tag">Estimasi Cepat</span>
             <h3>Cek Nilai Wajar Rumah</h3>
             <p class="small mb-3" style="opacity: 0.92; line-height: 1.5;">
-                Dapatkan kalkulasi harga wajar perumahan komersil berdasarkan luas tanah, luas bangunan, dan lokasi spesifik menggunakan model machine learning terlatih.
+                Dapatkan perkiraan harga rumah komersial berdasarkan luas tanah, luas bangunan, dan lokasi menggunakan teknologi Machine Learning
             </p>
             <a href="{% url 'prediction:predict' %}" class="btn rounded-pill px-4 fw-bold shadow-sm btn-sm" style="background-color: #FFFFFF; color: var(--color-accent);">
                 <i class="fa-solid fa-calculator me-2"></i>Buka Kalkulator Estimasi
@@ -215,7 +216,7 @@
                         </td>
                         <td>
                             <strong style="color: var(--color-accent); font-size: 0.95rem;">
-                                Rp {{ h.predicted_price|floatformat:0 }}
+                                Rp {{ h.predicted_price|rupiah }}
                             </strong>
                         </td>
                         <td class="text-muted small">{{ h.created_at|timesince }} lalu</td>

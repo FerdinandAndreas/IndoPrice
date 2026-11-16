@@ -864,7 +864,7 @@ body {
 }
 
 .chatbot-disclaimer {
-    text-align: center;
+    text-align: right;
     font-size: 0.64rem;
     color: #94A3B8;
     margin-top: 0.3rem;

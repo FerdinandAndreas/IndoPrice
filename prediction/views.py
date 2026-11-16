@@ -49,14 +49,14 @@ def dashboard_view(request):
 
             # Hitung rata Rata, median, dan format tampilan angka
             mean_val = df['price_idr'].mean()
-            stats['total_properties'] = f"{len(df):,}"
-            stats['avg_price'] = f"Rp {mean_val:,.0f}"
+            stats['total_properties'] = f"{len(df):,}".replace(",", ".")
+            stats['avg_price'] = f"Rp {mean_val:,.0f}".replace(",", ".")
             if mean_val >= 1_000_000_000:
                 stats['avg_price_display'] = f"Rp {mean_val / 1_000_000_000:.2f} Miliar"
             else:
-                stats['avg_price_display'] = f"Rp {mean_val / 1_000_000:,.0f} Juta"
+                stats['avg_price_display'] = f"Rp {mean_val / 1_000_000:,.0f} Juta".replace(",", ".")
 
-            stats['median_price'] = f"Rp {df['price_idr'].median():,.0f}"
+            stats['median_price'] = f"Rp {df['price_idr'].median():,.0f}".replace(",", ".")
             stats['total_provinces'] = df['province'].nunique()
             stats['r2_score'] = "0.87"
             stats['r2_percentage'] = "87%"
@@ -607,7 +607,7 @@ def predict_view(request):
                     chart_factors_json = pio.to_json(fig_factors)
 
                     xai_summary = {
-                        'baseline_price': f"Rp {baseline_price:,.0f}",
+                        'baseline_price': f"Rp {baseline_price:,.0f}".replace(",", "."),
                         'baseline_juta': round(baseline_price / 1_000_000, 1),
                         'total_pos_juta': round(total_pos / 1_000_000, 1),
                         'total_neg_juta': round(abs(total_neg) / 1_000_000, 1),
@@ -660,11 +660,11 @@ def predict_view(request):
 
                 # Kembalikan Context Hasil Prediksi dan Render Template
                 result = {
-                    'predicted_price': f"Rp {pred_price:,.0f}",
-                    'price_low': f"Rp {price_low:,.0f}",
-                    'price_high': f"Rp {price_high:,.0f}",
-                    'price_per_m2_building': f"Rp {price_per_m2_building:,.0f}",
-                    'price_per_m2_land': f"Rp {price_per_m2_land:,.0f}",
+                    'predicted_price': f"Rp {pred_price:,.0f}".replace(",", "."),
+                    'price_low': f"Rp {price_low:,.0f}".replace(",", "."),
+                    'price_high': f"Rp {price_high:,.0f}".replace(",", "."),
+                    'price_per_m2_building': f"Rp {price_per_m2_building:,.0f}".replace(",", "."),
+                    'price_per_m2_land': f"Rp {price_per_m2_land:,.0f}".replace(",", "."),
                     'model_name': actual_model_name,
                     'comp_stats': comp_stats,
                     'xai_summary': xai_summary,

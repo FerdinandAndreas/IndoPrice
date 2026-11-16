@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load rupiah_tags %}
 
 {% block title %}Riwayat Estimasi Properti - IndoPrice{% endblock %}
 {% block page_title %}Riwayat Estimasi Properti{% endblock %}
@@ -49,11 +50,11 @@
                             {{ h.bedrooms }} KT &bull; {{ h.bathrooms }} KM ({{ h.floors }} Lt)
                         </td>
                         <td class="text-muted small">
-                            Rp {{ h.price_low|floatformat:0 }} &ndash; Rp {{ h.price_high|floatformat:0 }}
+                            Rp {{ h.price_low|rupiah }} &ndash; Rp {{ h.price_high|rupiah }}
                         </td>
                         <td>
                             <strong style="color: var(--color-accent); font-size: 0.95rem;">
-                                Rp {{ h.predicted_price|floatformat:0 }}
+                                Rp {{ h.predicted_price|rupiah }}
                             </strong>
                         </td>
                         <td class="text-muted small">{{ h.created_at|date:"d M Y, H:i" }}</td>
