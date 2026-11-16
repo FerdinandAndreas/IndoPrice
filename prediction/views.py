@@ -127,7 +127,7 @@ def dashboard_view(request):
                 (df['price_idr'] >= 100_000_000) & (df['price_idr'] <= 10_000_000_000)
             ]
 
-            sample_size = min(600, len(scatter_df))
+            sample_size = min(1000, len(scatter_df))
             sampled = scatter_df.sample(sample_size, random_state=42)
 
             x_building = [float(x) for x in sampled['building_area_m2'].tolist()]
@@ -139,10 +139,10 @@ def dashboard_view(request):
                 y=y_price_miliar,
                 mode='markers',
                 marker=dict(
-                    size=8,
+                    size=6.5,
                     color='#2563EB',
-                    opacity=0.6,
-                    line=dict(width=1, color='#1D4ED8')
+                    opacity=0.55,
+                    line=dict(width=0.8, color='#1D4ED8')
                 ),
                 hovertemplate="Luas Bangunan: <b>%{x} m²</b><br>Harga: <b>Rp %{y:.2f} Miliar</b><extra></extra>"
             ))
