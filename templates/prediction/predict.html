@@ -6,17 +6,17 @@
 
 {% block content %}
 <!-- top row form input (kiri) dan hasil estimasi utama (kanan) -->
-<div class="row g-4 mb-4">
+<div class="row g-3 mb-3">
     <!-- Kolom kiri form input spesifikasi properti -->
     <div class="col-lg-6">
         <div class="card-soft h-100">
-            <div class="d-flex align-items-center mb-3 pb-2 border-bottom">
-                <div class="stat-icon-wrapper sky me-3" style="width: 44px; height: 44px; font-size: 1.15rem;">
+            <div class="d-flex align-items-center mb-2 pb-2 border-bottom">
+                <div class="stat-icon-wrapper sky me-2" style="width: 36px; height: 36px; font-size: 0.95rem;">
                     <i class="fa-solid fa-sliders"></i>
                 </div>
                 <div>
-                    <h5 class="fw-bold mb-0" style="color: var(--color-primary);">Spesifikasi Properti</h5>
-                    <small class="text-muted">Parameter penentu nilai pasar perumahan</small>
+                    <h6 class="fw-bold mb-0" style="color: var(--color-primary); font-size: 0.95rem;">Spesifikasi Properti</h6>
+                    <small class="text-muted" style="font-size: 0.74rem;">Parameter penentu nilai pasar perumahan</small>
                 </div>
             </div>
 
@@ -24,7 +24,7 @@
                 {% csrf_token %}
 
                 <!-- Wilayah Provinsi -->
-                <div class="mb-3">
+                <div class="mb-2">
                     <label class="form-label-custom" for="id_province">
                         <span>Provinsi</span>
                         <span class="text-danger small">*Wajib</span>
@@ -38,7 +38,7 @@
                 </div>
 
                 <!-- Wilayah Kabupaten / Kota -->
-                <div class="mb-3">
+                <div class="mb-2">
                     <label class="form-label-custom" for="id_city">
                         <span>Kabupaten / Kota</span>
                         <span class="text-danger small">*Wajib</span>
@@ -49,7 +49,7 @@
                 </div>
 
                 <!-- Wilayah Kecamatan (Opsional) -->
-                <div class="mb-3">
+                <div class="mb-2">
                     <label class="form-label-custom" for="id_district">
                         <span>Kecamatan</span>
                         <span class="text-muted small">Opsional</span>
@@ -60,7 +60,7 @@
                 </div>
 
                 <!-- Dimensi Fisik Luas Tanah dan Luas Bangunan -->
-                <div class="row g-2 mb-3">
+                <div class="row g-2 mb-2">
                     <div class="col-6">
                         <label class="form-label-custom" for="id_land">
                             <span>Luas Tanah (m²)</span>
@@ -78,7 +78,7 @@
                 </div>
 
                 <!-- Konfigurasi Kamar dan Lantai -->
-                <div class="row g-2 mb-4">
+                <div class="row g-2 mb-3">
                     <div class="col-4">
                         <label class="form-label-custom" for="id_beds">KT</label>
                         <input type="number" name="bedrooms" id="id_beds" class="form-control-custom" min="1" max="20" value="{{ input_data.bedrooms|default:'2' }}" required>
@@ -93,7 +93,7 @@
                     </div>
                 </div>
 
-                <button type="submit" class="btn-primary-action w-100 justify-content-center py-3">
+                <button type="submit" class="btn-primary-action w-100 justify-content-center py-2" style="font-size: 0.85rem; border-radius: 10px;">
                     <i class="fa-solid fa-calculator me-2"></i>Hitung Valuasi Pasar Wajar
                 </button>
             </form>
@@ -114,65 +114,65 @@
             {% else %}
                 <!-- Kartu Hasil Utama -->
                 <div class="card-soft h-100" style="border-color: var(--color-accent); border-width: 1.5px;">
-                    <div class="d-flex justify-content-between align-items-center mb-2">
-                        <span class="badge-pill-soft accent">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                        <span class="badge-pill-soft accent" style="font-size: 0.74rem;">
                             <i class="fa-solid fa-microchip me-1"></i>{{ result.model_name }}
                         </span>
-                        <span class="text-muted small">
+                        <span class="text-muted small" style="font-size: 0.74rem;">
                             <i class="fa-regular fa-clock me-1"></i>Tersimpan di Riwayat
                         </span>
                     </div>
 
-                    <div class="my-3">
-                        <span class="text-muted small fw-semibold text-uppercase tracking-wider">Nilai Pasar Wajar Properti:</span>
-                        <h2 class="fw-extrabold mb-1" style="color: var(--color-accent); font-size: 2.35rem; letter-spacing: -1px;">
+                    <div class="my-2">
+                        <span class="text-muted small fw-semibold text-uppercase tracking-wider" style="font-size: 0.72rem;">Nilai Pasar Wajar Properti:</span>
+                        <h2 class="fw-extrabold mb-0" style="color: var(--color-accent); font-size: 1.85rem; letter-spacing: -0.5px;">
                             {{ result.predicted_price }}
                         </h2>
                     </div>
 
                     <!-- Rentang Pasar Wajar -->
-                    <div class="p-3 rounded-3 mb-3" style="background-color: var(--color-surface-soft); border: 1px solid var(--color-border);">
-                        <div class="d-flex justify-content-between align-items-center small mb-2">
+                    <div class="p-2.5 px-3 rounded-3 mb-2" style="background-color: var(--color-surface-soft); border: 1px solid var(--color-border);">
+                        <div class="d-flex justify-content-between align-items-center small mb-1" style="font-size: 0.76rem;">
                             <span class="text-muted">Rentang Toleransi Model (P15 &ndash; P85):</span>
                             <strong style="color: var(--color-primary);">{{ result.price_low }} &ndash; {{ result.price_high }}</strong>
                         </div>
-                        <div class="progress" style="height: 6px; background-color: var(--color-border); border-radius: 9999px;">
+                        <div class="progress" style="height: 5px; background-color: var(--color-border); border-radius: 9999px;">
                             <div class="progress-bar" role="progressbar" style="width: 50%; background-color: var(--color-accent); border-radius: 9999px;"></div>
                         </div>
                     </div>
 
                     <!-- Indikator valuasi per meter persegi (Bangunan dam Tanah) -->
-                    <div class="row g-2 mb-3">
+                    <div class="row g-2 mb-2">
                         <div class="col-6">
-                            <div class="p-2 rounded-3 text-center" style="background: var(--color-bg); border: 1px solid var(--color-border);">
-                                <span class="d-block text-muted small" style="font-size: 0.72rem; text-transform: uppercase; font-weight: 700;">Valuasi Bangunan</span>
-                                <strong style="color: var(--color-primary); font-size: 0.95rem;">{{ result.price_per_m2_building }}/m²</strong>
+                            <div class="p-1.5 rounded-3 text-center" style="background: var(--color-bg); border: 1px solid var(--color-border);">
+                                <span class="d-block text-muted small" style="font-size: 0.68rem; text-transform: uppercase; font-weight: 700;">Valuasi Bangunan</span>
+                                <strong style="color: var(--color-primary); font-size: 0.88rem;">{{ result.price_per_m2_building }}/m²</strong>
                             </div>
                         </div>
                         <div class="col-6">
-                            <div class="p-2 rounded-3 text-center" style="background: var(--color-bg); border: 1px solid var(--color-border);">
-                                <span class="d-block text-muted small" style="font-size: 0.72rem; text-transform: uppercase; font-weight: 700;">Valuasi Tanah</span>
-                                <strong style="color: var(--color-primary); font-size: 0.95rem;">{{ result.price_per_m2_land }}/m²</strong>
+                            <div class="p-1.5 rounded-3 text-center" style="background: var(--color-bg); border: 1px solid var(--color-border);">
+                                <span class="d-block text-muted small" style="font-size: 0.68rem; text-transform: uppercase; font-weight: 700;">Valuasi Tanah</span>
+                                <strong style="color: var(--color-primary); font-size: 0.88rem;">{{ result.price_per_m2_land }}/m²</strong>
                             </div>
                         </div>
                     </div>
 
                     <!-- Tombol Analisis AI On-Demand (klik untuk meminta penjelasan) -->
-                    <div class="mt-3" id="ai-predict-section">
-                        <button type="button" class="btn-primary-action w-100 justify-content-center py-3" onclick="requestAIExplanation()" id="btn-ai-explain">
+                    <div class="mt-2" id="ai-predict-section">
+                        <button type="button" class="btn-primary-action w-100 justify-content-center py-2" onclick="requestAIExplanation()" id="btn-ai-explain" style="font-size: 0.84rem;">
                             <i class="fa-solid fa-wand-magic-sparkles me-2"></i>Jelaskan Hasil Prediksi
                         </button>
-                        <div class="insight-box mt-3 d-none" id="ai-predict-box">
-                            <div class="insight-header">
+                        <div class="insight-box mt-2 d-none" id="ai-predict-box">
+                            <div class="insight-header" style="font-size: 0.78rem;">
                                 <i class="fa-solid fa-lightbulb"></i>
                                 <span>Interpretasi Analis Properti</span>
                             </div>
-                            <div class="insight-body" id="ai-predict-text"></div>
+                            <div class="insight-body" id="ai-predict-text" style="font-size: 0.82rem;"></div>
                         </div>
                     </div>
 
-                    <div class="text-center mt-3 pt-1">
-                        <a href="{% url 'prediction:predict' %}" class="btn btn-sm btn-outline-secondary rounded-pill px-4">
+                    <div class="text-center mt-2 pt-1">
+                        <a href="{% url 'prediction:predict' %}" class="btn btn-sm btn-outline-secondary rounded-pill px-3 py-1" style="font-size: 0.76rem;">
                             <i class="fa-solid fa-arrow-rotate-left me-1"></i>Hitung Properti Lain
                         </a>
                     </div>
@@ -180,15 +180,15 @@
             {% endif %}
         {% else %}
             <!-- Placeholder Menunggu Input -->
-            <div class="card-soft h-100 d-flex flex-column justify-content-center align-items-center text-center p-5">
-                <div class="stat-icon-wrapper sky mb-3" style="width: 68px; height: 68px; font-size: 1.8rem;">
+            <div class="card-soft h-100 d-flex flex-column justify-content-center align-items-center text-center p-3 p-xl-4">
+                <div class="stat-icon-wrapper sky mb-2" style="width: 48px; height: 48px; font-size: 1.3rem;">
                     <i class="fa-solid fa-chart-simple"></i>
                 </div>
-                <h5 class="fw-bold mb-2" style="color: var(--color-primary);">Siap Menganalisis Properti</h5>
-                <p class="text-muted small mb-4" style="max-width: 320px; line-height: 1.6;">
+                <h6 class="fw-bold mb-1" style="color: var(--color-primary); font-size: 1rem;">Siap Menganalisis Properti</h6>
+                <p class="text-muted small mb-3" style="max-width: 300px; line-height: 1.5; font-size: 0.78rem;">
                     Lengkapi formulir spesifikasi di sebelah kiri untuk melihat estimasi nilai pasar properti komersil secara otomatis.
                 </p>
-                <div class="p-3 rounded-3 w-100 text-start" style="background-color: var(--color-surface-soft); border: 1px dashed var(--color-border);">
+                <div class="p-2.5 px-3 rounded-3 w-100 text-start" style="background-color: var(--color-surface-soft); border: 1px dashed var(--color-border); font-size: 0.76rem;">
                     <small class="d-block text-muted mb-1">
                         <i class="fa-solid fa-circle-check text-primary me-1"></i><strong>Metodologi Bebas Leakage:</strong> Fitur input murni spesifikasi fisik & geografis.
                     </small>
@@ -203,7 +203,7 @@
 
 <!-- Bottom Section dual visualisasi explainable AI dan Konteks Pasar -->
 {% if result and not result.error %}
-<div class="row g-4 mb-4">
+<div class="row g-3 mb-3">
     <!-- Visualisasi 1 posisi harga terhadap properti sejenis -->
     <div class="col-lg-6">
         <div class="card-soft h-100">

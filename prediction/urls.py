@@ -16,4 +16,5 @@ urlpatterns = [
     path('api/districts/', views.api_get_districts, name='api_districts'),
     path('api/ai-explain/', views.api_ai_explain, name='api_ai_explain'),
     path('api/ai-predict-explain/', views.api_ai_predict_explain, name='api_ai_predict_explain'),
+    path('api/chatbot/', views.api_chatbot, name='api_chatbot'),
 ]

@@ -10,7 +10,7 @@ import requests
 
 logger = logging.getLogger(__name__)
 
-# Kunci API Gemini default (dikosongkan untuk keamanan GitHub, dikonfigurasi via file .env)
+# Kunci API Gemini default 
 DEFAULT_GEMINI_API_KEY = ''
 
 def format_markdown_to_html(text: str) -> str:
@@ -42,7 +42,7 @@ def format_markdown_to_html(text: str) -> str:
         # Bersihkan sisa karakter tanda pagar di awal jika ada
         stripped = re.sub(r'^#+\s*', '', stripped)
         
-        # Cek jika baris adalah item daftar (bullet)
+        # Cek jika baris adalah item daftar 
         if stripped.startswith(('* ', '- ', '• ')):
             if not in_list:
                 formatted.append('<ul class="mb-2 ps-3" style="font-size: 0.85rem;">')
@@ -239,3 +239,81 @@ def generate_fallback_analysis(context_type: str, data: dict) -> str:
             f"secara signifikan oleh faktor lokasi geografis (pusat ekonomi vs penyangga) serta proporsi luas fisik bangunan. "
             f"Kawasan aglomerasi perkotaan utama secara konsisten menunjukkan valuasi per meter persegi tertinggi."
         )
+
+
+def generate_chatbot_response(user_message: str) -> str:
+    """
+    Menghasilkan respon interaktif untuk IndoPrice AI Assistant menggunakan Gemini API.
+    Memiliki guardrails ketat: fokus pada properti Indonesia, panduan fitur, dan cara kerja ML.
+    """
+    # Ambil API key dari konfigurasi settings atau default
+    api_key = getattr(settings, 'GEMINI_API_KEY', '') or DEFAULT_GEMINI_API_KEY
+
+    # Definisi Persona, Konteks Sistem, dan Guardrails IndoPrice Assistant
+    system_instruction = """Kamu adalah IndoPrice AI Assistant, asisten cerdas resmi untuk platform IndoPrice (Sistem Prediksi dan Analisis Harga Rumah di Indonesia).
+
+Pengetahuan Sistem IndoPrice:
+- IndoPrice adalah sistem cerdas prediksi harga rumah komersil berbasis Machine Learning (XGBoost / Random Forest) yang dilatih menggunakan 44.000+ data transaksi rumah bersih di Indonesia.
+- Metodologi input bebas data leakage: hanya menggunakan spesifikasi fisik murni (luas tanah, luas bangunan, kamar tidur, kamar mandi, lantai) dan geografis (provinsi, kabupaten/kota, kecamatan).
+- Menggunakan Explainable AI (TreeSHAP) untuk transparansi kontribusi faktor pendorong (+) dan penahan (-) terhadap nilai acuan dasar pasar.
+- Rumah bersubsidi (FLPP / BP Tapera) dipisahkan dari model regresi karena batas harga jual maksimalnya diatur ketat oleh Keputusan Menteri PUPR berdasarkan zonasi wilayah.
+
+Tugas Utama:
+Membantu pengguna memahami dinamika pasar properti di Indonesia, faktor penentu harga, panduan fitur IndoPrice, dan metodologi Machine Learning yang digunakan.
+
+Topik yang Diperbolehkan:
+1. Harga rumah dan dinamika pasar properti di Indonesia.
+2. Faktor-faktor yang memengaruhi harga properti (lokasi strategis, luas tanah, luas bangunan, fasilitas).
+3. Analisis pasar properti dan perbedaan karakteristik wilayah.
+4. Perbedaan rumah komersil vs rumah subsidi FLPP pemerintah.
+5. Algoritma Machine Learning (XGBoost, Random Forest) dan Explainable AI (TreeSHAP) pada IndoPrice.
+6. Panduan penggunaan fitur-fitur pada aplikasi IndoPrice.
+
+Batasan (WAJIB DIPATUHI):
+- DILARANG menjawab pertanyaan yang tidak ada hubungannya sama sekali dengan properti, perumahan, atau aplikasi IndoPrice (misalnya: topik resep masakan, pemrograman umum, politik, olahraga). Jika ditanya di luar topik, tolak dengan ramah dan sopan: "Maaf, saya IndoPrice Assistant yang dikhususkan untuk membantu seputar pasar properti dan sistem IndoPrice. Ada yang bisa saya bantu terkait hunian atau analisis harga rumah Anda?"
+- DILARANG mengarang nominal harga spesifik atau membuat estimasi harga sendiri secara langsung dalam percakapan. Jika pengguna meminta estimasi harga untuk spesifikasi rumah tertentu, arahkan dengan ramah: "Untuk memperoleh valuasi pasar wajar yang presisi berbasis Machine Learning terlatih 44.000+ data, silakan gunakan menu **Prediksi Harga** di IndoPrice."
+- Gunakan bahasa Indonesia yang ramah, ringkas, mudah dipahami mahasiswa/pengguna umum, dan to the point (maksimal 2-3 paragraf pendek atau poin-poin ringkas).
+- Format jawaban dengan rapi menggunakan bold (**teks**) dan bullet point sederhana jika menjelaskan daftar faktor. JANGAN gunakan tanda pagar (#, ##, ###).
+"""
+
+    prompt = f"{system_instruction}\n\nPertanyaan Pengguna:\n{user_message}\n\nJawaban IndoPrice AI Assistant:"
+
+    # 1) Panggil Google Gemini API
+    if api_key:
+        models_to_try = ['gemini-2.5-flash', 'gemini-1.5-flash', 'gemini-flash-lite', 'gemini-3.1-flash-lite']
+        payload = {
+            "contents": [{"parts": [{"text": prompt}]}],
+            "generationConfig": {
+                "temperature": 0.4,
+                "maxOutputTokens": 600
+            }
+        }
+        for model_name in models_to_try:
+            try:
+                url = f"https://generativelanguage.googleapis.com/v1beta/models/{model_name}:generateContent?key={api_key}"
+                resp = requests.post(url, json=payload, timeout=12)
+                if resp.status_code == 200:
+                    data = resp.json()
+                    candidates = data.get('candidates', [])
+                    if candidates and 'content' in candidates[0]:
+                        parts = candidates[0]['content'].get('parts', [])
+                        if parts and 'text' in parts[0]:
+                            gemini_text = parts[0]['text'].strip()
+                            return format_markdown_to_html(gemini_text)
+                else:
+                    logger.warning(f"Chatbot model {model_name} status {resp.status_code}")
+            except Exception as e:
+                logger.warning(f"Chatbot model {model_name} error: {e}")
+                continue
+
+    # 2) Fallback jika API key tidak tersedia atau kuota habis
+    return (
+        "<p class='mb-2'>Halo! Layanan koneksi live Gemini AI saat ini sedang mencapai batas kuota atau sedang sibuk.</p>"
+        "<p class='mb-2'>Namun Anda tetap dapat memanfaatkan fitur utama <strong>IndoPrice</strong>:</p>"
+        "<ul class='mb-2 ps-3'>"
+        "<li>Gunakan menu <strong>Prediksi Harga</strong> untuk valuasi nilai pasar wajar menggunakan Machine Learning XGBoost.</li>"
+        "<li>Buka menu <strong>Rumah Subsidi</strong> untuk melihat plafon harga resmi Kepmen PUPR terbaru.</li>"
+        "<li>Pantau <strong>Dashboard</strong> untuk tren sebaran harga rumah di seluruh Indonesia.</li>"
+        "</ul>"
+        "<p class='mb-0'>Silakan coba beberapa saat lagi untuk berinteraksi kembali dengan AI Assistant.</p>"
+    )

@@ -10,7 +10,7 @@ import plotly.io as pio
 
 from .apps import PredictionConfig
 from .models import PredictionHistory, AIAnalysisLog
-from .ai_analyst import generate_ai_explanation
+from .ai_analyst import generate_ai_explanation, generate_chatbot_response
 
 def get_clean_data_path():
     base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -748,7 +748,7 @@ def api_get_cities(request):
 
 def api_get_districts(request):
     """Kembalikan daftar kecamatan untuk kabupaten/kota tertentu"""
-    # Endpoint AJAX: Kembalikan Daftar Kecamatan Berdasarkan Kabupaten/Kota
+    # Endpoint AJAX Kembalikan Daftar Kecamatan Berdasarkan Kabupaten/Kota
     province = request.GET.get('province', '').strip()
     city = request.GET.get('city', '').strip()
     locations = PredictionConfig.locations or {}
@@ -758,7 +758,7 @@ def api_get_districts(request):
 @csrf_exempt
 def api_ai_explain(request):
     """Endpoint untuk analisis AI dinamis (grafik dashboard)"""
-    # Endpoint AJAX: Analisis AI Dinamis pada Grafik Dashboard
+    # Endpoint AJAX Analisis AI Dinamis pada Grafik Dashboard
     if request.method == 'POST':
         try:
             data = json.loads(request.body)
@@ -778,10 +778,11 @@ def api_ai_explain(request):
             return JsonResponse({'status': 'error', 'message': str(e)}, status=400)
     return JsonResponse({'status': 'error', 'message': 'Method not allowed'}, status=405)
 
+
 @csrf_exempt
 def api_ai_predict_explain(request):
     """Endpoint untuk analisis AI on-demand dari hasil prediksi (dipanggil via tombol)"""
-    # Endpoint AJAX: Analisis AI On-Demand pada Hasil Prediksi
+    # Endpoint AJAX Analisis AI On-Demand pada Hasil Prediksi
     if request.method == 'POST':
         try:
             # Ambil ai_data dari session yang disimpan saat prediksi
@@ -809,3 +810,32 @@ def api_ai_predict_explain(request):
         except Exception as e:
             return JsonResponse({'status': 'error', 'message': str(e)}, status=400)
     return JsonResponse({'status': 'error', 'message': 'Method not allowed'}, status=405)
+
+
+@csrf_exempt
+def api_chatbot(request):
+    """Endpoint AJAX untuk interaksi pesan Chatbot IndoPrice AI Assistant"""
+    # 1) Validasi Metode Request Harus POST
+    if request.method == 'POST':
+        try:
+            # 2) Parse JSON Payload dari Permintaan Pengguna
+            data = json.loads(request.body)
+            user_msg = data.get('message', '').strip()
+            if not user_msg:
+                return JsonResponse({'status': 'error', 'message': 'Pesan tidak boleh kosong.'}, status=400)
+
+            # 3) Hasilkan Respon dari IndoPrice AI Assistant via Gemini API
+            reply = generate_chatbot_response(user_msg)
+
+            # 4) Simpan Log Percakapan ke Database SQLite untuk Transparansi
+            AIAnalysisLog.objects.create(
+                topic=f"Chatbot: {user_msg[:60]}",
+                prompt=user_msg,
+                response=reply
+            )
+
+            return JsonResponse({'status': 'success', 'reply': reply})
+        except Exception as e:
+            return JsonResponse({'status': 'error', 'message': str(e)}, status=500)
+    return JsonResponse({'status': 'error', 'message': 'Method not allowed'}, status=405)
+
