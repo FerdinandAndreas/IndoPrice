@@ -2,9 +2,18 @@ import pandas as pd
 import numpy as np
 import os
 import sys
+from pathlib import Path
 
-def clean_data(input_csv="dataset.csv"):
-    if not os.path.exists(input_csv):
+# Path root proyek
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+def clean_data(input_csv=None):
+    if input_csv is None:
+        input_csv = BASE_DIR / "data" / "raw" / "dataset.csv"
+    else:
+        input_csv = Path(input_csv)
+
+    if not input_csv.exists():
         print(f"Error: File '{input_csv}' tidak ditemukan.")
         return
 
@@ -88,8 +97,10 @@ def clean_data(input_csv="dataset.csv"):
     df_komersil = df_komersil.drop(columns=[c for c in cols_to_drop if c in df_komersil.columns])
 
     # Ekspor Data Bersih
-    output_komersil = "dataset_komersil_clean.csv"
-    output_subsidi = "dataset_subsidi_clean.csv"
+    output_dir = BASE_DIR / "data" / "processed"
+    output_dir.mkdir(parents=True, exist_ok=True)
+    output_komersil = output_dir / "dataset_komersil_clean.csv"
+    output_subsidi = output_dir / "dataset_subsidi_clean.csv"
 
     df_komersil.to_csv(output_komersil, index=False)
     print(f"\n[Hasil]")

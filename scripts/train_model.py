@@ -1,5 +1,6 @@
 import os
 import json
+from pathlib import Path
 import numpy as np
 import pandas as pd
 import joblib
@@ -13,6 +14,9 @@ from sklearn.linear_model import Ridge
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 
+# Path root proyek
+BASE_DIR = Path(__file__).resolve().parent.parent
+
 def mean_absolute_percentage_error(y_true, y_pred):
     y_true = np.asarray(y_true)
     y_pred = np.asarray(y_pred)
@@ -20,10 +24,13 @@ def mean_absolute_percentage_error(y_true, y_pred):
     return np.mean(np.abs((y_true[non_zero] - y_pred[non_zero]) / y_true[non_zero])) * 100
 
 def train():
-    clean_csv = "dataset_komersil_clean.csv"
-    if not os.path.exists(clean_csv):
-        print(f"File '{clean_csv}' belum ada. Harap jalankan 'python clean_dataset.py' terlebih dahulu!")
+    clean_csv = BASE_DIR / "data" / "processed" / "dataset_komersil_clean.csv"
+    if not clean_csv.exists():
+        print(f"File '{clean_csv}' belum ada. Harap jalankan 'python scripts/clean_dataset.py' terlebih dahulu!")
         return
+
+    models_dir = BASE_DIR / "models"
+    models_dir.mkdir(parents=True, exist_ok=True)
 
     print("=" * 60)
     print("IndoPrice AI - Pelatihan Model Regresi")
@@ -44,9 +51,10 @@ def train():
             districts = sorted([str(d).strip() for d in c_group['district'].dropna().unique()])
             locations[prov][city] = districts
 
-    with open("locations_map.json", "w", encoding="utf-8") as f:
+    loc_file = models_dir / "locations_map.json"
+    with open(loc_file, "w", encoding="utf-8") as f:
         json.dump(locations, f, ensure_ascii=False, indent=2)
-    print("-> Selesai: 'locations_map.json' tersimpan.")
+    print(f"-> Selesai: '{loc_file}' tersimpan.")
 
     # 2) Pemilihan Fitur
     cat_features = ['province', 'city_regency']
@@ -142,8 +150,9 @@ def train():
     print(res_df.to_string(index=False))
 
     # 7) Simpan Model Terbaik
-    joblib.dump(best_pipeline, "best_model.joblib")
-    print(f"\n-> Model terbaik ({best_model_name}) berhasil disimpan ke: 'best_model.joblib'")
+    best_model_path = models_dir / "best_model.joblib"
+    joblib.dump(best_pipeline, best_model_path)
+    print(f"\n-> Model terbaik ({best_model_name}) berhasil disimpan ke: '{best_model_path}'")
     print("Artefak ini siap digunakan langsung oleh backend Django untuk inference real-time.")
     print("=" * 60)
 
