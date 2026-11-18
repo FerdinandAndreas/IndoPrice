@@ -1,0 +1,866 @@
+[
+{
+    "model": "prediction.predictionhistory",
+    "pk": 1,
+    "fields": {
+        "province": "JAWA TIMUR",
+        "city_regency": "KOTA MADIUN",
+        "district": "Manguharjo",
+        "land_area_m2": 72.0,
+        "building_area_m2": 36.0,
+        "bedrooms": 2,
+        "bathrooms": 1,
+        "floors": 1,
+        "predicted_price": 247217341,
+        "price_low": 217551261,
+        "price_high": 276883421,
+        "created_at": "2026-11-13T06:03:31.632Z"
+    }
+},
+{
+    "model": "prediction.predictionhistory",
+    "pk": 2,
+    "fields": {
+        "province": "BALI",
+        "city_regency": "KAB BANGLI",
+        "district": "Susut",
+        "land_area_m2": 72.0,
+        "building_area_m2": 36.0,
+        "bedrooms": 2,
+        "bathrooms": 1,
+        "floors": 1,
+        "predicted_price": 247217341,
+        "price_low": 217551261,
+        "price_high": 276883421,
+        "created_at": "2026-11-13T06:05:35.029Z"
+    }
+},
+{
+    "model": "prediction.predictionhistory",
+    "pk": 3,
+    "fields": {
+        "province": "BALI",
+        "city_regency": "KAB BULELENG",
+        "district": "Buleleng",
+        "land_area_m2": 72.0,
+        "building_area_m2": 36.0,
+        "bedrooms": 2,
+        "bathrooms": 1,
+        "floors": 1,
+        "predicted_price": 247217341,
+        "price_low": 217551261,
+        "price_high": 276883421,
+        "created_at": "2026-11-13T06:09:46.156Z"
+    }
+},
+{
+    "model": "prediction.predictionhistory",
+    "pk": 4,
+    "fields": {
+        "province": "JAWA TIMUR",
+        "city_regency": "KAB MAGETAN",
+        "district": "Takeran",
+        "land_area_m2": 80.0,
+        "building_area_m2": 45.0,
+        "bedrooms": 2,
+        "bathrooms": 1,
+        "floors": 1,
+        "predicted_price": 304817824,
+        "price_low": 268239686,
+        "price_high": 341395962,
+        "created_at": "2026-11-13T06:16:31.538Z"
+    }
+},
+{
+    "model": "prediction.predictionhistory",
+    "pk": 5,
+    "fields": {
+        "province": "JAWA TIMUR",
+        "city_regency": "KAB MAGETAN",
+        "district": "Takeran",
+        "land_area_m2": 90.0,
+        "building_area_m2": 45.0,
+        "bedrooms": 2,
+        "bathrooms": 1,
+        "floors": 1,
+        "predicted_price": 327050197,
+        "price_low": 287804174,
+        "price_high": 366296220,
+        "created_at": "2026-11-13T06:16:39.510Z"
+    }
+},
+{
+    "model": "prediction.predictionhistory",
+    "pk": 6,
+    "fields": {
+        "province": "JAWA TIMUR",
+        "city_regency": "KAB MAGETAN",
+        "district": "Takeran",
+        "land_area_m2": 150.0,
+        "building_area_m2": 100.0,
+        "bedrooms": 4,
+        "bathrooms": 2,
+        "floors": 2,
+        "predicted_price": 1311579952,
+        "price_low": 1154190358,
+        "price_high": 1468969546,
+        "created_at": "2026-11-13T06:47:19.924Z"
+    }
+},
+{
+    "model": "prediction.predictionhistory",
+    "pk": 7,
+    "fields": {
+        "province": "KALIMANTAN SELATAN",
+        "city_regency": "KOTA BANJARMASIN",
+        "district": "Banjarmasin Selatan",
+        "land_area_m2": 72.0,
+        "building_area_m2": 36.0,
+        "bedrooms": 2,
+        "bathrooms": 1,
+        "floors": 1,
+        "predicted_price": 245161024,
+        "price_low": 215741702,
+        "price_high": 274580346,
+        "created_at": "2026-11-13T07:08:08.718Z"
+    }
+},
+{
+    "model": "prediction.predictionhistory",
+    "pk": 8,
+    "fields": {
+        "province": "JAWA TIMUR",
+        "city_regency": "KAB MAGETAN",
+        "district": "Magetan",
+        "land_area_m2": 140.0,
+        "building_area_m2": 80.0,
+        "bedrooms": 6,
+        "bathrooms": 2,
+        "floors": 3,
+        "predicted_price": 1173962931,
+        "price_low": 1039952696,
+        "price_high": 1488550000,
+        "created_at": "2026-11-13T07:33:26.397Z"
+    }
+},
+{
+    "model": "prediction.predictionhistory",
+    "pk": 9,
+    "fields": {
+        "province": "JAWA TIMUR",
+        "city_regency": "KAB MAGETAN",
+        "district": "Takeran",
+        "land_area_m2": 50.0,
+        "building_area_m2": 30.0,
+        "bedrooms": 2,
+        "bathrooms": 1,
+        "floors": 1,
+        "predicted_price": 206155217,
+        "price_low": 191081741,
+        "price_high": 216671506,
+        "created_at": "2026-11-13T07:47:24.867Z"
+    }
+},
+{
+    "model": "prediction.predictionhistory",
+    "pk": 10,
+    "fields": {
+        "province": "JAWA BARAT",
+        "city_regency": "KAB BOGOR",
+        "district": "Bojong Gede",
+        "land_area_m2": 72.0,
+        "building_area_m2": 36.0,
+        "bedrooms": 2,
+        "bathrooms": 1,
+        "floors": 1,
+        "predicted_price": 356278032,
+        "price_low": 344278910,
+        "price_high": 367945808,
+        "created_at": "2026-11-13T08:08:58.344Z"
+    }
+},
+{
+    "model": "prediction.predictionhistory",
+    "pk": 11,
+    "fields": {
+        "province": "BALI",
+        "city_regency": "KOTA DENPASAR",
+        "district": "Denpasar Selatan",
+        "land_area_m2": 40.0,
+        "building_area_m2": 30.0,
+        "bedrooms": 2,
+        "bathrooms": 1,
+        "floors": 1,
+        "predicted_price": 206155217,
+        "price_low": 191081741,
+        "price_high": 216671506,
+        "created_at": "2026-11-13T12:01:46.949Z"
+    }
+},
+{
+    "model": "prediction.predictionhistory",
+    "pk": 12,
+    "fields": {
+        "province": "BALI",
+        "city_regency": "KOTA DENPASAR",
+        "district": "Denpasar Selatan",
+        "land_area_m2": 40.0,
+        "building_area_m2": 30.0,
+        "bedrooms": 2,
+        "bathrooms": 1,
+        "floors": 1,
+        "predicted_price": 206155217,
+        "price_low": 191081741,
+        "price_high": 216671506,
+        "created_at": "2026-11-13T12:06:21.481Z"
+    }
+},
+{
+    "model": "prediction.predictionhistory",
+    "pk": 13,
+    "fields": {
+        "province": "BALI",
+        "city_regency": "KOTA DENPASAR",
+        "district": "Denpasar Selatan",
+        "land_area_m2": 40.0,
+        "building_area_m2": 30.0,
+        "bedrooms": 2,
+        "bathrooms": 1,
+        "floors": 1,
+        "predicted_price": 206155217,
+        "price_low": 191081741,
+        "price_high": 216671506,
+        "created_at": "2026-11-13T12:13:07.059Z"
+    }
+},
+{
+    "model": "prediction.predictionhistory",
+    "pk": 14,
+    "fields": {
+        "province": "BALI",
+        "city_regency": "KOTA DENPASAR",
+        "district": "Denpasar Selatan",
+        "land_area_m2": 40.0,
+        "building_area_m2": 30.0,
+        "bedrooms": 2,
+        "bathrooms": 1,
+        "floors": 1,
+        "predicted_price": 206155217,
+        "price_low": 191081741,
+        "price_high": 216671506,
+        "created_at": "2026-11-13T12:13:35.526Z"
+    }
+},
+{
+    "model": "prediction.predictionhistory",
+    "pk": 15,
+    "fields": {
+        "province": "BALI",
+        "city_regency": "KOTA DENPASAR",
+        "district": "Denpasar Selatan",
+        "land_area_m2": 40.0,
+        "building_area_m2": 30.0,
+        "bedrooms": 2,
+        "bathrooms": 1,
+        "floors": 1,
+        "predicted_price": 206155217,
+        "price_low": 191081741,
+        "price_high": 216671506,
+        "created_at": "2026-11-13T12:13:39.773Z"
+    }
+},
+{
+    "model": "prediction.predictionhistory",
+    "pk": 16,
+    "fields": {
+        "province": "JAWA TIMUR",
+        "city_regency": "KAB MAGETAN",
+        "district": "Magetan",
+        "land_area_m2": 60.0,
+        "building_area_m2": 40.0,
+        "bedrooms": 2,
+        "bathrooms": 1,
+        "floors": 1,
+        "predicted_price": 303622425,
+        "price_low": 290760394,
+        "price_high": 316957713,
+        "created_at": "2026-11-13T12:14:28.342Z"
+    }
+},
+{
+    "model": "prediction.predictionhistory",
+    "pk": 17,
+    "fields": {
+        "province": "JAWA TIMUR",
+        "city_regency": "KAB MAGETAN",
+        "district": "Magetan",
+        "land_area_m2": 60.0,
+        "building_area_m2": 40.0,
+        "bedrooms": 2,
+        "bathrooms": 1,
+        "floors": 1,
+        "predicted_price": 303622425,
+        "price_low": 290760394,
+        "price_high": 316957713,
+        "created_at": "2026-11-13T12:14:29.251Z"
+    }
+},
+{
+    "model": "prediction.predictionhistory",
+    "pk": 18,
+    "fields": {
+        "province": "JAWA TIMUR",
+        "city_regency": "KAB MAGETAN",
+        "district": "Magetan",
+        "land_area_m2": 60.0,
+        "building_area_m2": 40.0,
+        "bedrooms": 2,
+        "bathrooms": 1,
+        "floors": 1,
+        "predicted_price": 303622425,
+        "price_low": 290760394,
+        "price_high": 316957713,
+        "created_at": "2026-11-13T12:15:19.165Z"
+    }
+},
+{
+    "model": "prediction.predictionhistory",
+    "pk": 19,
+    "fields": {
+        "province": "JAWA TIMUR",
+        "city_regency": "KAB MAGETAN",
+        "district": "Magetan",
+        "land_area_m2": 60.0,
+        "building_area_m2": 40.0,
+        "bedrooms": 2,
+        "bathrooms": 1,
+        "floors": 1,
+        "predicted_price": 303622425,
+        "price_low": 290760394,
+        "price_high": 316957713,
+        "created_at": "2026-11-13T12:17:33.482Z"
+    }
+},
+{
+    "model": "prediction.predictionhistory",
+    "pk": 20,
+    "fields": {
+        "province": "JAWA TIMUR",
+        "city_regency": "KAB MAGETAN",
+        "district": "Magetan",
+        "land_area_m2": 60.0,
+        "building_area_m2": 40.0,
+        "bedrooms": 2,
+        "bathrooms": 1,
+        "floors": 1,
+        "predicted_price": 303622425,
+        "price_low": 290760394,
+        "price_high": 316957713,
+        "created_at": "2026-11-13T12:17:50.357Z"
+    }
+},
+{
+    "model": "prediction.predictionhistory",
+    "pk": 21,
+    "fields": {
+        "province": "JAWA TIMUR",
+        "city_regency": "KAB MAGETAN",
+        "district": "Magetan",
+        "land_area_m2": 60.0,
+        "building_area_m2": 40.0,
+        "bedrooms": 2,
+        "bathrooms": 1,
+        "floors": 1,
+        "predicted_price": 303622425,
+        "price_low": 290760394,
+        "price_high": 316957713,
+        "created_at": "2026-11-13T12:17:59.877Z"
+    }
+},
+{
+    "model": "prediction.predictionhistory",
+    "pk": 22,
+    "fields": {
+        "province": "JAWA BARAT",
+        "city_regency": "KOTA BANDUNG",
+        "district": "",
+        "land_area_m2": 120.0,
+        "building_area_m2": 90.0,
+        "bedrooms": 3,
+        "bathrooms": 2,
+        "floors": 1,
+        "predicted_price": 1263695550,
+        "price_low": 1095225599,
+        "price_high": 1447701500,
+        "created_at": "2026-11-15T01:16:49.594Z"
+    }
+},
+{
+    "model": "prediction.predictionhistory",
+    "pk": 23,
+    "fields": {
+        "province": "BALI",
+        "city_regency": "KAB BULELENG",
+        "district": "Gerokgak",
+        "land_area_m2": 72.0,
+        "building_area_m2": 36.0,
+        "bedrooms": 2,
+        "bathrooms": 1,
+        "floors": 1,
+        "predicted_price": 247217341,
+        "price_low": 243809990,
+        "price_high": 251337101,
+        "created_at": "2026-11-15T01:57:29.849Z"
+    }
+},
+{
+    "model": "prediction.predictionhistory",
+    "pk": 24,
+    "fields": {
+        "province": "JAWA TIMUR",
+        "city_regency": "KOTA MADIUN",
+        "district": "Taman",
+        "land_area_m2": 72.0,
+        "building_area_m2": 36.0,
+        "bedrooms": 2,
+        "bathrooms": 1,
+        "floors": 1,
+        "predicted_price": 247217341,
+        "price_low": 243809990,
+        "price_high": 251337101,
+        "created_at": "2026-11-15T05:00:09.079Z"
+    }
+},
+{
+    "model": "prediction.predictionhistory",
+    "pk": 25,
+    "fields": {
+        "province": "JAWA TIMUR",
+        "city_regency": "KOTA MADIUN",
+        "district": "Taman",
+        "land_area_m2": 72.0,
+        "building_area_m2": 36.0,
+        "bedrooms": 2,
+        "bathrooms": 1,
+        "floors": 1,
+        "predicted_price": 247217341,
+        "price_low": 243809990,
+        "price_high": 251337101,
+        "created_at": "2026-11-15T05:11:04.425Z"
+    }
+},
+{
+    "model": "prediction.predictionhistory",
+    "pk": 26,
+    "fields": {
+        "province": "JAWA TIMUR",
+        "city_regency": "KOTA MADIUN",
+        "district": "Taman",
+        "land_area_m2": 72.0,
+        "building_area_m2": 36.0,
+        "bedrooms": 2,
+        "bathrooms": 1,
+        "floors": 1,
+        "predicted_price": 247217341,
+        "price_low": 243809990,
+        "price_high": 251337101,
+        "created_at": "2026-11-15T05:22:00.696Z"
+    }
+},
+{
+    "model": "prediction.predictionhistory",
+    "pk": 27,
+    "fields": {
+        "province": "KALIMANTAN TENGAH",
+        "city_regency": "KAB GUNUNG MAS",
+        "district": "Kurun",
+        "land_area_m2": 72.0,
+        "building_area_m2": 36.0,
+        "bedrooms": 2,
+        "bathrooms": 1,
+        "floors": 1,
+        "predicted_price": 247217341,
+        "price_low": 243809990,
+        "price_high": 251337101,
+        "created_at": "2026-11-15T05:32:34.391Z"
+    }
+},
+{
+    "model": "prediction.predictionhistory",
+    "pk": 28,
+    "fields": {
+        "province": "JAWA TENGAH",
+        "city_regency": "KAB MAGELANG",
+        "district": "Salaman",
+        "land_area_m2": 250.0,
+        "building_area_m2": 180.0,
+        "bedrooms": 10,
+        "bathrooms": 5,
+        "floors": 1,
+        "predicted_price": 3006149900,
+        "price_low": 2354267179,
+        "price_high": 3823708038,
+        "created_at": "2026-11-15T05:46:19.447Z"
+    }
+},
+{
+    "model": "prediction.predictionhistory",
+    "pk": 29,
+    "fields": {
+        "province": "JAWA TIMUR",
+        "city_regency": "KAB LAMONGAN",
+        "district": "Ngimbang",
+        "land_area_m2": 72.0,
+        "building_area_m2": 36.0,
+        "bedrooms": 2,
+        "bathrooms": 1,
+        "floors": 1,
+        "predicted_price": 247217341,
+        "price_low": 243809990,
+        "price_high": 251337101,
+        "created_at": "2026-11-16T01:37:21.176Z"
+    }
+},
+{
+    "model": "prediction.predictionhistory",
+    "pk": 30,
+    "fields": {
+        "province": "DAERAH ISTIMEWA YOGYAKARTA",
+        "city_regency": "KAB BANTUL",
+        "district": "Kasihan",
+        "land_area_m2": 72.0,
+        "building_area_m2": 36.0,
+        "bedrooms": 2,
+        "bathrooms": 1,
+        "floors": 1,
+        "predicted_price": 247217341,
+        "price_low": 243809990,
+        "price_high": 251337101,
+        "created_at": "2026-11-16T02:40:59.919Z"
+    }
+},
+{
+    "model": "prediction.predictionhistory",
+    "pk": 31,
+    "fields": {
+        "province": "JAWA TIMUR",
+        "city_regency": "KAB MAGETAN",
+        "district": "Magetan",
+        "land_area_m2": 1000.0,
+        "building_area_m2": 400.0,
+        "bedrooms": 20,
+        "bathrooms": 6,
+        "floors": 1,
+        "predicted_price": 5324281390,
+        "price_low": 3500000000,
+        "price_high": 9899999999,
+        "created_at": "2026-11-16T02:48:39.157Z"
+    }
+},
+{
+    "model": "prediction.predictionhistory",
+    "pk": 32,
+    "fields": {
+        "province": "PAPUA",
+        "city_regency": "KAB JAYAPURA",
+        "district": "Sentani",
+        "land_area_m2": 72.0,
+        "building_area_m2": 36.0,
+        "bedrooms": 2,
+        "bathrooms": 1,
+        "floors": 1,
+        "predicted_price": 247217341,
+        "price_low": 243809990,
+        "price_high": 251337101,
+        "created_at": "2026-11-16T03:25:55.960Z"
+    }
+},
+{
+    "model": "prediction.predictionhistory",
+    "pk": 33,
+    "fields": {
+        "province": "JAWA BARAT",
+        "city_regency": "KAB BANDUNG",
+        "district": "",
+        "land_area_m2": 600.0,
+        "building_area_m2": 200.0,
+        "bedrooms": 14,
+        "bathrooms": 8,
+        "floors": 1,
+        "predicted_price": 4451861655,
+        "price_low": 3148175158,
+        "price_high": 8185516506,
+        "created_at": "2026-11-16T10:04:03.029Z"
+    }
+},
+{
+    "model": "prediction.predictionhistory",
+    "pk": 34,
+    "fields": {
+        "province": "BALI",
+        "city_regency": "KAB GIANYAR",
+        "district": "",
+        "land_area_m2": 40.0,
+        "building_area_m2": 26.0,
+        "bedrooms": 1,
+        "bathrooms": 1,
+        "floors": 1,
+        "predicted_price": 205728411,
+        "price_low": 190954515,
+        "price_high": 216671506,
+        "created_at": "2026-11-16T10:05:33.607Z"
+    }
+},
+{
+    "model": "prediction.predictionhistory",
+    "pk": 35,
+    "fields": {
+        "province": "DKI JAKARTA",
+        "city_regency": "KOTA ADM JAKARTA SELATAN",
+        "district": "Cilandak",
+        "land_area_m2": 72.0,
+        "building_area_m2": 36.0,
+        "bedrooms": 2,
+        "bathrooms": 1,
+        "floors": 1,
+        "predicted_price": 672112599,
+        "price_low": 246147124,
+        "price_high": 1599999999,
+        "created_at": "2026-11-17T14:53:05.571Z"
+    }
+},
+{
+    "model": "prediction.predictionhistory",
+    "pk": 36,
+    "fields": {
+        "province": "JAWA BARAT",
+        "city_regency": "KAB BEKASI",
+        "district": "",
+        "land_area_m2": 72.0,
+        "building_area_m2": 36.0,
+        "bedrooms": 2,
+        "bathrooms": 1,
+        "floors": 1,
+        "predicted_price": 384749598,
+        "price_low": 353482292,
+        "price_high": 409057593,
+        "created_at": "2026-11-17T15:26:23.505Z"
+    }
+},
+{
+    "model": "prediction.predictionhistory",
+    "pk": 37,
+    "fields": {
+        "province": "JAWA BARAT",
+        "city_regency": "KAB BEKASI",
+        "district": "",
+        "land_area_m2": 72.0,
+        "building_area_m2": 36.0,
+        "bedrooms": 2,
+        "bathrooms": 1,
+        "floors": 1,
+        "predicted_price": 384749598,
+        "price_low": 353482292,
+        "price_high": 409057593,
+        "created_at": "2026-11-17T15:32:23.396Z"
+    }
+},
+{
+    "model": "prediction.predictionhistory",
+    "pk": 38,
+    "fields": {
+        "province": "JAWA BARAT",
+        "city_regency": "KAB BEKASI",
+        "district": "",
+        "land_area_m2": 72.0,
+        "building_area_m2": 36.0,
+        "bedrooms": 2,
+        "bathrooms": 1,
+        "floors": 1,
+        "predicted_price": 384749598,
+        "price_low": 353482292,
+        "price_high": 409057593,
+        "created_at": "2026-11-17T15:35:44.197Z"
+    }
+},
+{
+    "model": "prediction.predictionhistory",
+    "pk": 39,
+    "fields": {
+        "province": "JAWA BARAT",
+        "city_regency": "KAB BEKASI",
+        "district": "",
+        "land_area_m2": 72.0,
+        "building_area_m2": 36.0,
+        "bedrooms": 2,
+        "bathrooms": 1,
+        "floors": 1,
+        "predicted_price": 384749598,
+        "price_low": 353482292,
+        "price_high": 409057593,
+        "created_at": "2026-11-17T15:39:54.740Z"
+    }
+},
+{
+    "model": "prediction.predictionhistory",
+    "pk": 40,
+    "fields": {
+        "province": "ACEH",
+        "city_regency": "KAB ACEH BARAT",
+        "district": "Meureubo",
+        "land_area_m2": 72.0,
+        "building_area_m2": 36.0,
+        "bedrooms": 2,
+        "bathrooms": 1,
+        "floors": 1,
+        "predicted_price": 247217341,
+        "price_low": 243809990,
+        "price_high": 251337101,
+        "created_at": "2026-11-18T05:18:29.691Z"
+    }
+},
+{
+    "model": "prediction.predictionhistory",
+    "pk": 41,
+    "fields": {
+        "province": "BALI",
+        "city_regency": "KAB BADUNG",
+        "district": "",
+        "land_area_m2": 72.0,
+        "building_area_m2": 36.0,
+        "bedrooms": 2,
+        "bathrooms": 1,
+        "floors": 1,
+        "predicted_price": 247217341,
+        "price_low": 243809990,
+        "price_high": 251337101,
+        "created_at": "2026-11-18T05:21:15.326Z"
+    }
+},
+{
+    "model": "prediction.predictionhistory",
+    "pk": 42,
+    "fields": {
+        "province": "ACEH",
+        "city_regency": "KAB ACEH BARAT",
+        "district": "Johan Pahwalan",
+        "land_area_m2": 72.0,
+        "building_area_m2": 36.0,
+        "bedrooms": 2,
+        "bathrooms": 1,
+        "floors": 1,
+        "predicted_price": 247217341,
+        "price_low": 243809990,
+        "price_high": 251337101,
+        "created_at": "2026-11-18T05:37:21.944Z"
+    }
+},
+{
+    "model": "prediction.predictionhistory",
+    "pk": 43,
+    "fields": {
+        "province": "JAWA BARAT",
+        "city_regency": "KAB BEKASI",
+        "district": "",
+        "land_area_m2": 72.0,
+        "building_area_m2": 36.0,
+        "bedrooms": 2,
+        "bathrooms": 1,
+        "floors": 1,
+        "predicted_price": 384749598,
+        "price_low": 353482292,
+        "price_high": 409057593,
+        "created_at": "2026-11-18T05:38:18.174Z"
+    }
+},
+{
+    "model": "prediction.predictionhistory",
+    "pk": 44,
+    "fields": {
+        "province": "ACEH",
+        "city_regency": "KAB BIREUEN",
+        "district": "",
+        "land_area_m2": 72.0,
+        "building_area_m2": 36.0,
+        "bedrooms": 2,
+        "bathrooms": 1,
+        "floors": 1,
+        "predicted_price": 247217341,
+        "price_low": 243809990,
+        "price_high": 251337101,
+        "created_at": "2026-11-18T07:52:03.522Z"
+    }
+},
+{
+    "model": "prediction.predictionhistory",
+    "pk": 45,
+    "fields": {
+        "province": "JAWA TIMUR",
+        "city_regency": "KAB MADIUN",
+        "district": "",
+        "land_area_m2": 72.0,
+        "building_area_m2": 36.0,
+        "bedrooms": 2,
+        "bathrooms": 1,
+        "floors": 1,
+        "predicted_price": 247217341,
+        "price_low": 243809990,
+        "price_high": 251337101,
+        "created_at": "2026-11-18T08:15:25.830Z"
+    }
+},
+{
+    "model": "prediction.predictionhistory",
+    "pk": 46,
+    "fields": {
+        "province": "JAWA TENGAH",
+        "city_regency": "KAB KARANGANYAR",
+        "district": "",
+        "land_area_m2": 72.0,
+        "building_area_m2": 36.0,
+        "bedrooms": 2,
+        "bathrooms": 1,
+        "floors": 1,
+        "predicted_price": 247217341,
+        "price_low": 243809990,
+        "price_high": 251337101,
+        "created_at": "2026-11-18T12:48:39.052Z"
+    }
+},
+{
+    "model": "prediction.predictionhistory",
+    "pk": 47,
+    "fields": {
+        "province": "JAWA TIMUR",
+        "city_regency": "KAB LUMAJANG",
+        "district": "",
+        "land_area_m2": 72.0,
+        "building_area_m2": 36.0,
+        "bedrooms": 2,
+        "bathrooms": 1,
+        "floors": 1,
+        "predicted_price": 247217341,
+        "price_low": 243809990,
+        "price_high": 251337101,
+        "created_at": "2026-11-18T12:57:16.556Z"
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$1500000$Db6NYkl7rPbRhymks4BXLp$habJIIW8rP2jCSQ548ytvUjTmlNaOoWwxv29HtO6oe8=",
+        "last_login": "2026-11-18T06:04:57.166Z",
+        "is_superuser": true,
+        "username": "FerdinandAndreas",
+        "first_name": "",
+        "last_name": "",
+        "email": "ferdinandandrias@gmail.com",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2026-11-13T05:56:40.372Z",
+        "groups": [],
+        "user_permissions": []
+    }
+}
+]
