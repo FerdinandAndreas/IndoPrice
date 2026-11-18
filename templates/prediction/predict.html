@@ -2,351 +2,407 @@
 
 {% block title %}Kalkulator Estimasi Harga Rumah - IndoPrice{% endblock %}
 {% block page_title %}Kalkulator Estimasi Rumah Komersil{% endblock %}
-{% block page_subtitle %}Masukkan spesifikasi fisik dan wilayah untuk memperoleh valuasi pasar wajar berbasis Machine Learning & Explainable AI{% endblock %}
+{% block page_subtitle %}Valuasi pasar wajar berbasis Machine Learning & Explainable AI{% endblock %}
 
 {% block content %}
-<!-- top row form input (kiri) dan hasil estimasi utama (kanan) -->
-<div class="row g-3 mb-3">
-    <!-- Kolom kiri form input spesifikasi properti -->
-    <div class="col-lg-6">
-        <div class="card-soft h-100">
-            <div class="d-flex align-items-center mb-2 pb-2 border-bottom">
-                <div class="stat-icon-wrapper sky me-2" style="width: 36px; height: 36px; font-size: 0.95rem;">
-                    <i class="fa-solid fa-sliders"></i>
-                </div>
-                <div>
-                    <h6 class="fw-bold mb-0" style="color: var(--color-primary); font-size: 0.95rem;">Spesifikasi Properti</h6>
-                    <small class="text-muted" style="font-size: 0.74rem;">Parameter penentu nilai pasar perumahan</small>
-                </div>
+<!-- 4 Metric Cards Row (Sama Seperti Dashboard) -->
+<div class="row g-3 mb-4">
+    <!-- Card 1 Data Properti -->
+    <div class="col-sm-6 col-xl-3 d-flex">
+        <div class="stat-pill-card w-100">
+            <div class="stat-icon-wrapper blue">
+                <i class="fa-solid fa-database"></i>
             </div>
-
-            <form method="POST" id="predictForm">
-                {% csrf_token %}
-
-                <!-- Wilayah Provinsi -->
-                <div class="mb-2">
-                    <label class="form-label-custom" for="id_province">
-                        <span>Provinsi</span>
-                        <span class="text-danger small">*Wajib</span>
-                    </label>
-                    <select name="province" id="id_province" class="form-select-custom" required>
-                        <option value="">-- Pilih Provinsi --</option>
-                        {% for p in provinces %}
-                            <option value="{{ p }}" {% if input_data.province == p %}selected{% endif %}>{{ p }}</option>
-                        {% endfor %}
-                    </select>
-                </div>
-
-                <!-- Wilayah Kabupaten / Kota -->
-                <div class="mb-2">
-                    <label class="form-label-custom" for="id_city">
-                        <span>Kabupaten / Kota</span>
-                        <span class="text-danger small">*Wajib</span>
-                    </label>
-                    <select name="city_regency" id="id_city" class="form-select-custom" required>
-                        <option value="">-- Pilih Provinsi Terlebih Dahulu --</option>
-                    </select>
-                </div>
-
-                <!-- Wilayah Kecamatan (Opsional) -->
-                <div class="mb-2">
-                    <label class="form-label-custom" for="id_district">
-                        <span>Kecamatan</span>
-                        <span class="text-muted small">Opsional</span>
-                    </label>
-                    <select name="district" id="id_district" class="form-select-custom">
-                        <option value="">-- Pilih Kabupaten Terlebih Dahulu --</option>
-                    </select>
-                </div>
-
-                <!-- Dimensi Fisik Luas Tanah dan Luas Bangunan -->
-                <div class="row g-2 mb-2">
-                    <div class="col-6">
-                        <label class="form-label-custom" for="id_land">
-                            <span>Luas Tanah (m²)</span>
-                            <span class="text-danger small">*</span>
-                        </label>
-                        <input type="number" name="land_area_m2" id="id_land" class="form-control-custom" placeholder="Contoh: 90" min="20" max="5000" step="any" value="{{ input_data.land_area_m2|default:'72' }}" required>
-                    </div>
-                    <div class="col-6">
-                        <label class="form-label-custom" for="id_building">
-                            <span>Luas Bangunan (m²)</span>
-                            <span class="text-danger small">*</span>
-                        </label>
-                        <input type="number" name="building_area_m2" id="id_building" class="form-control-custom" placeholder="Contoh: 45" min="15" max="3000" step="any" value="{{ input_data.building_area_m2|default:'36' }}" required>
-                    </div>
-                </div>
-
-                <!-- Konfigurasi Kamar dan Lantai -->
-                <div class="row g-2 mb-3">
-                    <div class="col-4">
-                        <label class="form-label-custom" for="id_beds">KT</label>
-                        <input type="number" name="bedrooms" id="id_beds" class="form-control-custom" min="1" max="20" value="{{ input_data.bedrooms|default:'2' }}" required>
-                    </div>
-                    <div class="col-4">
-                        <label class="form-label-custom" for="id_baths">KM</label>
-                        <input type="number" name="bathrooms" id="id_baths" class="form-control-custom" min="1" max="15" value="{{ input_data.bathrooms|default:'1' }}" required>
-                    </div>
-                    <div class="col-4">
-                        <label class="form-label-custom" for="id_floors">Lantai</label>
-                        <input type="number" name="floors" id="id_floors" class="form-control-custom" min="1" max="5" value="{{ input_data.floors|default:'1' }}" required>
-                    </div>
-                </div>
-
-                <button type="submit" class="btn-primary-action w-100 justify-content-center py-2" style="font-size: 0.85rem; border-radius: 10px;">
-                    <i class="fa-solid fa-calculator me-2"></i>Hitung Valuasi Pasar Wajar
-                </button>
-            </form>
+            <div class="stat-info-wrapper">
+                <div class="stat-meta-label">Data Properti</div>
+                <h3 class="stat-meta-value">{{ stats.total_properties }}</h3>
+                <span class="stat-meta-sub">
+                    <i class="fa-solid fa-circle-check" style="color: #22C55E;"></i>
+                    <span style="color: #22C55E;">Data Tervalidasi</span>
+                </span>
+            </div>
         </div>
     </div>
 
-    <!-- Kolom kanan hasil valuasi dan wawasan analitik -->
-    <div class="col-lg-6">
-        {% if result %}
-            {% if result.error %}
-                <div class="card-soft border-danger">
-                    <div class="d-flex align-items-center text-danger mb-2">
-                        <i class="fa-solid fa-triangle-exclamation me-2 fa-lg"></i>
-                        <h6 class="fw-bold mb-0">Peringatan Pemrosesan</h6>
-                    </div>
-                    <p class="text-muted small mb-0">{{ result.error }}</p>
-                </div>
-            {% else %}
-                <!-- Kartu Hasil Utama -->
-                <div class="card-soft h-100" style="border-color: var(--color-accent); border-width: 1.5px;">
-                    <div class="d-flex justify-content-between align-items-center mb-1">
-                        <span class="badge-pill-soft accent" style="font-size: 0.74rem;">
-                            <i class="fa-solid fa-microchip me-1"></i>{{ result.model_name }}
-                        </span>
-                        <span class="text-muted small" style="font-size: 0.74rem;">
-                            <i class="fa-regular fa-clock me-1"></i>Tersimpan di Riwayat
-                        </span>
-                    </div>
-
-                    <div class="my-2">
-                        <span class="text-muted small fw-semibold text-uppercase tracking-wider" style="font-size: 0.72rem;">Nilai Pasar Wajar Properti:</span>
-                        <h2 class="fw-extrabold mb-0" style="color: var(--color-accent); font-size: 1.85rem; letter-spacing: -0.5px;">
-                            {{ result.predicted_price }}
-                        </h2>
-                    </div>
-
-                    <!-- Rentang Pasar Wajar -->
-                    <div class="p-2.5 px-3 rounded-3 mb-2" style="background-color: var(--color-surface-soft); border: 1px solid var(--color-border);">
-                        <div class="d-flex justify-content-between align-items-center small mb-1" style="font-size: 0.76rem;">
-                            <span class="text-muted">Rentang Toleransi Model (P15 &ndash; P85):</span>
-                            <strong style="color: var(--color-primary);">{{ result.price_low }} &ndash; {{ result.price_high }}</strong>
-                        </div>
-                        <div class="progress" style="height: 5px; background-color: var(--color-border); border-radius: 9999px;">
-                            <div class="progress-bar" role="progressbar" style="width: 50%; background-color: var(--color-accent); border-radius: 9999px;"></div>
-                        </div>
-                    </div>
-
-                    <!-- Indikator valuasi per meter persegi (Bangunan dam Tanah) -->
-                    <div class="row g-2 mb-2">
-                        <div class="col-6">
-                            <div class="p-1.5 rounded-3 text-center" style="background: var(--color-bg); border: 1px solid var(--color-border);">
-                                <span class="d-block text-muted small" style="font-size: 0.68rem; text-transform: uppercase; font-weight: 700;">Valuasi Bangunan</span>
-                                <strong style="color: var(--color-primary); font-size: 0.88rem;">{{ result.price_per_m2_building }}/m²</strong>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="p-1.5 rounded-3 text-center" style="background: var(--color-bg); border: 1px solid var(--color-border);">
-                                <span class="d-block text-muted small" style="font-size: 0.68rem; text-transform: uppercase; font-weight: 700;">Valuasi Tanah</span>
-                                <strong style="color: var(--color-primary); font-size: 0.88rem;">{{ result.price_per_m2_land }}/m²</strong>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Tombol Analisis AI On-Demand (klik untuk meminta penjelasan) -->
-                    <div class="mt-2" id="ai-predict-section">
-                        <button type="button" class="btn-primary-action w-100 justify-content-center py-2" onclick="requestAIExplanation()" id="btn-ai-explain" style="font-size: 0.84rem;">
-                            <i class="fa-solid fa-wand-magic-sparkles me-2"></i>Jelaskan Hasil Prediksi
-                        </button>
-                        <div class="insight-box mt-2 d-none" id="ai-predict-box">
-                            <div class="insight-header" style="font-size: 0.78rem;">
-                                <i class="fa-solid fa-lightbulb"></i>
-                                <span>Interpretasi Analis Properti</span>
-                            </div>
-                            <div class="insight-body" id="ai-predict-text" style="font-size: 0.82rem;"></div>
-                        </div>
-                    </div>
-
-                    <div class="text-center mt-2 pt-1">
-                        <a href="{% url 'prediction:predict' %}" class="btn btn-sm btn-outline-secondary rounded-pill px-3 py-1" style="font-size: 0.76rem;">
-                            <i class="fa-solid fa-arrow-rotate-left me-1"></i>Hitung Properti Lain
-                        </a>
-                    </div>
-                </div>
-            {% endif %}
-        {% else %}
-            <!-- Placeholder Menunggu Input -->
-            <div class="card-soft h-100 d-flex flex-column justify-content-center align-items-center text-center p-3 p-xl-4">
-                <div class="stat-icon-wrapper sky mb-2" style="width: 48px; height: 48px; font-size: 1.3rem;">
-                    <i class="fa-solid fa-chart-simple"></i>
-                </div>
-                <h6 class="fw-bold mb-1" style="color: var(--color-primary); font-size: 1rem;">Siap Menganalisis Properti</h6>
-                <p class="text-muted small mb-3" style="max-width: 300px; line-height: 1.5; font-size: 0.78rem;">
-                    Lengkapi formulir spesifikasi di sebelah kiri untuk melihat estimasi nilai pasar properti komersil secara otomatis.
-                </p>
-                <div class="p-2.5 px-3 rounded-3 w-100 text-start" style="background-color: var(--color-surface-soft); border: 1px dashed var(--color-border); font-size: 0.76rem;">
-                    <small class="d-block text-muted mb-1">
-                        <i class="fa-solid fa-circle-check text-primary me-1"></i><strong>Metodologi Bebas Leakage:</strong> Fitur input murni spesifikasi fisik & geografis.
-                    </small>
-                    <small class="d-block text-muted">
-                        <i class="fa-solid fa-circle-check text-primary me-1"></i><strong>Model Berbasis 44.000+ Data:</strong> Dilatih pada transaksi rumah komersil bersih di seluruh Indonesia.
-                    </small>
-                </div>
+    <!-- Card 2 Rata-Rata Harga Pasar -->
+    <div class="col-sm-6 col-xl-3 d-flex">
+        <div class="stat-pill-card w-100">
+            <div class="stat-icon-wrapper sky">
+                <i class="fa-solid fa-money-bill-trend-up"></i>
             </div>
-        {% endif %}
+            <div class="stat-info-wrapper">
+                <div class="stat-meta-label">Rata-Rata Harga</div>
+                <h3 class="stat-meta-value" style="color: #2563EB;" title="{{ stats.avg_price }}">{{ stats.avg_price_display }}</h3>
+                <span class="stat-meta-sub">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <span>Harga Properti</span>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Card 3 Cakupan Wilayah -->
+    <div class="col-sm-6 col-xl-3 d-flex">
+        <div class="stat-pill-card w-100">
+            <div class="stat-icon-wrapper blue">
+                <i class="fa-solid fa-map-location-dot"></i>
+            </div>
+            <div class="stat-info-wrapper">
+                <div class="stat-meta-label">Cakupan Wilayah</div>
+                <h3 class="stat-meta-value">{{ stats.total_provinces }} Provinsi</h3>
+                <span class="stat-meta-sub">
+                    <i class="fa-solid fa-earth-asia"></i>
+                    <span>Wilayah Terdata</span>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Card 4 Performa Model (R²) -->
+    <div class="col-sm-6 col-xl-3 d-flex">
+        <div class="stat-pill-card w-100">
+            <div class="stat-icon-wrapper emerald">
+                <i class="fa-solid fa-bullseye"></i>
+            </div>
+            <div class="stat-info-wrapper">
+                <div class="stat-meta-label">Performa Model</div>
+                <h3 class="stat-meta-value" style="color: #10B981;">R² {{ stats.r2_score }}</h3>
+                <span class="stat-meta-sub">
+                    <i class="fa-solid fa-circle-check" style="color: #22C55E;"></i>
+                    <span style="color: #22C55E;">Akurasi {{ stats.r2_percentage }}</span>
+                </span>
+            </div>
+        </div>
     </div>
 </div>
 
-<!-- Bottom Section dual visualisasi explainable AI dan Konteks Pasar -->
-{% if result and not result.error %}
-<div class="row g-3 mb-3">
-    <!-- Visualisasi 1 posisi harga terhadap properti sejenis -->
-    <div class="col-lg-6">
-        <div class="card-soft h-100">
-            <div class="d-flex justify-content-between align-items-start mb-2">
-                <div>
-                    <h5 class="fw-bold mb-1" style="color: var(--color-primary); font-size: 1.05rem;">
-                        <i class="fa-solid fa-chart-area me-2 text-primary"></i>Posisi terhadap Properti Sejenis
-                    </h5>
-                    <small class="text-muted">Distribusi data aktual {{ result.comp_stats.sample_count }} unit {{ result.comp_stats.level }}</small>
-                </div>
-                <span class="badge-pill-soft accent">
-                    {{ result.comp_stats.percentile_display }} Pasar
-                </span>
-            </div>
-
-            <!-- Evaluasi peringatan kecukupan sampel -->
-            {% if result.comp_stats.sample_warning and "Peringatan" in result.comp_stats.sample_warning %}
-            <div class="alert alert-warning py-2 px-3 rounded-3 small mb-2 d-flex align-items-center" style="font-size: 0.78rem;">
-                <i class="fa-solid fa-triangle-exclamation me-2 fa-lg text-warning"></i>
-                <div>{{ result.comp_stats.sample_warning }}</div>
-            </div>
-            {% endif %}
-
-            <!-- Indikator posisi pasar aktual -->
-            <div class="p-2 px-3 rounded-3 mb-2 d-flex align-items-center justify-content-between" style="background: var(--color-bg); border: 1px solid var(--color-border);">
-                <div>
-                    <span class="text-muted small d-block" style="font-size: 0.72rem; text-transform: uppercase; font-weight: 700;">Status Posisi Pasar:</span>
-                    <strong style="color: var(--color-primary); font-size: 0.88rem;">{{ result.comp_stats.market_status }}</strong>
-                </div>
-                <span class="badge-pill-soft {{ result.comp_stats.market_badge_class }}">
-                    {{ result.comp_stats.diff_median_text }}
-                </span>
-            </div>
-
-            <!-- Ringkasan statistik pembanding -->
-            <div class="d-flex flex-wrap gap-2 mb-3">
-                <span class="badge-pill-soft" style="font-size: 0.75rem;">
-                    Median: <strong>Rp {{ result.comp_stats.median_juta }} Jt</strong>
-                </span>
-                <span class="badge-pill-soft" style="font-size: 0.75rem;">
-                    Zona 50% Tengah (Q1&ndash;Q3): <strong>Rp {{ result.comp_stats.q1_juta }} &ndash; {{ result.comp_stats.q3_juta }} Jt</strong>
-                </span>
-                <span class="badge-pill-soft" style="font-size: 0.75rem;">
-                    Sampel: <strong>{{ result.comp_stats.sample_count }} Unit</strong> ({{ result.comp_stats.sample_sufficiency }})
-                </span>
-            </div>
-
-            {% if chart_distribution_json %}
-                <div id="chart-distribution"></div>
-            {% else %}
-                <div class="text-center py-4 text-muted small">Data sebaran pembanding sedang disiapkan.</div>
-            {% endif %}
-
-            <div class="p-2 rounded-3 mt-2" style="background: var(--color-surface-soft); font-size: 0.76rem; color: var(--color-text-muted);">
-                <i class="fa-solid fa-circle-info me-1 text-primary"></i>
-                {{ result.comp_stats.market_status_desc }} Garis biru vertikal menandai harga estimasi Anda di antara unit sejenis.
-            </div>
-
-            <!-- Tombol AI analisis grafik distribusi -->
-            <button type="button" class="btn-primary-action w-100 justify-content-center py-2 mt-3" onclick="explainPredictChart('distribution')" id="btn-ai-distribution" style="font-size: 0.88rem;">
-                <i class="fa-solid fa-wand-magic-sparkles me-2"></i>Jelaskan Grafik Distribusi
-            </button>
-            <div class="insight-box mt-2 d-none" id="ai-box-distribution">
-                <div class="insight-header">
-                    <i class="fa-solid fa-lightbulb"></i>
-                    <span>Analisis Distribusi Pasar</span>
-                </div>
-                <div class="insight-body" id="ai-text-distribution"></div>
-            </div>
+<!-- Section 1: Formulir Input Spesifikasi Properti (Full Width) -->
+<div class="card-soft mb-4">
+    <div class="d-flex align-items-center mb-3 pb-2" style="border-bottom: 1px solid #E8EEF8;">
+        <div class="stat-icon-wrapper blue me-3" style="width: 42px; height: 42px; font-size: 1.1rem; border-radius: 14px; margin-bottom: 0;">
+            <i class="fa-solid fa-sliders"></i>
+        </div>
+        <div>
+            <h5 class="fw-bold mb-0" style="color: #0F2744; font-size: 1.05rem;">Spesifikasi Properti</h5>
+            <small class="fw-semibold" style="color: #7B92B2; font-size: 0.8rem;">Parameter penentu nilai pasar perumahan komersil di Indonesia</small>
         </div>
     </div>
 
-    <!-- Visualisasi 2 faktor penentu nilai wajar -->
-    <div class="col-lg-6">
-        <div class="card-soft h-100">
-            <div class="d-flex justify-content-between align-items-start mb-2">
-                <div>
-                    <h5 class="fw-bold mb-1" style="color: var(--color-primary); font-size: 1.05rem;">
-                        <i class="fa-solid fa-scale-balanced me-2 text-primary"></i>Faktor Penentu Nilai Wajar
-                    </h5>
-                    <small class="text-muted">Kontribusi spesifik fitur terhadap harga baseline (TreeSHAP Local Attribution)</small>
-                </div>
-                <span class="badge-pill-soft green">
+    <form method="POST" id="predictForm">
+        {% csrf_token %}
+
+        <!-- Baris 1: Wilayah Geografis (3 Kolom) -->
+        <div class="row g-3 mb-3">
+            <div class="col-md-4">
+                <label class="form-label-custom" for="id_province">
+                    <span>Provinsi</span>
+                    <span class="text-danger small fw-bold">*Wajib</span>
+                </label>
+                <select name="province" id="id_province" class="form-select-custom" required>
+                    <option value="">-- Pilih Provinsi --</option>
+                    {% for p in provinces %}
+                        <option value="{{ p }}" {% if input_data.province == p %}selected{% endif %}>{{ p }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="col-md-4">
+                <label class="form-label-custom" for="id_city">
+                    <span>Kabupaten / Kota</span>
+                    <span class="text-danger small fw-bold">*Wajib</span>
+                </label>
+                <select name="city_regency" id="id_city" class="form-select-custom" required>
+                    <option value="">-- Pilih Provinsi Terlebih Dahulu --</option>
+                </select>
+            </div>
+
+            <div class="col-md-4">
+                <label class="form-label-custom" for="id_district">
+                    <span>Kecamatan</span>
+                    <span class="text-muted small">Opsional</span>
+                </label>
+                <select name="district" id="id_district" class="form-select-custom">
+                    <option value="">-- Pilih Kabupaten Terlebih Dahulu --</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Baris 2: Dimensi & Kapasitas Fisik (5 Kolom) -->
+        <div class="row g-3 mb-4">
+            <div class="col-6 col-lg-3">
+                <label class="form-label-custom" for="id_land">
+                    <span>Luas Tanah (m²)</span>
+                    <span class="text-danger small fw-bold">*</span>
+                </label>
+                <input type="number" name="land_area_m2" id="id_land" class="form-control-custom" placeholder="Contoh: 90" min="20" max="5000" step="any" value="{{ input_data.land_area_m2|default:'72' }}" required>
+            </div>
+            <div class="col-6 col-lg-3">
+                <label class="form-label-custom" for="id_building">
+                    <span>Luas Bangunan (m²)</span>
+                    <span class="text-danger small fw-bold">*</span>
+                </label>
+                <input type="number" name="building_area_m2" id="id_building" class="form-control-custom" placeholder="Contoh: 45" min="15" max="3000" step="any" value="{{ input_data.building_area_m2|default:'36' }}" required>
+            </div>
+            <div class="col-4 col-lg-2">
+                <label class="form-label-custom" for="id_beds">KT</label>
+                <input type="number" name="bedrooms" id="id_beds" class="form-control-custom" min="1" max="20" value="{{ input_data.bedrooms|default:'2' }}" required>
+            </div>
+            <div class="col-4 col-lg-2">
+                <label class="form-label-custom" for="id_baths">KM</label>
+                <input type="number" name="bathrooms" id="id_baths" class="form-control-custom" min="1" max="15" value="{{ input_data.bathrooms|default:'1' }}" required>
+            </div>
+            <div class="col-4 col-lg-2">
+                <label class="form-label-custom" for="id_floors">Lantai</label>
+                <input type="number" name="floors" id="id_floors" class="form-control-custom" min="1" max="5" value="{{ input_data.floors|default:'1' }}" required>
+            </div>
+        </div>
+
+        <!-- Tombol Hitung Valuasi -->
+        <div class="pt-1">
+            <button type="submit" class="btn-calc-submit">
+                <i class="fa-solid fa-calculator me-1"></i>
+                <span>Hitung Valuasi Pasar Wajar</span>
+            </button>
+        </div>
+    </form>
+</div>
+
+<!-- Section 2: Hasil Estimasi & Analisis (Muncul di Bawah Form) -->
+{% if result %}
+<div id="prediction-result" class="mb-4">
+    {% if result.error %}
+        <div class="card-soft border-danger p-3 mb-4">
+            <div class="d-flex align-items-center text-danger mb-2">
+                <i class="fa-solid fa-triangle-exclamation me-2 fa-lg"></i>
+                <h6 class="fw-bold mb-0">Peringatan Pemrosesan</h6>
+            </div>
+            <p class="text-muted small mb-0">{{ result.error }}</p>
+        </div>
+    {% else %}
+        <!-- Hero Result Card (Full Width) -->
+        <div class="card-soft mb-4" style="border: 2px solid #2563EB; background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);">
+            <div class="d-flex justify-content-between align-items-center mb-2 pb-2 border-bottom">
+                <span class="badge-pill-soft accent" style="font-size: 0.8rem; font-weight: 700;">
                     <i class="fa-solid fa-microchip me-1"></i>{{ result.model_name }}
                 </span>
-            </div>
-
-            <!-- Rekonsiliasi matematika model -->
-            <div class="p-2 px-3 rounded-3 mb-2" style="background: var(--color-bg); border: 1px solid var(--color-border); font-size: 0.78rem;">
-                <div class="d-flex justify-content-between align-items-center mb-1">
-                    <span class="text-muted">Nilai Acuan Dasar (Baseline Pasar):</span>
-                    <strong>Rp {{ result.xai_summary.baseline_juta }} Juta</strong>
-                </div>
-                <div class="d-flex justify-content-between align-items-center mb-1">
-                    <span class="text-muted">Total Faktor Pendorong (+):</span>
-                    <strong class="text-primary">+Rp {{ result.xai_summary.total_pos_juta }} Juta</strong>
-                </div>
-                <div class="d-flex justify-content-between align-items-center mb-1">
-                    <span class="text-muted">Total Faktor Penahan (-):</span>
-                    <strong class="text-secondary">-Rp {{ result.xai_summary.total_neg_juta }} Juta</strong>
-                </div>
-                <div class="d-flex justify-content-between align-items-center pt-1 border-top">
-                    <span class="fw-bold text-dark">Hasil Prediksi Akhir (Terekonsiliasi):</span>
-                    <strong style="color: var(--color-accent);">{{ result.predicted_price }}</strong>
+                <div class="d-flex align-items-center gap-3">
+                    <span class="text-muted small fw-semibold" style="font-size: 0.78rem;">
+                        <i class="fa-regular fa-clock me-1 text-primary"></i>Tersimpan di Riwayat
+                    </span>
+                    <a href="{% url 'prediction:predict' %}" class="btn btn-sm btn-outline-secondary rounded-pill px-3 py-1 fw-bold" style="font-size: 0.76rem;">
+                        <i class="fa-solid fa-arrow-rotate-left me-1"></i>Reset / Hitung Baru
+                    </a>
                 </div>
             </div>
 
-            <!-- Petunjuk Indikator -->
-            <div class="d-flex align-items-center gap-3 mb-2" style="font-size: 0.78rem;">
-                <span class="fw-semibold text-primary">
-                    <span style="display: inline-block; width: 10px; height: 10px; background: #2563EB; border-radius: 2px;" class="me-1"></span>
-                    Mendorong Kenaikan (+)
-                </span>
-                <span class="fw-semibold text-muted">
-                    <span style="display: inline-block; width: 10px; height: 10px; background: #94A3B8; border-radius: 2px;" class="me-1"></span>
-                    Menahan Nilai (-)
-                </span>
-            </div>
-
-            {% if chart_factors_json %}
-                <div id="chart-factors"></div>
-            {% else %}
-                <div class="text-center py-4 text-muted small">Analisis faktor sedang dihitung.</div>
-            {% endif %}
-
-            <div class="p-2 rounded-3 mt-2" style="background: var(--color-surface-soft); font-size: 0.76rem; color: var(--color-text-muted);">
-                <i class="fa-solid fa-circle-info me-1 text-primary"></i>
-                Dihitung menggunakan algoritma {{ result.model_name }}. Baseline + Jumlah Seluruh Kontribusi Fitur = Nilai Prediksi Akhir secara presisi.
-            </div>
-
-            <!-- Tombol AI analisis grafik faktor -->
-            <button type="button" class="btn-primary-action w-100 justify-content-center py-2 mt-3" onclick="explainPredictChart('factors')" id="btn-ai-factors" style="font-size: 0.88rem;">
-                <i class="fa-solid fa-wand-magic-sparkles me-2"></i>Jelaskan Faktor Penentu Nilai
-            </button>
-            <div class="insight-box mt-2 d-none" id="ai-box-factors">
-                <div class="insight-header">
-                    <i class="fa-solid fa-lightbulb"></i>
-                    <span>Analisis Faktor Penentu Nilai</span>
+            <div class="row align-items-center g-3 my-1">
+                <!-- Sisi Kiri: Angka Estimasi Utama -->
+                <div class="col-lg-5 text-center text-lg-start border-lg-end pe-lg-4">
+                    <span class="text-muted small fw-bold text-uppercase tracking-wider d-block mb-1" style="font-size: 0.76rem; letter-spacing: 0.5px;">Estimasi Nilai Pasar Wajar Properti:</span>
+                    <h1 class="fw-extrabold mb-1" style="color: #1D4ED8; font-size: 2.35rem; letter-spacing: -0.8px;">
+                        {{ result.predicted_price }}
+                    </h1>
+                    <div class="d-flex align-items-center justify-content-center justify-content-lg-start gap-1 small text-muted">
+                        <i class="fa-solid fa-location-dot text-danger me-1"></i>
+                        <span class="fw-semibold text-dark">{{ input_data.city_regency }}, {{ input_data.province }}</span>
+                    </div>
                 </div>
-                <div class="insight-body" id="ai-text-factors"></div>
+
+                <!-- Sisi Kanan: Rentang Toleransi & Valuasi per m2 -->
+                <div class="col-lg-7 ps-lg-4">
+                    <!-- Toleransi Bar -->
+                    <div class="p-2.5 px-3 rounded-3 mb-2" style="background-color: #EFF6FF; border: 1px solid #BFDBFE;">
+                        <div class="d-flex justify-content-between align-items-center small mb-1.5" style="font-size: 0.8rem;">
+                            <span class="fw-semibold text-muted">Rentang Toleransi Model (P15 &ndash; P85):</span>
+                            <strong style="color: #0F2744; font-weight: 800;">{{ result.price_low }} &ndash; {{ result.price_high }}</strong>
+                        </div>
+                        <div class="progress" style="height: 6px; background-color: #DBEAFE; border-radius: 9999px;">
+                            <div class="progress-bar" role="progressbar" style="width: 50%; background-color: #2563EB; border-radius: 9999px;"></div>
+                        </div>
+                    </div>
+
+                    <!-- Indikator Valuasi /m2 -->
+                    <div class="row g-2">
+                        <div class="col-6">
+                            <div class="p-2 rounded-3 text-center" style="background: #FFFFFF; border: 1.5px solid #E2E8F0;">
+                                <span class="d-block text-muted small" style="font-size: 0.7rem; text-transform: uppercase; font-weight: 700;">Valuasi Bangunan</span>
+                                <strong style="color: #0F2744; font-size: 0.95rem; font-weight: 800;">{{ result.price_per_m2_building }}/m²</strong>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="p-2 rounded-3 text-center" style="background: #FFFFFF; border: 1.5px solid #E2E8F0;">
+                                <span class="d-block text-muted small" style="font-size: 0.7rem; text-transform: uppercase; font-weight: 700;">Valuasi Tanah</span>
+                                <strong style="color: #0F2744; font-size: 0.95rem; font-weight: 800;">{{ result.price_per_m2_land }}/m²</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tombol Interaktif AI Explain On-Demand -->
+            <div class="mt-3 pt-3 border-top" id="ai-predict-section">
+                <button type="button" class="btn-primary-action w-100 justify-content-center py-2.5 shadow-sm fw-bold" onclick="requestAIExplanation()" id="btn-ai-explain" style="font-size: 0.9rem; border-radius: 10px;">
+                    <i class="fa-solid fa-wand-magic-sparkles me-2"></i>Jelaskan Hasil Prediksi (Gemini AI)
+                </button>
+                <div class="insight-box mt-3 d-none" id="ai-predict-box">
+                    <div class="insight-header" style="font-size: 0.84rem; font-weight: 800; color: #1D4ED8;">
+                        <i class="fa-solid fa-lightbulb"></i>
+                        <span>Interpretasi Analis Properti AI</span>
+                    </div>
+                    <div class="insight-body mt-2" id="ai-predict-text" style="font-size: 0.88rem; line-height: 1.65; color: #0F2744;"></div>
+                </div>
             </div>
         </div>
-    </div>
+
+        <!-- Section 3: Dual Grafik Analitik Pasar & XAI (Side-by-Side 50% - 50%) -->
+        <div class="row g-4 mb-4">
+            <!-- Grafik 1: Posisi terhadap Properti Sejenis -->
+            <div class="col-lg-6 d-flex">
+                <div class="card-soft w-100 d-flex flex-column" style="border: 1.5px solid #BFDBFE;">
+                    <div class="d-flex justify-content-between align-items-start mb-2 pb-2 border-bottom">
+                        <div>
+                            <h5 class="fw-bold mb-1" style="color: #0F2744; font-size: 1.05rem;">
+                                <i class="fa-solid fa-chart-area me-2" style="color: #1D4ED8;"></i>Posisi terhadap Properti Sejenis
+                            </h5>
+                            <small class="fw-semibold" style="color: #475569; font-size: 0.8rem;">Distribusi aktual {{ result.comp_stats.sample_count }} unit {{ result.comp_stats.level }}</small>
+                        </div>
+                        <span class="badge-pill-soft accent" style="font-size: 0.78rem;">
+                            {{ result.comp_stats.percentile_display }} Pasar
+                        </span>
+                    </div>
+
+                    <!-- Peringatan Kecukupan Sampel -->
+                    {% if result.comp_stats.sample_warning and "Peringatan" in result.comp_stats.sample_warning %}
+                    <div class="alert alert-warning py-2 px-3 rounded-3 small mb-2 d-flex align-items-center" style="font-size: 0.78rem;">
+                        <i class="fa-solid fa-triangle-exclamation me-2 fa-lg text-warning"></i>
+                        <div>{{ result.comp_stats.sample_warning }}</div>
+                    </div>
+                    {% endif %}
+
+                    <!-- Indikator Posisi Pasar Aktual -->
+                    <div class="p-2 px-3 rounded-3 mb-2 d-flex align-items-center justify-content-between" style="background: #F8FAFC; border: 1px solid #E2E8F0;">
+                        <div>
+                            <span class="text-muted small d-block" style="font-size: 0.72rem; text-transform: uppercase; font-weight: 700;">Status Posisi Pasar:</span>
+                            <strong style="color: #0F2744; font-size: 0.88rem;">{{ result.comp_stats.market_status }}</strong>
+                        </div>
+                        <span class="badge-pill-soft {{ result.comp_stats.market_badge_class }}">
+                            {{ result.comp_stats.diff_median_text }}
+                        </span>
+                    </div>
+
+                    <!-- Ringkasan Statistik Pembanding -->
+                    <div class="d-flex flex-wrap gap-2 mb-3">
+                        <span class="badge-pill-soft" style="font-size: 0.75rem;">
+                            Median: <strong>Rp {{ result.comp_stats.median_juta }} Jt</strong>
+                        </span>
+                        <span class="badge-pill-soft" style="font-size: 0.75rem;">
+                            Zona 50% Tengah: <strong>Rp {{ result.comp_stats.q1_juta }} &ndash; {{ result.comp_stats.q3_juta }} Jt</strong>
+                        </span>
+                        <span class="badge-pill-soft" style="font-size: 0.75rem;">
+                            Sampel: <strong>{{ result.comp_stats.sample_count }} Unit</strong>
+                        </span>
+                    </div>
+
+                    <div class="flex-grow-1">
+                        {% if chart_distribution_json %}
+                            <div id="chart-distribution"></div>
+                        {% else %}
+                            <div class="text-center py-4 text-muted small">Data sebaran pembanding sedang disiapkan.</div>
+                        {% endif %}
+                    </div>
+
+                    <div class="p-2 rounded-3 mt-2" style="background: #EFF6FF; font-size: 0.76rem; color: #1E3A8A;">
+                        <i class="fa-solid fa-circle-info me-1 text-primary"></i>
+                        {{ result.comp_stats.market_status_desc }} Garis biru vertikal menandai estimasi harga rumah Anda.
+                    </div>
+
+                    <button type="button" class="btn-primary-action w-100 justify-content-center py-2 mt-3" onclick="explainPredictChart('distribution')" id="btn-ai-distribution" style="font-size: 0.86rem;">
+                        <i class="fa-solid fa-wand-magic-sparkles me-2"></i>Jelaskan Grafik Distribusi
+                    </button>
+                    <div class="insight-box mt-2 d-none" id="ai-box-distribution">
+                        <div class="insight-header" style="color: #1D4ED8; font-weight: 800;">
+                            <i class="fa-solid fa-lightbulb"></i>
+                            <span>Analisis Distribusi Pasar AI</span>
+                        </div>
+                        <div class="insight-body mt-1" id="ai-text-distribution" style="color: #0F2744; font-size: 0.85rem; line-height: 1.6;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Grafik 2: Faktor Penentu Nilai Wajar (TreeSHAP) -->
+            <div class="col-lg-6 d-flex">
+                <div class="card-soft w-100 d-flex flex-column" style="border: 1.5px solid #BFDBFE;">
+                    <div class="d-flex justify-content-between align-items-start mb-2 pb-2 border-bottom">
+                        <div>
+                            <h5 class="fw-bold mb-1" style="color: #0F2744; font-size: 1.05rem;">
+                                <i class="fa-solid fa-scale-balanced me-2" style="color: #1D4ED8;"></i>Faktor Penentu Nilai Wajar
+                            </h5>
+                            <small class="fw-semibold" style="color: #475569; font-size: 0.8rem;">Kontribusi fitur terhadap harga baseline (TreeSHAP Local Attribution)</small>
+                        </div>
+                        <span class="badge-pill-soft green" style="font-size: 0.78rem;">
+                            <i class="fa-solid fa-microchip me-1"></i>{{ result.model_name }}
+                        </span>
+                    </div>
+
+                    <!-- Rekonsiliasi Matematika Model -->
+                    <div class="p-2 px-3 rounded-3 mb-2" style="background: #F8FAFC; border: 1px solid #E2E8F0; font-size: 0.78rem;">
+                        <div class="d-flex justify-content-between align-items-center mb-1">
+                            <span class="text-muted">Nilai Acuan Dasar (Baseline Nasional Tipe 36/72):</span>
+                            <strong style="color: #0F2744;">Rp {{ result.xai_summary.baseline_juta }} Jt</strong>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mb-1">
+                            <span class="text-muted">Total Faktor Pendorong (+):</span>
+                            <strong class="text-primary">+Rp {{ result.xai_summary.total_pos_juta }} Jt</strong>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mb-1">
+                            <span class="text-muted">Total Faktor Penahan (-):</span>
+                            <strong class="text-secondary">-Rp {{ result.xai_summary.total_neg_juta }} Jt</strong>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center pt-1 border-top">
+                            <span class="fw-bold text-dark">Hasil Prediksi Akhir Terekonsiliasi:</span>
+                            <strong style="color: #1D4ED8; font-size: 0.88rem;">{{ result.predicted_price }}</strong>
+                        </div>
+                    </div>
+
+                    <!-- Petunjuk Indikator Warna -->
+                    <div class="d-flex align-items-center gap-3 mb-2" style="font-size: 0.78rem;">
+                        <span class="fw-semibold text-primary">
+                            <span style="display: inline-block; width: 10px; height: 10px; background: #2563EB; border-radius: 2px;" class="me-1"></span>
+                            Mendorong Kenaikan (+)
+                        </span>
+                        <span class="fw-semibold text-muted">
+                            <span style="display: inline-block; width: 10px; height: 10px; background: #94A3B8; border-radius: 2px;" class="me-1"></span>
+                            Menahan Nilai (-)
+                        </span>
+                    </div>
+
+                    <div class="flex-grow-1">
+                        {% if chart_factors_json %}
+                            <div id="chart-factors"></div>
+                        {% else %}
+                            <div class="text-center py-4 text-muted small">Analisis faktor sedang dihitung.</div>
+                        {% endif %}
+                    </div>
+
+                    <div class="p-2 rounded-3 mt-2" style="background: #EFF6FF; font-size: 0.76rem; color: #1E3A8A;">
+                        <i class="fa-solid fa-circle-info me-1 text-primary"></i>
+                        Baseline + Jumlah Seluruh Kontribusi Fitur = Nilai Prediksi Akhir secara presisi.
+                    </div>
+
+                    <button type="button" class="btn-primary-action w-100 justify-content-center py-2 mt-3" onclick="explainPredictChart('factors')" id="btn-ai-factors" style="font-size: 0.86rem;">
+                        <i class="fa-solid fa-wand-magic-sparkles me-2"></i>Jelaskan Faktor Penentu Nilai
+                    </button>
+                    <div class="insight-box mt-2 d-none" id="ai-box-factors">
+                        <div class="insight-header" style="color: #1D4ED8; font-weight: 800;">
+                            <i class="fa-solid fa-lightbulb"></i>
+                            <span>Analisis Faktor Penentu Nilai AI</span>
+                        </div>
+                        <div class="insight-body mt-1" id="ai-text-factors" style="color: #0F2744; font-size: 0.85rem; line-height: 1.6;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
 </div>
 {% endif %}
 
@@ -362,14 +418,16 @@
 {% endif %}
 
 <script>
-    // Inisialisasi visualisasi plotly setelah DOM siap
     document.addEventListener("DOMContentLoaded", function() {
+        // Inisialisasi visualisasi plotly
         const distEl = document.getElementById('chart-distribution-data');
         if (distEl && distEl.textContent) {
             try {
                 const distData = JSON.parse(distEl.textContent);
                 Plotly.newPlot('chart-distribution', distData.data, distData.layout, {responsive: true, displayModeBar: false});
-            } catch(e) {}
+            } catch(e) {
+                console.error("Error plot dist:", e);
+            }
         }
 
         const factorsEl = document.getElementById('chart-factors-data');
@@ -377,8 +435,20 @@
             try {
                 const factorsData = JSON.parse(factorsEl.textContent);
                 Plotly.newPlot('chart-factors', factorsData.data, factorsData.layout, {responsive: true, displayModeBar: false});
-            } catch(e) {}
+            } catch(e) {
+                console.error("Error plot factors:", e);
+            }
         }
+
+        // Auto-scroll halus ke area hasil prediksi jika hasil sudah tersedia
+        {% if result %}
+        const resultSection = document.getElementById('prediction-result');
+        if (resultSection) {
+            setTimeout(() => {
+                resultSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 150);
+        }
+        {% endif %}
     });
 
     // Dropdown bertingkat Provinsi -> Kabupaten/Kota -> Kecamatan
@@ -433,17 +503,16 @@
         updateCities();
     }
 
-    // Fungsi untuk meminta penjelasan AI on-demand (dipanggil saat tombol diklik)
+    // Fungsi meminta penjelasan AI on-demand
     function requestAIExplanation() {
         const btn = document.getElementById('btn-ai-explain');
         const box = document.getElementById('ai-predict-box');
         const text = document.getElementById('ai-predict-text');
 
-        // Tampilkan loading state
         btn.disabled = true;
         btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin me-2"></i>Sedang Menganalisis Hasil Prediksi...';
         box.classList.remove('d-none');
-        text.innerHTML = '<i class="fa-solid fa-spinner fa-spin me-2" style="color: var(--color-accent);"></i>AI sedang menyusun analisis berdasarkan data hasil prediksi...';
+        text.innerHTML = '<div class="d-flex align-items-center py-2"><i class="fa-solid fa-spinner fa-spin me-2 text-primary fa-lg"></i><span class="fw-semibold text-primary">AI sedang menyusun narasi analisis berdasarkan data aktual...</span></div>';
 
         fetch("{% url 'prediction:api_ai_predict_explain' %}", {
             method: 'POST',
@@ -454,33 +523,32 @@
         .then(data => {
             if (data.status === 'success') {
                 text.innerHTML = data.explanation;
-                btn.innerHTML = '<i class="fa-solid fa-circle-check me-2"></i>Analisis AI Berhasil Ditampilkan';
+                btn.innerHTML = '<i class="fa-solid fa-circle-check me-2"></i>Analisis AI Selesai Ditampilkan';
                 btn.classList.add('disabled');
-                btn.style.opacity = '0.7';
+                btn.style.opacity = '0.75';
             } else {
-                text.innerHTML = data.message || 'Terjadi kesalahan saat memproses analisis.';
+                text.innerHTML = data.message || 'Terjadi kendala saat memproses analisis.';
                 btn.innerHTML = '<i class="fa-solid fa-wand-magic-sparkles me-2"></i>Coba Lagi';
                 btn.disabled = false;
             }
         })
         .catch(err => {
-            text.innerHTML = 'Koneksi ke server AI gagal. Silakan coba lagi.';
+            text.innerHTML = '<p class="text-danger mb-0 fw-semibold">Koneksi ke server AI gagal. Silakan coba beberapa saat lagi.</p>';
             btn.innerHTML = '<i class="fa-solid fa-wand-magic-sparkles me-2"></i>Coba Lagi';
             btn.disabled = false;
         });
     }
 
-    // Fungsi untuk meminta penjelasan AI pada grafik distribusi dan faktor
+    // Fungsi meminta penjelasan AI pada grafik
     function explainPredictChart(chartType) {
         const btn = document.getElementById('btn-ai-' + chartType);
         const box = document.getElementById('ai-box-' + chartType);
         const text = document.getElementById('ai-text-' + chartType);
 
-        // Loading state
         btn.disabled = true;
         btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin me-2"></i>Sedang Menganalisis...';
         box.classList.remove('d-none');
-        text.innerHTML = '<i class="fa-solid fa-spinner fa-spin me-2" style="color: var(--color-accent);"></i>AI sedang menyusun analisis grafik...';
+        text.innerHTML = '<div class="d-flex align-items-center py-2"><i class="fa-solid fa-spinner fa-spin me-2 text-primary fa-lg"></i><span class="fw-semibold text-primary">AI sedang menyusun analisis grafik...</span></div>';
 
         let chartTitle = '';
         let chartSummary = '';
@@ -517,9 +585,9 @@
         .then(data => {
             if (data.status === 'success') {
                 text.innerHTML = data.explanation;
-                btn.innerHTML = '<i class="fa-solid fa-circle-check me-2"></i>Analisis Berhasil Ditampilkan';
+                btn.innerHTML = '<i class="fa-solid fa-circle-check me-2"></i>Analisis Ditampilkan';
                 btn.classList.add('disabled');
-                btn.style.opacity = '0.7';
+                btn.style.opacity = '0.75';
             } else {
                 text.innerHTML = data.message || 'Terjadi kesalahan saat memproses analisis.';
                 btn.innerHTML = '<i class="fa-solid fa-wand-magic-sparkles me-2"></i>Coba Lagi';
@@ -527,7 +595,7 @@
             }
         })
         .catch(err => {
-            text.innerHTML = 'Koneksi ke server AI gagal. Silakan coba lagi.';
+            text.innerHTML = '<p class="text-danger mb-0 fw-semibold">Koneksi ke server AI gagal. Silakan coba lagi.</p>';
             btn.innerHTML = '<i class="fa-solid fa-wand-magic-sparkles me-2"></i>Coba Lagi';
             btn.disabled = false;
         });

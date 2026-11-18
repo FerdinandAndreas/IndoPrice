@@ -6,18 +6,87 @@
 {% block page_subtitle %}Daftar simulasi perhitungan nilai pasar rumah komersil yang pernah dieksekusi{% endblock %}
 
 {% block content %}
-<div class="card-soft">
-    <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom">
-        <div>
-            <h5 class="fw-bold mb-0" style="color: var(--color-primary); font-size: 1.05rem;">
-                <i class="fa-solid fa-list-check me-2 text-primary"></i>Catatan Prediksi
-            </h5>
-            <small class="text-muted">Tersimpan di database lokal untuk evaluasi komparatif</small>
+<!-- 4 Metric Cards Row (Konsistensi dengan Dashboard & Prediksi) -->
+<div class="row g-3 mb-4">
+    <!-- Card 1: Total Simulasi -->
+    <div class="col-sm-6 col-xl-3 d-flex">
+        <div class="stat-pill-card w-100">
+            <div class="stat-icon-wrapper blue">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+            </div>
+            <div class="stat-info-wrapper">
+                <div class="stat-meta-label">Total Simulasi</div>
+                <h3 class="stat-meta-value" style="color: #2563EB;">{{ history_stats.total_count }} Data</h3>
+                <span class="stat-meta-sub">
+                    <i class="fa-solid fa-circle-check" style="color: #22C55E;"></i>
+                    <span style="color: #22C55E;">Tersimpan di Database</span>
+                </span>
+            </div>
         </div>
-        <a href="{% url 'prediction:predict' %}" class="btn-primary-action py-2 px-3" style="font-size: 0.8rem;">
-            <i class="fa-solid fa-plus"></i>
-            <span>Estimasi Baru</span>
-        </a>
+    </div>
+
+    <!-- Card 2: Rerata Valuasi -->
+    <div class="col-sm-6 col-xl-3 d-flex">
+        <div class="stat-pill-card w-100">
+            <div class="stat-icon-wrapper sky">
+                <i class="fa-solid fa-calculator"></i>
+            </div>
+            <div class="stat-info-wrapper">
+                <div class="stat-meta-label">Rerata Valuasi</div>
+                <h3 class="stat-meta-value" style="color: #0284C7;">{{ history_stats.avg_price_display }}</h3>
+                <span class="stat-meta-sub">
+                    <i class="fa-solid fa-chart-line" style="color: #0284C7;"></i>
+                    <span>Rata-Rata Riwayat</span>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Card 3: Valuasi Tertinggi -->
+    <div class="col-sm-6 col-xl-3 d-flex">
+        <div class="stat-pill-card w-100">
+            <div class="stat-icon-wrapper emerald">
+                <i class="fa-solid fa-arrow-trend-up"></i>
+            </div>
+            <div class="stat-info-wrapper">
+                <div class="stat-meta-label">Valuasi Tertinggi</div>
+                <h3 class="stat-meta-value" style="color: #10B981;">{{ history_stats.max_price_display }}</h3>
+                <span class="stat-meta-sub">
+                    <i class="fa-solid fa-tag" style="color: #22C55E;"></i>
+                    <span>Simulasi Puncak</span>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Card 4: Valuasi Terendah -->
+    <div class="col-sm-6 col-xl-3 d-flex">
+        <div class="stat-pill-card w-100">
+            <div class="stat-icon-wrapper amber">
+                <i class="fa-solid fa-arrow-trend-down"></i>
+            </div>
+            <div class="stat-info-wrapper">
+                <div class="stat-meta-label">Valuasi Terendah</div>
+                <h3 class="stat-meta-value" style="color: #D97706;">{{ history_stats.min_price_display }}</h3>
+                <span class="stat-meta-sub">
+                    <i class="fa-solid fa-house-chimney" style="color: #D97706;"></i>
+                    <span>Simulasi Minimum</span>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Main Table Card -->
+<div class="card-soft mb-4">
+    <div class="d-flex align-items-center mb-3 pb-2" style="border-bottom: 1px solid #E8EEF8;">
+        <div class="stat-icon-wrapper blue me-3" style="width: 42px; height: 42px; font-size: 1.1rem; border-radius: 14px; margin-bottom: 0;">
+            <i class="fa-solid fa-list-check"></i>
+        </div>
+        <div>
+            <h5 class="fw-bold mb-0" style="color: #0F2744; font-size: 1.05rem;">Catatan Riwayat Estimasi</h5>
+            <small class="fw-semibold" style="color: #7B92B2; font-size: 0.8rem;">Tersimpan di database lokal untuk evaluasi dan analisis komparatif</small>
+        </div>
     </div>
 
     {% if histories %}
@@ -36,32 +105,58 @@
                 </thead>
                 <tbody>
                     {% for h in histories %}
-                    <tr>
+                    <tr class="history-item-row{% if forloop.counter > 5 %} history-row-extra d-none{% endif %}">
                         <td class="text-muted small fw-bold">{{ forloop.counter }}</td>
                         <td>
-                            <strong style="color: var(--color-primary);">{{ h.city_regency }}</strong><br>
-                            <span class="text-muted small">{{ h.province }}{% if h.district %}, Kec. {{ h.district }}{% endif %}</span>
+                            <strong style="color: #0F2744; font-size: 0.92rem;">{{ h.city_regency }}</strong><br>
+                            <span style="color: #7B92B2; font-size: 0.8rem;">{{ h.province }}{% if h.district %}, Kec. {{ h.district }}{% endif %}</span>
                         </td>
                         <td>
-                            <span class="badge-pill-soft">LT: {{ h.land_area_m2 }} m²</span>
-                            <span class="badge-pill-soft">LB: {{ h.building_area_m2 }} m²</span>
+                            <span class="badge-pill-soft" style="background: #EFF6FF; color: #1D4ED8; border: 1px solid #BFDBFE; font-weight: 700; margin-bottom: 2px;">LT: {{ h.land_area_m2 }} m²</span>
+                            <span class="badge-pill-soft" style="background: #F8FAFC; color: #475569; border: 1px solid #E2E8F0; font-weight: 700;">LB: {{ h.building_area_m2 }} m²</span>
                         </td>
-                        <td class="text-muted small">
+                        <td class="small" style="color: #475569;">
                             {{ h.bedrooms }} KT &bull; {{ h.bathrooms }} KM ({{ h.floors }} Lt)
                         </td>
-                        <td class="text-muted small">
+                        <td class="small" style="color: #475569;">
                             Rp {{ h.price_low|rupiah }} &ndash; Rp {{ h.price_high|rupiah }}
                         </td>
                         <td>
-                            <strong style="color: var(--color-accent); font-size: 0.95rem;">
+                            <strong style="color: #2563EB; font-size: 0.96rem; font-weight: 800;">
                                 Rp {{ h.predicted_price|rupiah }}
                             </strong>
                         </td>
-                        <td class="text-muted small">{{ h.created_at|date:"d M Y, H:i" }}</td>
+                        <td class="small" style="color: #7B92B2;">{{ h.created_at|date:"d M Y, H:i" }}</td>
                     </tr>
                     {% endfor %}
                 </tbody>
             </table>
+        </div>
+
+        <div class="history-table-footer">
+            <div class="history-footer-info">
+                <span class="history-data-pill">
+                    <i class="fa-solid fa-database text-primary me-1"></i>
+                    <span id="history-visible-count">{% if histories|length > 5 %}5{% else %}{{ histories|length }}{% endif %}</span>
+                    <span class="text-muted fw-normal">/</span>
+                    <span>{{ histories|length }} Data</span>
+                </span>
+                <span class="history-footer-subtext" id="history-footer-subtext">
+                    {% if histories|length > 5 %}
+                        Menampilkan 5 simulasi terbaru dari total riwayat
+                    {% else %}
+                        Menampilkan seluruh riwayat simulasi yang tercatat
+                    {% endif %}
+                </span>
+            </div>
+
+            {% if histories|length > 5 %}
+            <button type="button" id="btn-toggle-history" class="btn-history-toggle" aria-expanded="false">
+                <span id="btn-toggle-label">Lihat Semua Riwayat</span>
+                <span class="history-count-badge" id="btn-toggle-badge">+{{ histories|length|add:"-5" }} Data</span>
+                <i id="btn-toggle-icon" class="fa-solid fa-chevron-down ms-1"></i>
+            </button>
+            {% endif %}
         </div>
     {% else %}
         <div class="text-center py-5 text-muted">
@@ -74,4 +169,56 @@
         </div>
     {% endif %}
 </div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const toggleBtn = document.getElementById('btn-toggle-history');
+    if (!toggleBtn) return;
+
+    let isExpanded = false;
+    const extraRows = document.querySelectorAll('.history-row-extra');
+    const toggleLabel = document.getElementById('btn-toggle-label');
+    const toggleBadge = document.getElementById('btn-toggle-badge');
+    const visibleCount = document.getElementById('history-visible-count');
+    const footerSubtext = document.getElementById('history-footer-subtext');
+    const totalCount = parseInt('{{ histories|length }}') || 0;
+    const remainingCount = Math.max(0, totalCount - 5);
+
+    toggleBtn.addEventListener('click', function() {
+        isExpanded = !isExpanded;
+        
+        extraRows.forEach(row => {
+            if (isExpanded) {
+                row.classList.remove('d-none');
+            } else {
+                row.classList.add('d-none');
+            }
+        });
+
+        if (isExpanded) {
+            toggleBtn.classList.add('expanded');
+            toggleBtn.setAttribute('aria-expanded', 'true');
+            if (toggleLabel) toggleLabel.textContent = 'Tampilkan Lebih Sedikit';
+            if (toggleBadge) toggleBadge.textContent = 'Ringkas';
+            if (visibleCount) visibleCount.textContent = totalCount;
+            if (footerSubtext) footerSubtext.textContent = 'Menampilkan seluruh ' + totalCount + ' riwayat simulasi tersimpan';
+        } else {
+            toggleBtn.classList.remove('expanded');
+            toggleBtn.setAttribute('aria-expanded', 'false');
+            if (toggleLabel) toggleLabel.textContent = 'Lihat Semua Riwayat';
+            if (toggleBadge) toggleBadge.textContent = '+' + remainingCount + ' Data';
+            if (visibleCount) visibleCount.textContent = '5';
+            if (footerSubtext) footerSubtext.textContent = 'Menampilkan 5 simulasi terbaru dari total riwayat';
+            
+            // Scroll halus kembali ke posisi awal tabel
+            const cardElement = document.querySelector('.card-soft');
+            if (cardElement) {
+                cardElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+    });
+});
+</script>
 {% endblock %}

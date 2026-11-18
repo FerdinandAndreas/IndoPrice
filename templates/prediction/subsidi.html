@@ -5,32 +5,105 @@
 {% block page_subtitle %}Batas maksimal harga jual Rumah Sejahtera Tapak FLPP / BP Tapera Tahun 2024 per zonasi wilayah{% endblock %}
 
 {% block content %}
-<!-- Banner edukasi regulasi domain properti -->
-<div class="card-soft mb-4" style="background: linear-gradient(135deg, rgba(219, 234, 254, 0.4) 0%, #FFFFFF 100%); border-left: 5px solid var(--color-accent);">
+<!-- 4 Metric Cards Row (Konsistensi dengan Dashboard & Prediksi) -->
+<div class="row g-3 mb-4">
+    <!-- Card 1: Plafon Terendah -->
+    <div class="col-sm-6 col-xl-3 d-flex">
+        <div class="stat-pill-card w-100">
+            <div class="stat-icon-wrapper blue">
+                <i class="fa-solid fa-tags"></i>
+            </div>
+            <div class="stat-info-wrapper">
+                <div class="stat-meta-label">Plafon Terendah</div>
+                <h3 class="stat-meta-value" style="color: #2563EB;">{{ subsidi_stats.lowest_cap }}</h3>
+                <span class="stat-meta-sub">
+                    <i class="fa-solid fa-location-dot" style="color: #2563EB;"></i>
+                    <span>Zona 1 &bull; Jawa & Sumatera</span>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Card 2: Plafon Tertinggi -->
+    <div class="col-sm-6 col-xl-3 d-flex">
+        <div class="stat-pill-card w-100">
+            <div class="stat-icon-wrapper sky">
+                <i class="fa-solid fa-money-bill-wave"></i>
+            </div>
+            <div class="stat-info-wrapper">
+                <div class="stat-meta-label">Plafon Tertinggi</div>
+                <h3 class="stat-meta-value" style="color: #0284C7;">{{ subsidi_stats.highest_cap }}</h3>
+                <span class="stat-meta-sub">
+                    <i class="fa-solid fa-location-dot" style="color: #0284C7;"></i>
+                    <span>Zona 5 &bull; Papua & Khusus</span>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Card 3: Suku Bunga KPR -->
+    <div class="col-sm-6 col-xl-3 d-flex">
+        <div class="stat-pill-card w-100">
+            <div class="stat-icon-wrapper emerald">
+                <i class="fa-solid fa-percent"></i>
+            </div>
+            <div class="stat-info-wrapper">
+                <div class="stat-meta-label">Bunga KPR FLPP</div>
+                <h3 class="stat-meta-value" style="color: #10B981;">{{ subsidi_stats.interest_rate }}</h3>
+                <span class="stat-meta-sub">
+                    <i class="fa-solid fa-calendar-check" style="color: #22C55E;"></i>
+                    <span style="color: #22C55E;">Tenor Panjang s/d 20 Thn</span>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Card 4: Kemudahan Biaya -->
+    <div class="col-sm-6 col-xl-3 d-flex">
+        <div class="stat-pill-card w-100">
+            <div class="stat-icon-wrapper amber">
+                <i class="fa-solid fa-hand-holding-dollar"></i>
+            </div>
+            <div class="stat-info-wrapper">
+                <div class="stat-meta-label">Kemudahan Biaya</div>
+                <h3 class="stat-meta-value" style="color: #D97706;">{{ subsidi_stats.downpayment }}</h3>
+                <span class="stat-meta-sub">
+                    <i class="fa-solid fa-circle-check" style="color: #D97706;"></i>
+                    <span>Bebas PPN 11% + SBUM</span>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Banner Edukasi Regulasi Domain Properti -->
+<div class="card-soft mb-4" style="background: linear-gradient(135deg, #FFFFFF 0%, #F0F6FF 100%);">
     <div class="d-flex align-items-start gap-3">
-        <div class="stat-icon-wrapper sky" style="width: 48px; height: 48px; font-size: 1.25rem;">
+        <div class="stat-icon-wrapper blue me-2" style="width: 44px; height: 44px; font-size: 1.15rem; border-radius: 14px; margin-bottom: 0;">
             <i class="fa-solid fa-scale-balanced"></i>
         </div>
         <div>
-            <h6 class="fw-bold mb-1" style="color: var(--color-primary);">Mengapa Rumah Subsidi Dipisahkan dari Model Regresi?</h6>
-            <p class="text-muted small mb-0" style="line-height: 1.6;">
-                Berbeda dengan rumah komersial yang harganya dipengaruhi oleh luas bangunan dan kondisi pasar, harga rumah subsidi di Indonesia telah diatur melalui <strong>Keputusan Menteri PUPR</strong> berdasarkan zonasi wilayah. Oleh karena itu, perbedaan spesifikasi rumah seperti luas tanah dan jumlah kamar tidak selalu memengaruhi harga jual yang telah ditetapkan pemerintah.
+            <h5 class="fw-bold mb-1" style="color: #0F2744; font-size: 1.05rem;">
+                Mengapa Rumah Subsidi Dipisahkan dari Model Regresi?
+            </h5>
+            <p class="mb-0" style="color: #475569; font-size: 0.88rem; line-height: 1.6;">
+                Berbeda dengan rumah komersial yang harganya dipengaruhi oleh mekanisme pasar, dimensi bangunan, dan lokasi detail, harga rumah subsidi diatur langsung oleh <strong>Keputusan Menteri PUPR</strong> berdasarkan zonasi wilayah nasional. Oleh karena itu, faktor fisik seperti luas tanah dan jumlah ruangan tidak selalu menjadi penentu utama harga jual resmi yang telah ditetapkan pemerintah.
             </p>
         </div>
     </div>
 </div>
 
-<!-- Tabel batasan harga jual per zonasi wilayah -->
+<!-- Tabel Batasan Harga Jual per Zonasi Wilayah -->
 <div class="card-soft mb-4">
-    <div class="d-flex align-items-center mb-3">
-        <div class="stat-icon-wrapper blue me-3" style="width: 40px; height: 40px; font-size: 1.1rem;">
+    <div class="d-flex align-items-center mb-3 pb-2" style="border-bottom: 1px solid #E8EEF8;">
+        <div class="stat-icon-wrapper blue me-3" style="width: 42px; height: 42px; font-size: 1.1rem; border-radius: 14px; margin-bottom: 0;">
             <i class="fa-solid fa-table-cells"></i>
         </div>
         <div>
-            <h5 class="fw-bold mb-0" style="color: var(--color-primary); font-size: 1.05rem;">
-                Batasan Harga Jual Rumah Sejahtera Tapak (2024)
+            <h5 class="fw-bold mb-0" style="color: #0F2744; font-size: 1.05rem;">
+                Batasan Harga Jual Rumah Sejahtera Tapak (Tahun 2024)
             </h5>
-            <small class="text-muted">Plafon harga tertinggi yang boleh dijual oleh pengembang terdaftar</small>
+            <small class="fw-semibold" style="color: #7B92B2; font-size: 0.8rem;">Plafon harga tertinggi yang boleh dijual oleh pengembang FLPP/BP Tapera terdaftar</small>
         </div>
     </div>
 
@@ -38,26 +111,28 @@
         <table class="table-custom">
             <thead>
                 <tr>
-                    <th>Zonasi Wilayah</th>
+                    <th style="width: 220px;">Zonasi Wilayah</th>
                     <th>Cakupan Provinsi / Daerah</th>
-                    <th>Tipe Hunian Standar</th>
-                    <th>Plafon Harga Maksimal</th>
+                    <th style="width: 170px;">Tipe Standar</th>
+                    <th style="width: 210px;">Plafon Harga Maksimal</th>
                 </tr>
             </thead>
             <tbody>
                 {% for z in subsidi_zones %}
                 <tr>
                     <td>
-                        <strong style="color: var(--color-primary);">{{ z.zona }}</strong>
-                    </td>
-                    <td class="text-muted small">
-                        {{ z.wilayah }}
+                        <strong style="color: #0F2744; font-size: 0.92rem;">{{ z.zona }}</strong>
                     </td>
                     <td>
-                        <span class="badge-pill-soft">{{ z.tipe_standar }}</span>
+                        <span style="color: #475569; font-size: 0.84rem;">{{ z.wilayah }}</span>
                     </td>
                     <td>
-                        <span class="badge-pill-soft green" style="font-size: 0.88rem;">
+                        <span class="badge-pill-soft" style="background: #EFF6FF; color: #1D4ED8; border: 1px solid #BFDBFE; font-weight: 700;">
+                            {{ z.tipe_standar }}
+                        </span>
+                    </td>
+                    <td>
+                        <span class="badge-pill-soft" style="background: #ECFDF5; color: #047857; border: 1.5px solid #A7F3D0; font-weight: 800; font-size: 0.9rem;">
                             {{ z.plafon_2024 }}
                         </span>
                     </td>
@@ -68,65 +143,139 @@
     </div>
 </div>
 
-<!-- informasi syarat dan ketentuan FLPP -->
+<!-- Informasi Syarat Kriteria & Fasilitas Pembiayaan -->
 <div class="row g-4">
-    <div class="col-md-6">
-        <div class="card-soft h-100">
-            <h6 class="fw-bold mb-3" style="color: var(--color-primary);">
-                <i class="fa-solid fa-circle-check me-2 text-primary"></i>Kriteria Penerima Manfaat FLPP
-            </h6>
-            <ul class="list-unstyled small text-muted mb-0">
-                <li class="mb-2 d-flex align-items-start gap-2">
-                    <i class="fa-solid fa-check text-success mt-1"></i>
-                    <span>Warga Negara Indonesia (WNI) berusia minimal 21 tahun atau telah menikah.</span>
-                </li>
-                <li class="mb-2 d-flex align-items-start gap-2">
-                    <i class="fa-solid fa-check text-success mt-1"></i>
-                    <span>Penghasilan maksimal Rp 8.000.000,- per bulan (untuk pemohon atau pasangan).</span>
-                </li>
-                <li class="mb-2 d-flex align-items-start gap-2">
-                    <i class="fa-solid fa-check text-success mt-1"></i>
-                    <span>Pemohon atau pasangan belum pernah memiliki rumah tinggal milik pribadi.</span>
-                </li>
-                <li class="mb-2 d-flex align-items-start gap-2">
-                    <i class="fa-solid fa-check text-success mt-1"></i>
-                    <span>Belum pernah menerima subsidi kepemilikan perumahan dari pemerintah.</span>
-                </li>
-                <li class="d-flex align-items-start gap-2">
-                    <i class="fa-solid fa-check text-success mt-1"></i>
-                    <span>Memiliki NPWP dan bukti pelaporan SPT Tahunan PPh Orang Pribadi.</span>
-                </li>
-            </ul>
+    <!-- Kolom 1: Kriteria Penerima Manfaat -->
+    <div class="col-lg-6 d-flex">
+        <div class="card-soft w-100 d-flex flex-column">
+            <div class="d-flex align-items-center mb-3 pb-2" style="border-bottom: 1px solid #E8EEF8;">
+                <div class="stat-icon-wrapper emerald me-3" style="width: 38px; height: 38px; font-size: 1rem; border-radius: 12px; margin-bottom: 0;">
+                    <i class="fa-solid fa-circle-check"></i>
+                </div>
+                <div>
+                    <h5 class="fw-bold mb-0" style="color: #0F2744; font-size: 1.02rem;">Kriteria Penerima Manfaat FLPP</h5>
+                    <small class="fw-semibold" style="color: #7B92B2; font-size: 0.78rem;">Persyaratan calon debitur rumah subsidi pemerintah</small>
+                </div>
+            </div>
+
+            <div class="flex-grow-1">
+                <div class="list-item-card">
+                    <div class="list-icon-squircle green">
+                        <i class="fa-solid fa-check"></i>
+                    </div>
+                    <div>
+                        <strong class="d-block" style="color: #0F2744; font-size: 0.88rem;">Kewarganegaraan & Usia</strong>
+                        <span style="color: #475569; font-size: 0.82rem;">Warga Negara Indonesia (WNI) berusia minimal 21 tahun atau telah menikah.</span>
+                    </div>
+                </div>
+
+                <div class="list-item-card">
+                    <div class="list-icon-squircle green">
+                        <i class="fa-solid fa-check"></i>
+                    </div>
+                    <div>
+                        <strong class="d-block" style="color: #0F2744; font-size: 0.88rem;">Batas Penghasilan Bulanan</strong>
+                        <span style="color: #475569; font-size: 0.82rem;">Penghasilan maksimal Rp 8.000.000,- per bulan (untuk pemohon perseorangan atau gabungan suami-istri).</span>
+                    </div>
+                </div>
+
+                <div class="list-item-card">
+                    <div class="list-icon-squircle green">
+                        <i class="fa-solid fa-check"></i>
+                    </div>
+                    <div>
+                        <strong class="d-block" style="color: #0F2744; font-size: 0.88rem;">Kepemilikan Rumah Pertama</strong>
+                        <span style="color: #475569; font-size: 0.82rem;">Pemohon dan pasangan belum pernah memiliki rumah tinggal milik pribadi sebelumnya.</span>
+                    </div>
+                </div>
+
+                <div class="list-item-card">
+                    <div class="list-icon-squircle green">
+                        <i class="fa-solid fa-check"></i>
+                    </div>
+                    <div>
+                        <strong class="d-block" style="color: #0F2744; font-size: 0.88rem;">Bebas Subsidi Sebelumnya</strong>
+                        <span style="color: #475569; font-size: 0.82rem;">Belum pernah menerima subsidi bantuan perumahan apapun dari pemerintah Republik Indonesia.</span>
+                    </div>
+                </div>
+
+                <div class="list-item-card mb-0">
+                    <div class="list-icon-squircle green">
+                        <i class="fa-solid fa-check"></i>
+                    </div>
+                    <div>
+                        <strong class="d-block" style="color: #0F2744; font-size: 0.88rem;">Administrasi Pajak Teratur</strong>
+                        <span style="color: #475569; font-size: 0.82rem;">Memiliki NPWP aktif dan bukti pelaporan SPT Tahunan PPh Orang Pribadi yang valid.</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
-    <div class="col-md-6">
-        <div class="card-soft h-100">
-            <h6 class="fw-bold mb-3" style="color: var(--color-primary);">
-                <i class="fa-solid fa-hand-holding-dollar me-2 text-primary"></i>Ketentuan Fasilitas Pembiayaan
-            </h6>
-            <ul class="list-unstyled small text-muted mb-0">
-                <li class="mb-2 d-flex align-items-start gap-2">
-                    <i class="fa-solid fa-star text-warning mt-1"></i>
-                    <span><strong>Suku Bunga Tetap (Fixed):</strong> 5% per tahun flat sepanjang masa tenor kredit.</span>
-                </li>
-                <li class="mb-2 d-flex align-items-start gap-2">
-                    <i class="fa-solid fa-star text-warning mt-1"></i>
-                    <span><strong>Tenor Jangka Panjang:</strong> Jangka waktu cicilan KPR hingga 20 tahun.</span>
-                </li>
-                <li class="mb-2 d-flex align-items-start gap-2">
-                    <i class="fa-solid fa-star text-warning mt-1"></i>
-                    <span><strong>Uang Muka (DP) Terjangkau:</strong> Mulai dari 1% dari total nilai transaksi properti.</span>
-                </li>
-                <li class="mb-2 d-flex align-items-start gap-2">
-                    <i class="fa-solid fa-star text-warning mt-1"></i>
-                    <span><strong>Bebas PPN:</strong> Dibebaskan dari pengenaan Pajak Pertambahan Nilai 11%.</span>
-                </li>
-                <li class="d-flex align-items-start gap-2">
-                    <i class="fa-solid fa-star text-warning mt-1"></i>
-                    <span><strong>Bantuan Uang Muka (SBUM):</strong> Subsidi bantuan tunai hingga Rp 4.000.000,-.</span>
-                </li>
-            </ul>
+    <!-- Kolom 2: Ketentuan Fasilitas Pembiayaan -->
+    <div class="col-lg-6 d-flex">
+        <div class="card-soft w-100 d-flex flex-column">
+            <div class="d-flex align-items-center mb-3 pb-2" style="border-bottom: 1px solid #E8EEF8;">
+                <div class="stat-icon-wrapper amber me-3" style="width: 38px; height: 38px; font-size: 1rem; border-radius: 12px; margin-bottom: 0;">
+                    <i class="fa-solid fa-hand-holding-dollar"></i>
+                </div>
+                <div>
+                    <h5 class="fw-bold mb-0" style="color: #0F2744; font-size: 1.02rem;">Ketentuan Fasilitas Pembiayaan</h5>
+                    <small class="fw-semibold" style="color: #7B92B2; font-size: 0.78rem;">Benefit dan skema kredit bersubsidi FLPP</small>
+                </div>
+            </div>
+
+            <div class="flex-grow-1">
+                <div class="list-item-card">
+                    <div class="list-icon-squircle amber">
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <div>
+                        <strong class="d-block" style="color: #0F2744; font-size: 0.88rem;">Suku Bunga Tetap (Fixed)</strong>
+                        <span style="color: #475569; font-size: 0.82rem;">Suku bunga hanya 5% per tahun flat dan tidak akan naik sepanjang masa tenor cicilan.</span>
+                    </div>
+                </div>
+
+                <div class="list-item-card">
+                    <div class="list-icon-squircle amber">
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <div>
+                        <strong class="d-block" style="color: #0F2744; font-size: 0.88rem;">Tenor Pinjaman Fleksibel</strong>
+                        <span style="color: #475569; font-size: 0.82rem;">Jangka waktu angsuran KPR sangat panjang, dapat diambil hingga maksimal 20 tahun.</span>
+                    </div>
+                </div>
+
+                <div class="list-item-card">
+                    <div class="list-icon-squircle amber">
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <div>
+                        <strong class="d-block" style="color: #0F2744; font-size: 0.88rem;">Uang Muka (DP) Ringan</strong>
+                        <span style="color: #475569; font-size: 0.82rem;">DP terjangkau mulai dari 1% dari total nilai transaksi properti yang diajukan.</span>
+                    </div>
+                </div>
+
+                <div class="list-item-card">
+                    <div class="list-icon-squircle amber">
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <div>
+                        <strong class="d-block" style="color: #0F2744; font-size: 0.88rem;">Pembebasan PPN 11%</strong>
+                        <span style="color: #475569; font-size: 0.82rem;">Dibebaskan 100% dari pengenaan Pajak Pertambahan Nilai (PPN) transaksi perumahan.</span>
+                    </div>
+                </div>
+
+                <div class="list-item-card mb-0">
+                    <div class="list-icon-squircle amber">
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <div>
+                        <strong class="d-block" style="color: #0F2744; font-size: 0.88rem;">Bantuan Uang Muka Tunai (SBUM)</strong>
+                        <span style="color: #475569; font-size: 0.82rem;">Mendapatkan subsidi bantuan tunai tambahan sebesar Rp 4.000.000,- langsung dari pemerintah.</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

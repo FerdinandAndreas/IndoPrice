@@ -44,20 +44,20 @@ def create_province_chart(df):
         fig.update_layout(
             paper_bgcolor='rgba(0,0,0,0)',
             plot_bgcolor='rgba(0,0,0,0)',
-            margin=dict(l=140, r=40, t=15, b=35),
-            height=360,
-            bargap=0.28,
+            margin=dict(l=175, r=60, t=20, b=45),
+            height=420,
+            bargap=0.25,
             xaxis=dict(
-                title=dict(text='Rata-rata Harga (Juta Rp)', font=dict(family='Plus Jakarta Sans', size=11, color='#5B708B')),
-                gridcolor='#DBEAFE',
-                zerolinecolor='#DBEAFE',
+                title=dict(text='Rata-rata Harga (Juta Rp)', font=dict(family='Plus Jakarta Sans', size=12, color='#0F2744', weight='bold')),
+                gridcolor='#E2E8F0',
+                zerolinecolor='#CBD5E1',
                 range=[0, max_price * 1.25],
-                tickfont=dict(color='#5B708B', family='Plus Jakarta Sans', size=11)
+                tickfont=dict(color='#1E293B', family='Plus Jakarta Sans', size=11, weight='bold')
             ),
             yaxis=dict(
                 gridcolor='rgba(0,0,0,0)',
                 ticksuffix='   ',
-                tickfont=dict(color='#0F2744', family='Plus Jakarta Sans', size=11)
+                tickfont=dict(color='#0F2744', family='Plus Jakarta Sans', size=11, weight='bold')
             ),
             font=dict(family='Plus Jakarta Sans')
         )
@@ -89,10 +89,10 @@ def create_price_scatter_chart(df):
             y=y_price_miliar,
             mode='markers',
             marker=dict(
-                size=6.5,
+                size=7,
                 color='#2563EB',
-                opacity=0.55,
-                line=dict(width=0.8, color='#1D4ED8')
+                opacity=0.65,
+                line=dict(width=1, color='#1E40AF')
             ),
             hovertemplate="Luas Bangunan: <b>%{x} m²</b><br>Harga: <b>Rp %{y:.2f} Miliar</b><extra></extra>"
         ))
@@ -100,19 +100,19 @@ def create_price_scatter_chart(df):
         fig.update_layout(
             paper_bgcolor='rgba(0,0,0,0)',
             plot_bgcolor='rgba(0,0,0,0)',
-            margin=dict(l=65, r=30, t=20, b=45),
-            height=340,
+            margin=dict(l=75, r=40, t=25, b=50),
+            height=420,
             xaxis=dict(
-                title=dict(text='Luas Bangunan (m²)', font=dict(family='Plus Jakarta Sans', size=11, color='#5B708B')),
-                gridcolor='#DBEAFE',
-                zerolinecolor='#DBEAFE',
-                tickfont=dict(color='#5B708B', family='Plus Jakarta Sans', size=11)
+                title=dict(text='Luas Bangunan (m²)', font=dict(family='Plus Jakarta Sans', size=12, color='#0F2744', weight='bold')),
+                gridcolor='#E2E8F0',
+                zerolinecolor='#CBD5E1',
+                tickfont=dict(color='#1E293B', family='Plus Jakarta Sans', size=11, weight='bold')
             ),
             yaxis=dict(
-                title=dict(text='Harga Pasar (Miliar Rp)', font=dict(family='Plus Jakarta Sans', size=11, color='#5B708B')),
-                gridcolor='#DBEAFE',
-                zerolinecolor='#DBEAFE',
-                tickfont=dict(color='#5B708B', family='Plus Jakarta Sans', size=11)
+                title=dict(text='Harga Pasar (Miliar Rp)', font=dict(family='Plus Jakarta Sans', size=12, color='#0F2744', weight='bold')),
+                gridcolor='#E2E8F0',
+                zerolinecolor='#CBD5E1',
+                tickfont=dict(color='#1E293B', family='Plus Jakarta Sans', size=11, weight='bold')
             ),
             font=dict(family='Plus Jakarta Sans')
         )

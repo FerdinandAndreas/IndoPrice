@@ -40,19 +40,19 @@ def dashboard_view(request):
         chart_prov_json = create_province_chart(df)
         chart_price_dist_json = create_price_scatter_chart(df)
 
-    recent_predictions = PredictionHistory.objects.all()[:5]
-
     context = {
         'stats': stats,
         'chart_prov_json': chart_prov_json,
-        'chart_price_dist_json': chart_price_dist_json,
-        'recent_predictions': recent_predictions
+        'chart_price_dist_json': chart_price_dist_json
     }
     return render(request, 'prediction/dashboard.html', context)
 
 
 def predict_view(request):
     """Halaman Form Estimasi Harga Rumah Komersil dengan Explainable AI (XAI) & Analisis Pasar"""
+    df_all = get_clean_dataframe()
+    stats = get_dashboard_stats(df_all, is_model_active=(PredictionConfig.model is not None))
+
     locations = PredictionConfig.locations or {}
     provinces = sorted(list(locations.keys()))
 
@@ -200,6 +200,7 @@ def predict_view(request):
             result = {'error': f"Input numerik tidak valid: {e}"}
 
     context = {
+        'stats': stats,
         'provinces': provinces,
         'locations_json': json.dumps(locations),
         'result': result,
@@ -244,13 +245,49 @@ def subsidi_view(request):
             'tipe_standar': 'Tipe 36/90 s/d 36/120'
         }
     ]
-    return render(request, 'prediction/subsidi.html', {'subsidi_zones': subsidi_zones})
+    subsidi_stats = {
+        'lowest_cap': 'Rp 166 Juta',
+        'highest_cap': 'Rp 240 Juta',
+        'interest_rate': '5% Fixed',
+        'downpayment': 'Mulai 1%',
+    }
+    return render(request, 'prediction/subsidi.html', {
+        'subsidi_zones': subsidi_zones,
+        'subsidi_stats': subsidi_stats
+    })
 
 
 def history_view(request):
     """Halaman Riwayat Prediksi Pengguna"""
-    histories = PredictionHistory.objects.all()[:50]
-    return render(request, 'prediction/history.html', {'histories': histories})
+    from django.db.models import Avg, Max, Min
+    histories = PredictionHistory.objects.all()[:100]
+    total_count = PredictionHistory.objects.count()
+
+    agg = PredictionHistory.objects.aggregate(
+        avg_price=Avg('predicted_price'),
+        max_price=Max('predicted_price'),
+        min_price=Min('predicted_price')
+    )
+
+    def _format_short(val):
+        if not val:
+            return "0"
+        if val >= 1_000_000_000:
+            return f"Rp {val / 1_000_000_000:.2f} M".replace('.', ',')
+        elif val >= 1_000_000:
+            return f"Rp {val / 1_000_000:.0f} Jt"
+        return f"Rp {int(val):,}".replace(',', '.')
+
+    history_stats = {
+        'total_count': total_count,
+        'avg_price_display': _format_short(agg['avg_price']),
+        'max_price_display': _format_short(agg['max_price']),
+        'min_price_display': _format_short(agg['min_price']),
+    }
+    return render(request, 'prediction/history.html', {
+        'histories': histories,
+        'history_stats': history_stats
+    })
 
 
 # ========================================================

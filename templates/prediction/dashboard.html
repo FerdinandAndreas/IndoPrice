@@ -6,8 +6,9 @@
 {% block page_subtitle %}Analisis perumahan komersil Indonesia berbasis 44.000+ data transaksi yang tervalidasi{% endblock %}
 
 {% block content %}
+<!-- 4 Metric Cards Row -->
 <div class="row g-3 mb-4">
-    <!-- Card 1 Data Komersil Bersih -->
+    <!-- Card 1 Data Properti -->
     <div class="col-sm-6 col-xl-3 d-flex">
         <div class="stat-pill-card w-100">
             <div class="stat-icon-wrapper blue">
@@ -16,8 +17,9 @@
             <div class="stat-info-wrapper">
                 <div class="stat-meta-label">Data Properti</div>
                 <h3 class="stat-meta-value">{{ stats.total_properties }}</h3>
-                <span class="stat-meta-sub" style="color: #2563EB;">
-                    <i class="fa-solid fa-circle-check"></i>Data Tervalidasi
+                <span class="stat-meta-sub">
+                    <i class="fa-solid fa-circle-check" style="color: #22C55E;"></i>
+                    <span style="color: #22C55E;">Data Tervalidasi</span>
                 </span>
             </div>
         </div>
@@ -31,9 +33,10 @@
             </div>
             <div class="stat-info-wrapper">
                 <div class="stat-meta-label">Rata-Rata Harga</div>
-                <h3 class="stat-meta-value" title="{{ stats.avg_price }}">{{ stats.avg_price_display }}</h3>
-                <span class="stat-meta-sub" style="color: #64748B;">
-                    <i class="fa-solid fa-chart-line"></i>Harga Properti
+                <h3 class="stat-meta-value" title="{{ stats.avg_price }}" style="color: #2563EB;">{{ stats.avg_price_display }}</h3>
+                <span class="stat-meta-sub">
+                    <i class="fa-solid fa-chart-line" style="color: #94A3B8;"></i>
+                    <span>Harga Properti</span>
                 </span>
             </div>
         </div>
@@ -48,14 +51,15 @@
             <div class="stat-info-wrapper">
                 <div class="stat-meta-label">Cakupan Wilayah</div>
                 <h3 class="stat-meta-value">{{ stats.total_provinces }} Provinsi</h3>
-                <span class="stat-meta-sub" style="color: #0284C7;">
-                    <i class="fa-solid fa-earth-asia"></i>Wilayah Terdata
+                <span class="stat-meta-sub">
+                    <i class="fa-solid fa-earth-asia" style="color: #94A3B8;"></i>
+                    <span>Wilayah Terdata</span>
                 </span>
             </div>
         </div>
     </div>
 
-    <!-- Card 4 Performa Model (Nilai R² Terbaik) -->
+    <!-- Card 4 Performa Model (R²) -->
     <div class="col-sm-6 col-xl-3 d-flex">
         <div class="stat-pill-card w-100">
             <div class="stat-icon-wrapper emerald">
@@ -63,174 +67,89 @@
             </div>
             <div class="stat-info-wrapper">
                 <div class="stat-meta-label">Performa Model</div>
-                <h3 class="stat-meta-value" style="color: #059669;">
-                    R² {{ stats.r2_score }}
-                </h3>
-                <span class="stat-meta-sub" style="color: #059669;">
-                    <i class="fa-solid fa-circle-check"></i>Akurasi {{ stats.r2_percentage }}
+                <h3 class="stat-meta-value" style="color: #10B981;">R² {{ stats.r2_score }}</h3>
+                <span class="stat-meta-sub">
+                    <i class="fa-solid fa-circle-check" style="color: #22C55E;"></i>
+                    <span style="color: #22C55E;">Akurasi {{ stats.r2_percentage }}</span>
                 </span>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Main Section Charts dan Highlight Card Row -->
+<!-- Main Section: 2 Charts Stacked Vertically in 2 Rows (100% Width) -->
 <div class="row g-4 mb-4">
-    <!-- Chart 1 rata rata harga provinsi -->
-    <div class="col-lg-7">
-        <div class="card-soft h-100">
-            <div class="d-flex justify-content-between align-items-center mb-3">
+    <!-- Chart 1: Top Provinsi Rata-rata Harga Tertinggi -->
+    <div class="col-12">
+        <div class="card-soft w-100">
+            <div class="d-flex justify-content-between align-items-center mb-3 pb-2" style="border-bottom: 1px solid #E8EEF8;">
                 <div>
-                    <h5 class="fw-bold mb-0" style="color: var(--color-primary); font-size: 1.05rem;">
-                        <i class="fa-solid fa-chart-column me-2 text-primary"></i>Top Provinsi Rata-rata Harga Tertinggi
+                    <h5 class="fw-bold mb-1" style="color: #0F2744; font-size: 1.05rem;">
+                        <i class="fa-solid fa-chart-column me-2" style="color: #2563EB;"></i>Top Provinsi Rata-rata Harga Tertinggi
                     </h5>
-                    <small class="text-muted">Dalam satuan Juta Rupiah</small>
+                    <small class="fw-semibold" style="color: #94A3B8; font-size: 0.8rem;">Dalam satuan Juta Rupiah (Rerata nilai pasar)</small>
                 </div>
-                <button class="btn btn-sm rounded-pill px-3 fw-bold" style="background-color: var(--color-surface); color: var(--color-accent); border: 1px solid var(--color-border);" onclick="explainChart('prov')">
-                    <i class="fa-solid fa-wand-magic-sparkles me-1"></i>Analisis
+                <button class="btn btn-sm rounded-pill px-3 fw-bold shadow-sm" style="background-color: #EFF6FF; color: #1D4ED8; border: 1.5px solid #BFDBFE; font-size: 0.82rem;" onclick="explainChart('prov')" title="Analisis data grafik menggunakan AI">
+                    <i class="fa-solid fa-wand-magic-sparkles me-1 text-primary"></i>Analisis AI
                 </button>
             </div>
 
-            {% if chart_prov_json %}
-                <div id="chart-prov"></div>
-            {% else %}
-                <div class="text-center py-5 text-muted">
-                    <i class="fa-solid fa-chart-pie fa-2x mb-2 text-primary opacity-50"></i>
-                    <p class="mb-0 small">Data visualisasi sedang disiapkan.</p>
-                </div>
-            {% endif %}
+            <div>
+                {% if chart_prov_json %}
+                    <div id="chart-prov" style="min-height: 420px; width: 100%;"></div>
+                {% else %}
+                    <div class="text-center py-5 text-muted">
+                        <i class="fa-solid fa-chart-pie fa-2x mb-2 text-primary opacity-50"></i>
+                        <p class="mb-0 small fw-bold" style="color: #94A3B8;">Data visualisasi sedang disiapkan.</p>
+                    </div>
+                {% endif %}
+            </div>
 
-            <div id="ai-box-prov" class="insight-box d-none">
-                <div class="insight-header">
+            <div id="ai-box-prov" class="insight-box d-none mt-3">
+                <div class="insight-header" style="color: #1D4ED8; font-weight: 800;">
                     <i class="fa-solid fa-sparkles"></i>
-                    <span>Ringkasan Analis Data</span>
+                    <span>Ringkasan Analis Data AI</span>
                 </div>
-                <p id="ai-text-prov" class="insight-body"></p>
+                <div id="ai-text-prov" class="insight-body mt-1" style="color: #0F2744; font-size: 0.88rem; line-height: 1.6;"></div>
             </div>
         </div>
     </div>
 
-    <!-- Right Highlight Column (Light Gradient Accent Card) -->
-    <div class="col-lg-5">
-        <div class="banner-highlight-card mb-4">
-            <span class="banner-tag">Estimasi Cepat</span>
-            <h3>Cek Nilai Wajar Rumah</h3>
-            <p class="small mb-3" style="opacity: 0.92; line-height: 1.5;">
-                Dapatkan perkiraan harga rumah komersial berdasarkan luas tanah, luas bangunan, dan lokasi menggunakan teknologi Machine Learning
-            </p>
-            <a href="{% url 'prediction:predict' %}" class="btn rounded-pill px-4 fw-bold shadow-sm btn-sm" style="background-color: #FFFFFF; color: var(--color-accent);">
-                <i class="fa-solid fa-calculator me-2"></i>Buka Kalkulator Estimasi
-            </a>
-        </div>
-
-        <!-- Quick Facts Pill Card -->
-        <div class="card-soft">
-            <h6 class="fw-bold mb-3" style="color: var(--color-primary);">
-                <i class="fa-solid fa-circle-info me-2" style="color: var(--color-accent);"></i>Karakteristik Pasar Properti
-            </h6>
-            <div class="d-flex align-items-center justify-content-between py-2 border-bottom">
-                <span class="text-muted small">Segmentasi Pasar</span>
-                <span class="badge-pill-soft accent">Komersil Bebas</span>
+    <!-- Chart 2: Korelasi Luas Bangunan vs Harga Pasar -->
+    <div class="col-12">
+        <div class="card-soft w-100">
+            <div class="d-flex justify-content-between align-items-center mb-3 pb-2" style="border-bottom: 1px solid #E8EEF8;">
+                <div>
+                    <h5 class="fw-bold mb-1" style="color: #0F2744; font-size: 1.05rem;">
+                        <i class="fa-solid fa-chart-line me-2" style="color: #2563EB;"></i>Korelasi Luas Bangunan vs Harga Pasar
+                    </h5>
+                    <small class="fw-semibold" style="color: #94A3B8; font-size: 0.8rem;">Distribusi sebaran harga properti terhadap dimensi fisik</small>
+                </div>
+                <button class="btn btn-sm rounded-pill px-3 fw-bold shadow-sm" style="background-color: #EFF6FF; color: #1D4ED8; border: 1.5px solid #BFDBFE; font-size: 0.82rem;" onclick="explainChart('scatter')" title="Analisis korelasi data menggunakan AI">
+                    <i class="fa-solid fa-wand-magic-sparkles me-1 text-primary"></i>Analisis AI
+                </button>
             </div>
-            <div class="d-flex align-items-center justify-content-between py-2 border-bottom">
-                <span class="text-muted small">Plafon Rumah Subsidi</span>
-                <a href="{% url 'prediction:subsidi' %}" class="small text-decoration-none fw-bold" style="color: var(--color-accent);">
-                    Lihat Kepmen PUPR &rarr;
-                </a>
+
+            <div>
+                {% if chart_price_dist_json %}
+                    <div id="chart-scatter" style="min-height: 420px; width: 100%;"></div>
+                {% else %}
+                    <div class="text-center py-5 text-muted">
+                        <i class="fa-solid fa-chart-line fa-2x mb-2 text-primary opacity-50"></i>
+                        <p class="mb-0 small fw-bold" style="color: #94A3B8;">Data sebaran harga belum tersedia.</p>
+                    </div>
+                {% endif %}
             </div>
-            <div class="d-flex align-items-center justify-content-between pt-2">
-                <span class="text-muted small">Pemisahan Model</span>
-                <span class="badge-pill-soft green">Tervalidasi Bebas Leakage</span>
+
+            <div id="ai-box-scatter" class="insight-box d-none mt-3">
+                <div class="insight-header" style="color: #1D4ED8; font-weight: 800;">
+                    <i class="fa-solid fa-sparkles"></i>
+                    <span>Ringkasan Korelasi Pasar AI</span>
+                </div>
+                <div id="ai-text-scatter" class="insight-body mt-1" style="color: #0F2744; font-size: 0.88rem; line-height: 1.6;"></div>
             </div>
         </div>
     </div>
-</div>
-
-<!-- Chart 2 Luas Bangunan vs Harga -->
-<div class="card-soft mb-4">
-    <div class="d-flex justify-content-between align-items-center mb-3">
-        <div>
-            <h5 class="fw-bold mb-0" style="color: var(--color-primary); font-size: 1.05rem;">
-                <i class="fa-solid fa-chart-line me-2 text-primary"></i>Korelasi Luas Bangunan vs Harga Pasar
-            </h5>
-            <small class="text-muted">Distribusi sebaran harga properti komersil terhadap dimensi bangunan</small>
-        </div>
-        <button class="btn btn-sm rounded-pill px-3 fw-bold" style="background-color: var(--color-surface); color: var(--color-accent); border: 1px solid var(--color-border);" onclick="explainChart('scatter')">
-            <i class="fa-solid fa-wand-magic-sparkles me-1"></i>Analisis Korelasi
-        </button>
-    </div>
-
-    {% if chart_price_dist_json %}
-        <div id="chart-scatter"></div>
-    {% else %}
-        <div class="text-center py-5 text-muted">
-            <p class="mb-0 small">Data sebaran harga belum tersedia.</p>
-        </div>
-    {% endif %}
-
-    <div id="ai-box-scatter" class="insight-box d-none">
-        <div class="insight-header">
-            <i class="fa-solid fa-sparkles"></i>
-            <span>Ringkasan Korelasi Pasar</span>
-        </div>
-        <p id="ai-text-scatter" class="insight-body"></p>
-    </div>
-</div>
-
-<!-- Riwayat Prediksi Terakhir -->
-<div class="card-soft">
-    <div class="d-flex justify-content-between align-items-center mb-3">
-        <h5 class="fw-bold mb-0" style="color: var(--color-primary); font-size: 1.05rem;">
-            <i class="fa-solid fa-clock-rotate-left me-2 text-primary"></i>Estimasi Terbaru yang Dihitung
-        </h5>
-        <a href="{% url 'prediction:history' %}" class="btn btn-sm btn-link text-decoration-none fw-bold" style="color: var(--color-accent);">
-            Lihat Semua Riwayat &rarr;
-        </a>
-    </div>
-
-    {% if recent_predictions %}
-        <div class="table-responsive">
-            <table class="table-custom">
-                <thead>
-                    <tr>
-                        <th>Lokasi Wilayah</th>
-                        <th>Spesifikasi Properti</th>
-                        <th>Fasilitas</th>
-                        <th>Estimasi Wajar</th>
-                        <th>Waktu</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for h in recent_predictions %}
-                    <tr>
-                        <td>
-                            <strong>{{ h.city_regency }}</strong><br>
-                            <span class="text-muted small">{{ h.province }}</span>
-                        </td>
-                        <td>
-                            <span class="badge-pill-soft">LT: {{ h.land_area_m2 }} m²</span>
-                            <span class="badge-pill-soft">LB: {{ h.building_area_m2 }} m²</span>
-                        </td>
-                        <td class="text-muted small">
-                            {{ h.bedrooms }} KT &bull; {{ h.bathrooms }} KM ({{ h.floors }} Lt)
-                        </td>
-                        <td>
-                            <strong style="color: var(--color-accent); font-size: 0.95rem;">
-                                Rp {{ h.predicted_price|rupiah }}
-                            </strong>
-                        </td>
-                        <td class="text-muted small">{{ h.created_at|timesince }} lalu</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
-    {% else %}
-        <div class="text-center py-4 text-muted">
-            <i class="fa-regular fa-folder-open mb-2 fa-2x opacity-50"></i>
-            <p class="mb-0 small">Belum ada riwayat estimasi properti. Silakan hitung melalui menu Prediksi Harga.</p>
-        </div>
-    {% endif %}
 </div>
 {% endblock %}
 
@@ -249,7 +168,9 @@
             try {
                 const chartProvData = JSON.parse(provEl.textContent);
                 Plotly.newPlot('chart-prov', chartProvData.data, chartProvData.layout, {responsive: true, displayModeBar: false});
-            } catch(e) {}
+            } catch(e) {
+                console.error("Error plotting prov chart:", e);
+            }
         }
 
         const scatterEl = document.getElementById('chart-scatter-data');
@@ -257,8 +178,19 @@
             try {
                 const chartScatterData = JSON.parse(scatterEl.textContent);
                 Plotly.newPlot('chart-scatter', chartScatterData.data, chartScatterData.layout, {responsive: true, displayModeBar: false});
-            } catch(e) {}
+            } catch(e) {
+                console.error("Error plotting scatter chart:", e);
+            }
         }
+
+        window.addEventListener('resize', function() {
+            if (document.getElementById('chart-prov')) {
+                Plotly.Plots.resize('chart-prov');
+            }
+            if (document.getElementById('chart-scatter')) {
+                Plotly.Plots.resize('chart-scatter');
+            }
+        });
     });
 
     function explainChart(chartType) {
@@ -266,7 +198,7 @@
         const text = document.getElementById('ai-text-' + chartType);
 
         box.classList.remove('d-none');
-        text.innerHTML = '<i class="fa-solid fa-spinner fa-spin me-2" style="color: var(--color-accent);"></i>Sedang menyusun analisis data aktual...';
+        text.innerHTML = '<div class="d-flex align-items-center py-2"><i class="fa-solid fa-spinner fa-spin me-2 text-primary fa-lg"></i><span class="fw-semibold text-primary">Sedang menyusun analisis data aktual...</span></div>';
 
         fetch("{% url 'prediction:api_ai_explain' %}", {
             method: 'POST',
@@ -284,7 +216,7 @@
             text.innerHTML = data.explanation || "Analisis berhasil diperbarui.";
         })
         .catch(err => {
-            text.innerHTML = "Koneksi analisis sedang dialihkan ke ringkasan heuristik pasar.";
+            text.innerHTML = "<p class='mb-0 text-danger fw-semibold'>Koneksi analisis sedang dialihkan ke ringkasan heuristik pasar.</p>";
         });
     }
 </script>
