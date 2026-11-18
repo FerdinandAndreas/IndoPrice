@@ -1,4 +1,4 @@
-# IndoPrice — Sistem Prediksi Harga Rumah di Indonesia
+# IndoPrice - Sistem Prediksi Harga Rumah di Indonesia
 
 [![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
 [![Django](https://img.shields.io/badge/Django-5.x-092E20?logo=django&logoColor=white)](https://www.djangoproject.com/)
