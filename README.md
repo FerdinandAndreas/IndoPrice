@@ -6,16 +6,16 @@
 [![Plotly](https://img.shields.io/badge/Plotly-Interactive-3F4F75?logo=plotly&logoColor=white)](https://plotly.com/)
 [![Gemini AI](https://img.shields.io/badge/Google%20Gemini-API-4285F4?logo=google&logoColor=white)](https://ai.google.dev/)
 
-> Tugas Akhir Mata Kuliah **Sistem Cerdas** — Pertemuan 14  
-> **Ferdinand Andreas Saputra** — NIM 253307027
+> Tugas Mata Kuliah **Sistem Cerdas** - Pertemuan 14  
+> **Ferdinand Andreas Saputra** NIM 253307027
 
 ---
 
 ## Tentang Proyek
 
-IndoPrice adalah aplikasi web yang membantu mengestimasi harga wajar rumah komersil di Indonesia menggunakan Machine Learning. Pengguna cukup memasukkan spesifikasi rumah (lokasi, luas tanah, luas bangunan, jumlah kamar), dan sistem akan memberikan estimasi harga beserta analisis pasar lokal secara otomatis.
+IndoPrice adalah aplikasi web yang membantu mengestimasi harga wajar rumah komersil di Indonesia menggunakan Machine Learning. Pengguna cukup memasukkan spesifikasi rumah seperti lokasi, luas tanah, luas bangunan, dan jumlah kamar. Kemudian sistem akan memberikan estimasi harga beserta dengan analisis pasar lokal secara otomatis.
 
-Proyek ini juga mencakup halaman informasi rumah subsidi (FLPP/BP Tapera) yang plafon harganya diatur oleh Keputusan Menteri PUPR.
+Aplikasi ini juga mencakup halaman informasi untuk rumah subsidi (FLPP/BP Tapera) yang plafon harganya sudah diatur oleh Keputusan Menteri PUPR.
 
 ---
 
@@ -28,13 +28,13 @@ Proyek ini juga mencakup halaman informasi rumah subsidi (FLPP/BP Tapera) yang p
 | **Analisis Pasar Lokal** | Pembanding properti serupa di kecamatan/kota/provinsi yang sama |
 | **Explainable AI** | Penjelasan faktor apa yang mendorong atau menahan nilai rumah |
 | **AI Analyst** | Narasi analisis otomatis dari Google Gemini, ada fallback jika kuota habis |
-| **Chatbot** | Asisten tanya-jawab seputar properti dan cara pakai IndoPrice |
+| **Chatbot** | Asisten tanya jawab seputar properti dan cara pakai IndoPrice |
 | **Rumah Subsidi** | Tabel plafon harga FLPP per zona wilayah (Kepmen PUPR) |
 | **Riwayat Estimasi** | Semua simulasi tersimpan di database untuk referensi |
 
 ---
 
-## Screenshot
+## Antarmuka Aplikasi
 
 ### Dashboard Utama
 ![Dashboard](static/img/Dashboard%20Utama.png)
@@ -55,7 +55,7 @@ Proyek ini juga mencakup halaman informasi rumah subsidi (FLPP/BP Tapera) yang p
 - **Visualisasi**: Plotly (grafik interaktif)
 - **Generative AI**: Google Gemini API
 - **Frontend**: Bootstrap 5, Font Awesome 6, Custom CSS
-- **Database**: SQLite3 (dev) / PostgreSQL-ready
+- **Database**: SQLite3 (dev)
 
 ---
 
@@ -75,7 +75,7 @@ Harga ditransformasi dengan log (`ln(1 + harga)`) sebelum dilatih, lalu dikembal
 |---|---|---|---|---|
 | Ridge Regression | Rp 342.500.000 | 0.7210 | 28.40% | Baseline |
 | LightGBM | Rp 198.400.000 | 0.8520 | 18.15% | Komparasi |
-| **Random Forest** | **Rp 174.200.000** | **0.8712** | **15.42%** | ✅ Model terpilih |
+| **Random Forest** | **Rp 174.200.000** | **0.8712** | **15.42%** | Model terpilih |
 
 Model terbaik disimpan ke `models/best_model.joblib` dan langsung dipakai oleh Django untuk prediksi real-time.
 
@@ -127,19 +127,13 @@ ALLOWED_HOSTS=127.0.0.1,localhost
 GEMINI_API_KEY=masukkan_api_key_gemini_kamu_disini
 ```
 
-> `GEMINI_API_KEY` bisa dikosongkan — aplikasi tetap berjalan normal dengan fallback otomatis (tanpa AI interaktif).
+> `GEMINI_API_KEY` bisa dikosongkan, aplikasi tetap berjalan normal dengan fallback otomatis (tanpa AI interaktif)
 
 ### 5. Migrasi database
 
 ```bash
 python manage.py migrate
 ```
-
-> **Database sudah disertakan** (`db.sqlite3`) dengan 47 riwayat prediksi dan akun admin bawaan.  
-> Kalau database di-reset, muat ulang data dengan:
-> ```bash
-> python manage.py loaddata data/seed_data.json
-> ```
 
 ### 6. Jalankan server
 
@@ -162,4 +156,4 @@ python scripts/train_model.py
 
 ---
 
-*IndoPrice © 2026*
+*IndoPrice Ferdinand Andreas Saputra © 2026*
