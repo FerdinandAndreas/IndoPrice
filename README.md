@@ -7,12 +7,12 @@
 [![Gemini AI](https://img.shields.io/badge/Google%20Gemini-Generative%20AI-4285F4.svg?logo=google&logoColor=white)](https://ai.google.dev/)
 
 > **Tugas Mata Kuliah Sistem Cerdas**  
-> **Nama Pengembang:** Ferdinand Andreas Saputra  
-> **NIM:** 253307027  
+> **Nama :** Ferdinand Andreas Saputra  
+> **NIM :** 253307027  
 
 ---
 
-## 1. Latar Belakang & Deskripsi Proyek
+## Latar Belakang & Deskripsi Proyek
 
 Pasar properti perumahan di Indonesia memiliki tingkat disparitas harga yang sangat tinggi serta asimetri informasi antara penjual, agen, dan pembeli. Menentukan apakah suatu harga rumah komersil tergolong wajar (*fair market value*), *overpriced*, atau *underpriced* seringkali menjadi kendala besar. Di sisi lain, perumahan di Indonesia terbagi ke dalam dua ekosistem:
 1. **Rumah Komersil**: Ditentukan oleh mekanisme pasar bebas berbasis spesifikasi fisik dan kekuatan ekonomi wilayah.
@@ -22,54 +22,7 @@ Pasar properti perumahan di Indonesia memiliki tingkat disparitas harga yang san
 
 ---
 
-## 2. Arsitektur Sistem Cerdas
-
-```text
-[ Dataset Mentah Properti ]
-            │
-            ▼
-┌───────────────────────────────┐
-│  ETL & Pembersihan Data       │ ➔ scripts/clean_dataset.py
-│  - Filter Outlier & Logika Fisik │   (Pemisahan Komersil vs Subsidi)
-│  - Hapus Data Leakage         │
-└──────────────┬────────────────┘
-               │
-               ▼
-┌───────────────────────────────┐
-│  Pipeline Pelatihan Model     │ ➔ scripts/train_model.py
-│  - Log-Transform Target       │   (Benchmark: Ridge, RF, LightGBM)
-│  - ColumnTransformer & OHE    │   (Simpan: models/best_model.joblib)
-└──────────────┬────────────────┘
-               │
-               ▼
-┌───────────────────────────────┐
-│  Backend Django (In-Memory)   │ ➔ prediction/views.py & services.py
-│  - Model Caching saat Startup │   (Prediksi Instan < 50ms)
-│  - Peer Comps Berjenjang      │
-└──────────────┬────────────────┘
-               │
-      ┌────────┴────────┐
-      ▼                 ▼
-┌───────────────┐ ┌───────────────────────────┐
-│ Explainable AI│ │ Generative AI (Gemini)    │
-│ (TreeSHAP)    │ │ - Analisis Naratif Otomatis│
-│ Transparansi  │ │ - Rule-Based Fallback     │
-│ Kontribusi (+)│ │   (Tahan saat kuota limit)│
-│ & Penahan (-) │ │                           │
-└───────┬───────┘ └─────────────┬─────────────┘
-        │                       │
-        └───────────┬───────────┘
-                    ▼
-┌─────────────────────────────────────────────┐
-│ Antarmuka Pengguna Interaktif (Neumorphic)  │
-│ - Visualisasi Plotly.js & Form Estimasi     │
-│ - Chatbot IndoPrice Assistant Terpadu       │
-└─────────────────────────────────────────────┘
-```
-
----
-
-## 3. Metodologi Machine Learning & Data Science
+## Metodologi Machine Learning & Data Science
 
 ### A. Fitur Input (Bebas Data Leakage)
 Sistem hanya menerima spesifikasi fisik murni dan lokasi geografis:
@@ -124,66 +77,6 @@ Model dilatih menggunakan 80% data latih dan dievaluasi pada 20% data uji (*rand
 7. **Riwayat Estimasi**:
    - Pencatatan seluruh simulasi prediksi ke database SQLite untuk monitoring dan audit data.
 
----
-
-## 5. Struktur Direktori Proyek
-
-Proyek ini telah distrukturisasi dengan rapi memisahkan antara data, model, skrip pemrosesan, dan modul web Django:
-
-```text
-IndoPrice/
-│
-├── core/                           # Konfigurasi Inti Django Project
-│   ├── settings.py                 # Konfigurasi aplikasi, database, static, security
-│   ├── urls.py                     # Root routing URL
-│   ├── wsgi.py & asgi.py
-│   └── __init__.py
-│
-├── data/                           # Manajemen Dataset Terpusat
-│   ├── raw/
-│   │   └── dataset.csv             # Dataset mentah transaksi rumah
-│   └── processed/
-│       ├── dataset_komersil_clean.csv # Dataset bersih rumah komersil (ML)
-│       └── dataset_subsidi_clean.csv  # Dataset acuan rumah subsidi
-│
-├── models/                         # Artefak Model & Metadata
-│   ├── best_model.joblib           # Serialisasi pipeline ML Random Forest
-│   └── locations_map.json          # Hierarki dropdown wilayah provinsi-kabupaten-kecamatan
-│
-├── scripts/                        # Skrip Otomatisasi Data Science
-│   ├── clean_dataset.py            # Skrip pembersihan & validasi logika data
-│   └── train_model.py              # Skrip pelatihan, evaluasi, & ekspor model
-│
-├── prediction/                     # Aplikasi Utama Django (Modular Architecture)
-│   ├── charts.py                   # Modul visualisasi grafik interaktif Plotly
-│   ├── services.py                 # Logika bisnis: caching RAM, peer comps, TreeSHAP
-│   ├── ai_analyst.py               # Integrasi Gemini AI & Rule-Based Fallback
-│   ├── apps.py                     # Inisialisasi model & data caching saat boot
-│   ├── models.py                   # Model ORM: PredictionHistory & AIAnalysisLog
-│   ├── urls.py                     # Routing URL aplikasi prediction
-│   ├── views.py                    # HTTP Controllers (Lean & Clean)
-│   ├── admin.py
-│   └── templatetags/
-│       └── rupiah_tags.py          # Custom template filter format mata uang Rupiah
-│
-├── static/                         # Aset Web Terpadu
-│   ├── css/style.css               # Neumorphic Soft UI Custom Styling
-│   └── img/logo.webp               # Brand asset resmi IndoPrice
-│
-├── templates/                      # Template Engine HTML
-│   ├── base.html                   # Master layout shell & floating chatbot
-│   └── prediction/
-│       ├── dashboard.html          # Halaman statistik pasar properti
-│       ├── predict.html            # Halaman formulir & hasil valuasi
-│       ├── subsidi.html            # Halaman edukasi rumah subsidi PUPR
-│       └── history.html            # Halaman tabel riwayat estimasi
-│
-├── .env.example                    # Template variabel lingkungan
-├── .gitignore                      # Konfigurasi file yang diabaikan Git
-├── manage.py                       # CLI Runner Django
-├── README.md                       # Dokumentasi resmi proyek
-└── requirements.txt                # Dependensi pustaka Python
-```
 
 ---
 
