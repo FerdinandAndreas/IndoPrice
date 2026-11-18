@@ -145,15 +145,4 @@ Buka di browser: **`http://127.0.0.1:8000/`**
 
 ---
 
-### (Opsional) Latih ulang model
-
-Kalau ingin melatih ulang dari dataset mentah:
-
-```bash
-python scripts/clean_dataset.py
-python scripts/train_model.py
-```
-
----
-
 *IndoPrice Ferdinand Andreas Saputra © 2026*
