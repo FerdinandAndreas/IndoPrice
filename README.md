@@ -6,8 +6,7 @@
 [![Plotly](https://img.shields.io/badge/Plotly-Interactive-3F4F75?logo=plotly&logoColor=white)](https://plotly.com/)
 [![Gemini AI](https://img.shields.io/badge/Google%20Gemini-API-4285F4?logo=google&logoColor=white)](https://ai.google.dev/)
 
-> Tugas Mata Kuliah **Sistem Cerdas** - Pertemuan 14  
-> **Ferdinand Andreas Saputra** NIM 253307027
+> **Ferdinand Andreas Saputra** 
 
 ---
 
