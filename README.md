@@ -100,10 +100,10 @@ cp .env.example .env
 Buka file `.env` yang baru dibuat, lalu isi API Key Gemini:
 
 ```env
-GEMINI_API_KEY=masukkan_api_key_gemini_kamu_disini
+GEMINI_API_KEY=masukkan_disini
 ```
 
-> `GEMINI_API_KEY` bisa dikosongkan — aplikasi tetap berjalan normal dengan fallback bawaan. Variabel lainnya (`SECRET_KEY`, `DEBUG`, `ALLOWED_HOSTS`) sudah terisi otomatis dari template `.env.example`.
+Jika `GEMINI_API_KEY` dikosongkan aplikasi tetap bisa berjalan dengan normal dengan fallback bawaan. 
 
 ### 5. Migrasi database
 
