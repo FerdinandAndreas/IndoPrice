@@ -59,18 +59,6 @@ Aplikasi ini juga mencakup halaman informasi untuk rumah subsidi (FLPP/BP Tapera
 
 ---
 
-## Model Machine Learning
-
-Model dilatih menggunakan data **44.000+ transaksi rumah komersil** di Indonesia dengan split 80% latih / 20% uji.
-
-**Fitur input** (bebas data leakage):
-- Lokasi: `province`, `city_regency`
-- Fisik: `land_area_m2`, `building_area_m2`, `bedrooms`, `bathrooms`, `floors`
-
-Harga ditransformasi dengan log (`ln(1 + harga)`) sebelum dilatih, lalu dikembalikan ke Rupiah saat prediksi.
-
----
-
 ## Instalasi & Menjalankan
 
 ### 1. Clone repositori
