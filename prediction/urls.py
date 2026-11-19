@@ -10,6 +10,7 @@ urlpatterns = [
     path('predict/', views.predict_view, name='predict'),
     path('subsidi/', views.subsidi_view, name='subsidi'),
     path('history/', views.history_view, name='history'),
+    path('visualisasi/', views.visualization_view, name='visualisasi'),
 
     # Daftar Endpoint API AJAX 
     path('api/cities/', views.api_get_cities, name='api_cities'),

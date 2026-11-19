@@ -12,7 +12,7 @@
 
 ## Tentang Proyek
 
-IndoPrice adalah aplikasi web yang membantu mengestimasi harga wajar rumah komersil di Indonesia menggunakan Machine Learning. Pengguna cukup memasukkan spesifikasi rumah seperti lokasi, luas tanah, luas bangunan, dan jumlah kamar. Kemudian sistem akan memberikan estimasi harga beserta dengan analisis pasar lokal secara otomatis.
+IndoPrice adalah aplikasi web yang membantu mengestimasi harga wajar rumah komersil di Indonesia menggunakan Machine Learning. Pengguna cukup memasukkan spesifikasi rumah seperti lokasi, luas tanah, luas bangunan, dan jumlah kamar. Kemudian sistem akan memberikan estimasi harga nilai wajar, rentang toleransi pasar, serta valuasi harga per meter persegi secara otomatis.
 
 Aplikasi ini juga mencakup halaman informasi untuk rumah subsidi (FLPP/BP Tapera) yang plafon harganya sudah diatur oleh Keputusan Menteri PUPR.
 
@@ -22,27 +22,29 @@ Aplikasi ini juga mencakup halaman informasi untuk rumah subsidi (FLPP/BP Tapera
 
 | Fitur | Keterangan |
 |---|---|
-| **Dashboard Statistik** | Grafik interaktif tren harga dan sebaran properti per provinsi |
-| **Estimasi Harga** | Prediksi nilai wajar + rentang batas bawah–atas berbasis Machine Learning |
-| **Analisis Pasar Lokal** | Pembanding properti serupa di kecamatan/kota/provinsi yang sama |
-| **Explainable AI** | Penjelasan faktor apa yang mendorong atau menahan nilai rumah |
-| **AI Analyst** | Narasi analisis otomatis dari Google Gemini, ada fallback jika kuota habis |
-| **Chatbot** | Asisten tanya jawab seputar properti dan cara pakai IndoPrice |
-| **Rumah Subsidi** | Tabel plafon harga FLPP per zona wilayah (Kepmen PUPR) |
-| **Riwayat Estimasi** | Semua simulasi tersimpan di database untuk referensi |
+| **Dashboard** | Pengenalan sistem cerdas, materi praktikum semester 3, dan ringkasan teknologi |
+| **Estimasi Harga** | Prediksi nilai pasar wajar + rentang toleransi (P15–P85) dan valuasi per m² |
+| **Visualisasi Data** | Grafik interaktif sebaran rata-rata harga antar provinsi dan korelasi luas tanah vs harga |
+| **AI Analyst** | Narasi penjelasan hasil estimasi otomatis berbasis Google Gemini (dengan fallback) |
+| **Chatbot IndoPrice** | Asisten tanya jawab seputar pasar properti dan panduan sistem |
+| **Rumah Subsidi** | Informasi aturan zonasi dan plafon harga FLPP (Kepmen PUPR) |
+| **Riwayat Estimasi** | Seluruh simulasi tersimpan otomatis di database SQLite untuk referensi |
 
 ---
 
 ## Antarmuka Aplikasi
 
 ### Dashboard Utama
-![Dashboard](static/img/Dashboard%20Utama.png)
+![Dashboard Utama](static/img/Dashboard%20Utama.png)
 
-### Estimasi Harga Properti
-![Estimasi](static/img/Kalkulator%20Estimasi%20Harga%20Rumah.png)
+### Kalkulator Estimasi Harga Rumah
+![Kalkulator Estimasi Harga Rumah](static/img/Kalkulator%20Estimasi%20Harga%20Rumah.png)
+
+### Visualisasi Data
+![Visualisasi Data](static/img/Visualiasi%20Data.png)
 
 ### Chatbot IndoPrice
-![Chatbot](static/img/Chatbot%20IndoPrice.png)
+![Chatbot IndoPrice](static/img/Chatbot%20IndoPrice.png)
 
 ---
 

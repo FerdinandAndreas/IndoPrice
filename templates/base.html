@@ -528,7 +528,7 @@
                 <li>
                     <a href="{% url 'prediction:dashboard' %}" class="nav-item-link {% if request.resolver_match.url_name == 'dashboard' %}active{% endif %}">
                         <span class="active-indicator-bar"></span>
-                        <i class="fa-solid fa-chart-pie"></i>
+                        <i class="fa-solid fa-house"></i>
                         <span>Dashboard</span>
                     </a>
                 </li>
@@ -537,6 +537,13 @@
                         <span class="active-indicator-bar"></span>
                         <i class="fa-solid fa-calculator"></i>
                         <span>Prediksi Harga</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'prediction:visualisasi' %}" class="nav-item-link {% if request.resolver_match.url_name == 'visualisasi' %}active{% endif %}">
+                        <span class="active-indicator-bar"></span>
+                        <i class="fa-solid fa-chart-pie"></i>
+                        <span>Visualisasi Data</span>
                     </a>
                 </li>
                 <li>

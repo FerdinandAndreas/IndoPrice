@@ -29,7 +29,14 @@ from .services import (
 )
 
 def dashboard_view(request):
-    """Halaman Utama / Dashboard Analisis Properti"""
+    """Halaman Utama / Beranda IndoPrice"""
+    df = get_clean_dataframe()
+    stats = get_dashboard_stats(df, is_model_active=(PredictionConfig.model is not None))
+    return render(request, 'prediction/dashboard.html', {'stats': stats})
+
+
+def visualization_view(request):
+    """Halaman Visualisasi Data & Grafik Pasar Properti"""
     df = get_clean_dataframe()
     stats = get_dashboard_stats(df, is_model_active=(PredictionConfig.model is not None))
 
@@ -45,7 +52,7 @@ def dashboard_view(request):
         'chart_prov_json': chart_prov_json,
         'chart_price_dist_json': chart_price_dist_json
     }
-    return render(request, 'prediction/dashboard.html', context)
+    return render(request, 'prediction/visualisasi.html', context)
 
 
 def predict_view(request):
@@ -120,42 +127,35 @@ def predict_view(request):
                 price_per_m2_building = int(pred_price / building) if building > 0 else 0
                 price_per_m2_land = int(pred_price / land) if land > 0 else 0
 
-                # 4) Pembanding Pasar Lokal Berjenjang & Visualisasi Distribusi
+                # 4) Pembanding Pasar Lokal Berjenjang
                 df_all = get_clean_dataframe()
                 comp_stats, comp_prices_juta = get_peer_comparisons(df_all, city, prov, building, pred_price)
 
-                if comp_stats and comp_prices_juta:
-                    pred_juta = round(pred_price / 1_000_000, 1)
-                    chart_distribution_json = create_distribution_chart(
-                        comp_prices_juta,
-                        comp_stats['sample_count'],
-                        comp_stats['q1_juta'],
-                        comp_stats['q3_juta'],
-                        comp_stats['median_juta'],
-                        pred_juta,
-                        comp_stats['percentile_display']
-                    )
-
-                # 5) Analisis Explainable AI (TreeSHAP Marjinal) & Visualisasi Dampak
+                # 5) Analisis Faktor Penentu Nilai (Konteks Analis AI)
                 xai_summary, contributions, top_pos_factors, top_neg_factors = calculate_feature_contributions(
                     model_pipeline, input_df, pred_price, building, land, city, beds, baths, floors
                 )
-                chart_factors_json = create_factors_chart(contributions)
 
-                # 6) Simpan ke Database SQLite
-                history = PredictionHistory.objects.create(
-                    province=prov,
-                    city_regency=city,
-                    district=district,
-                    land_area_m2=land,
-                    building_area_m2=building,
-                    bedrooms=beds,
-                    bathrooms=baths,
-                    floors=floors,
-                    predicted_price=pred_price,
-                    price_low=price_low,
-                    price_high=price_high
-                )
+                # 6) Simpan ke Database SQLite (Aman jika terjadi lock)
+                history_id = None
+                try:
+                    history = PredictionHistory.objects.create(
+                        province=prov,
+                        city_regency=city,
+                        district=district,
+                        land_area_m2=land,
+                        building_area_m2=building,
+                        bedrooms=beds,
+                        bathrooms=baths,
+                        floors=floors,
+                        predicted_price=pred_price,
+                        price_low=price_low,
+                        price_high=price_high
+                    )
+                    history_id = history.id
+                except Exception as db_err:
+                    import logging
+                    logging.getLogger(__name__).warning("Gagal menyimpan riwayat ke SQLite: %s", db_err)
 
                 # 7) Simpan Konteks Analisis AI ke Session
                 ai_data = {
@@ -189,7 +189,7 @@ def predict_view(request):
                     'model_name': actual_model_name,
                     'comp_stats': comp_stats,
                     'xai_summary': xai_summary,
-                    'history_id': history.id
+                    'history_id': history_id
                 }
             else:
                 result = {

@@ -1,0 +1,223 @@
+{% extends 'base.html' %}
+{% load rupiah_tags %}
+
+{% block title %}IndoPrice{% endblock %}
+{% block page_title %}Visualisasi Data Pasar Properti{% endblock %}
+{% block page_subtitle %}Eksplorasi grafis sebaran rata-rata harga antar provinsi dan korelasi dimensi fisik properti di Indonesia{% endblock %}
+
+{% block content %}
+<!-- 4 Metric Cards Row -->
+<div class="row g-3 mb-4">
+    <!-- Card 1 Data Properti -->
+    <div class="col-sm-6 col-xl-3 d-flex">
+        <div class="stat-pill-card w-100">
+            <div class="stat-icon-wrapper blue">
+                <i class="fa-solid fa-database"></i>
+            </div>
+            <div class="stat-info-wrapper">
+                <div class="stat-meta-label">Data Properti</div>
+                <h3 class="stat-meta-value">{{ stats.total_properties }}</h3>
+                <span class="stat-meta-sub">
+                    <i class="fa-solid fa-circle-check" style="color: #22C55E;"></i>
+                    <span style="color: #22C55E;">Data Tervalidasi</span>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Card 2 Rata-Rata Harga Pasar -->
+    <div class="col-sm-6 col-xl-3 d-flex">
+        <div class="stat-pill-card w-100">
+            <div class="stat-icon-wrapper sky">
+                <i class="fa-solid fa-money-bill-trend-up"></i>
+            </div>
+            <div class="stat-info-wrapper">
+                <div class="stat-meta-label">Rata-Rata Harga</div>
+                <h3 class="stat-meta-value" title="{{ stats.avg_price }}" style="color: #2563EB;">{{ stats.avg_price_display }}</h3>
+                <span class="stat-meta-sub">
+                    <i class="fa-solid fa-chart-line" style="color: #94A3B8;"></i>
+                    <span>Harga Properti</span>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Card 3 Cakupan Wilayah -->
+    <div class="col-sm-6 col-xl-3 d-flex">
+        <div class="stat-pill-card w-100">
+            <div class="stat-icon-wrapper blue">
+                <i class="fa-solid fa-map-location-dot"></i>
+            </div>
+            <div class="stat-info-wrapper">
+                <div class="stat-meta-label">Cakupan Wilayah</div>
+                <h3 class="stat-meta-value">{{ stats.total_provinces }} Provinsi</h3>
+                <span class="stat-meta-sub">
+                    <i class="fa-solid fa-earth-asia" style="color: #94A3B8;"></i>
+                    <span>Wilayah Terdata</span>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Card 4 Performa Model (R²) -->
+    <div class="col-sm-6 col-xl-3 d-flex">
+        <div class="stat-pill-card w-100">
+            <div class="stat-icon-wrapper emerald">
+                <i class="fa-solid fa-bullseye"></i>
+            </div>
+            <div class="stat-info-wrapper">
+                <div class="stat-meta-label">Performa Model</div>
+                <h3 class="stat-meta-value" style="color: #10B981;">R² {{ stats.r2_score }}</h3>
+                <span class="stat-meta-sub">
+                    <i class="fa-solid fa-circle-check" style="color: #22C55E;"></i>
+                    <span style="color: #22C55E;">Akurasi {{ stats.r2_percentage }}</span>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Main Section: 2 Charts Stacked Vertically in 2 Rows (100% Width) -->
+<div class="row g-4 mb-4">
+    <!-- Chart 1: Top Provinsi Rata-rata Harga Tertinggi -->
+    <div class="col-12">
+        <div class="card-soft w-100">
+            <div class="d-flex justify-content-between align-items-center mb-3 pb-2" style="border-bottom: 1px solid #E8EEF8;">
+                <div>
+                    <h5 class="fw-bold mb-1" style="color: #0F2744; font-size: 1.05rem;">
+                        <i class="fa-solid fa-chart-column me-2" style="color: #2563EB;"></i>Top Provinsi Rata-rata Harga Tertinggi
+                    </h5>
+                    <small class="fw-semibold" style="color: #94A3B8; font-size: 0.8rem;">Dalam satuan Juta Rupiah (Rerata nilai pasar)</small>
+                </div>
+                <button class="btn btn-sm rounded-pill px-3 fw-bold shadow-sm" style="background-color: #EFF6FF; color: #1D4ED8; border: 1.5px solid #BFDBFE; font-size: 0.82rem;" onclick="explainChart('prov')" title="Analisis data grafik menggunakan AI">
+                    <i class="fa-solid fa-wand-magic-sparkles me-1 text-primary"></i>Analisis AI
+                </button>
+            </div>
+
+            <div>
+                {% if chart_prov_json %}
+                    <div id="chart-prov" style="min-height: 420px; width: 100%;"></div>
+                {% else %}
+                    <div class="text-center py-5 text-muted">
+                        <i class="fa-solid fa-chart-pie fa-2x mb-2 text-primary opacity-50"></i>
+                        <p class="mb-0 small fw-bold" style="color: #94A3B8;">Data visualisasi sedang disiapkan.</p>
+                    </div>
+                {% endif %}
+            </div>
+
+            <div id="ai-box-prov" class="insight-box d-none mt-3">
+                <div class="insight-header" style="color: #1D4ED8; font-weight: 800;">
+                    <i class="fa-solid fa-sparkles"></i>
+                    <span>Ringkasan Analis Data AI</span>
+                </div>
+                <div id="ai-text-prov" class="insight-body mt-1" style="color: #0F2744; font-size: 0.88rem; line-height: 1.6;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chart 2: Korelasi Luas Bangunan vs Harga Pasar -->
+    <div class="col-12">
+        <div class="card-soft w-100">
+            <div class="d-flex justify-content-between align-items-center mb-3 pb-2" style="border-bottom: 1px solid #E8EEF8;">
+                <div>
+                    <h5 class="fw-bold mb-1" style="color: #0F2744; font-size: 1.05rem;">
+                        <i class="fa-solid fa-chart-line me-2" style="color: #2563EB;"></i>Korelasi Luas Bangunan vs Harga Pasar
+                    </h5>
+                    <small class="fw-semibold" style="color: #94A3B8; font-size: 0.8rem;">Distribusi sebaran harga properti terhadap dimensi fisik</small>
+                </div>
+                <button class="btn btn-sm rounded-pill px-3 fw-bold shadow-sm" style="background-color: #EFF6FF; color: #1D4ED8; border: 1.5px solid #BFDBFE; font-size: 0.82rem;" onclick="explainChart('scatter')" title="Analisis korelasi data menggunakan AI">
+                    <i class="fa-solid fa-wand-magic-sparkles me-1 text-primary"></i>Analisis AI
+                </button>
+            </div>
+
+            <div>
+                {% if chart_price_dist_json %}
+                    <div id="chart-scatter" style="min-height: 420px; width: 100%;"></div>
+                {% else %}
+                    <div class="text-center py-5 text-muted">
+                        <i class="fa-solid fa-chart-line fa-2x mb-2 text-primary opacity-50"></i>
+                        <p class="mb-0 small fw-bold" style="color: #94A3B8;">Data sebaran harga belum tersedia.</p>
+                    </div>
+                {% endif %}
+            </div>
+
+            <div id="ai-box-scatter" class="insight-box d-none mt-3">
+                <div class="insight-header" style="color: #1D4ED8; font-weight: 800;">
+                    <i class="fa-solid fa-sparkles"></i>
+                    <span>Ringkasan Korelasi Pasar AI</span>
+                </div>
+                <div id="ai-text-scatter" class="insight-body mt-1" style="color: #0F2744; font-size: 0.88rem; line-height: 1.6;"></div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+{% if chart_prov_json %}
+    <script id="chart-prov-data" type="application/json">{{ chart_prov_json|safe }}</script>
+{% endif %}
+{% if chart_price_dist_json %}
+    <script id="chart-scatter-data" type="application/json">{{ chart_price_dist_json|safe }}</script>
+{% endif %}
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const provEl = document.getElementById('chart-prov-data');
+        if (provEl && provEl.textContent) {
+            try {
+                const chartProvData = JSON.parse(provEl.textContent);
+                Plotly.newPlot('chart-prov', chartProvData.data, chartProvData.layout, {responsive: true, displayModeBar: false});
+            } catch(e) {
+                console.error("Error plotting prov chart:", e);
+            }
+        }
+
+        const scatterEl = document.getElementById('chart-scatter-data');
+        if (scatterEl && scatterEl.textContent) {
+            try {
+                const chartScatterData = JSON.parse(scatterEl.textContent);
+                Plotly.newPlot('chart-scatter', chartScatterData.data, chartScatterData.layout, {responsive: true, displayModeBar: false});
+            } catch(e) {
+                console.error("Error plotting scatter chart:", e);
+            }
+        }
+
+        window.addEventListener('resize', function() {
+            if (document.getElementById('chart-prov')) {
+                Plotly.Plots.resize('chart-prov');
+            }
+            if (document.getElementById('chart-scatter')) {
+                Plotly.Plots.resize('chart-scatter');
+            }
+        });
+    });
+
+    function explainChart(chartType) {
+        const box = document.getElementById('ai-box-' + chartType);
+        const text = document.getElementById('ai-text-' + chartType);
+
+        box.classList.remove('d-none');
+        text.innerHTML = '<div class="d-flex align-items-center py-2"><i class="fa-solid fa-spinner fa-spin me-2 text-primary fa-lg"></i><span class="fw-semibold text-primary">Sedang menyusun analisis data aktual...</span></div>';
+
+        fetch("{% url 'prediction:api_ai_explain' %}", {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                type: 'chart',
+                payload: {
+                    title: chartType === 'prov' ? 'Rata-rata Harga per Provinsi' : 'Korelasi Luas Bangunan vs Harga',
+                    summary: chartType === 'prov' ? 'Top provinsi harga tertinggi didominasi kawasan megapolitan Jabodetabek dan kota besar Jawa Timur.' : 'Korelasi positif kuat antara luas bangunan terhadap harga jual properti.'
+                }
+            })
+        })
+        .then(res => res.json())
+        .then(data => {
+            text.innerHTML = data.explanation || "Analisis berhasil diperbarui.";
+        })
+        .catch(err => {
+            text.innerHTML = "<p class='mb-0 text-danger fw-semibold'>Koneksi analisis sedang dialihkan ke ringkasan heuristik pasar.</p>";
+        });
+    }
+</script>
+{% endblock %}
