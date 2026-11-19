@@ -87,6 +87,8 @@ pip install -r requirements.txt
 
 ### 4. Buat file `.env`
 
+Salin template file `.env`:
+
 ```bash
 # Windows
 copy .env.example .env
@@ -95,16 +97,13 @@ copy .env.example .env
 cp .env.example .env
 ```
 
-Isi file `.env`:
+Buka file `.env` yang baru dibuat, lalu isi API Key Gemini:
 
 ```env
-SECRET_KEY=django-insecure-indopriceai-sistem-cerdas-p14-secret-key-2024
-DEBUG=True
-ALLOWED_HOSTS=127.0.0.1,localhost
 GEMINI_API_KEY=masukkan_api_key_gemini_kamu_disini
 ```
 
-> `GEMINI_API_KEY` bisa dikosongkan, aplikasi tetap berjalan normal dengan fallback otomatis (tanpa AI interaktif)
+> `GEMINI_API_KEY` bisa dikosongkan — aplikasi tetap berjalan normal dengan fallback bawaan. Variabel lainnya (`SECRET_KEY`, `DEBUG`, `ALLOWED_HOSTS`) sudah terisi otomatis dari template `.env.example`.
 
 ### 5. Migrasi database
 
