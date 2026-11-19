@@ -441,14 +441,12 @@
         }
 
         // Auto-scroll halus ke area hasil prediksi jika hasil sudah tersedia
-        {% if result %}
         const resultSection = document.getElementById('prediction-result');
         if (resultSection) {
             setTimeout(() => {
                 resultSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }, 150);
         }
-        {% endif %}
     });
 
     // Dropdown bertingkat Provinsi -> Kabupaten/Kota -> Kecamatan
