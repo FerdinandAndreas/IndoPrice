@@ -20,7 +20,18 @@ if env_path.exists():
 # Konfigurasi keamanan untuk SECRET_KEY, DEBUG, ALLOWED_HOSTS
 SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-indopriceai-sistem-cerdas-p14-secret-key-2024')
 DEBUG = os.getenv('DEBUG', 'True').lower() in ('true', '1', 't')
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '127.0.0.1,localhost').split(',')
+ALLOWED_HOSTS = [h.strip() for h in os.getenv('ALLOWED_HOSTS', '127.0.0.1,localhost,.pythonanywhere.com').split(',') if h.strip()]
+
+# Konfigurasi CSRF untuk deployment (HTTPS domain PythonAnywhere)
+csrf_origins = os.getenv('CSRF_TRUSTED_ORIGINS', '')
+if csrf_origins:
+    CSRF_TRUSTED_ORIGINS = [origin.strip() for origin in csrf_origins.split(',') if origin.strip()]
+else:
+    CSRF_TRUSTED_ORIGINS = [
+        'https://*.pythonanywhere.com',
+        'http://127.0.0.1',
+        'http://localhost',
+    ]
 
 # Daftar aplikasi yang terpasang 
 INSTALLED_APPS = [
