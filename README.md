@@ -69,16 +69,6 @@ Model dilatih menggunakan data **44.000+ transaksi rumah komersil** di Indonesia
 
 Harga ditransformasi dengan log (`ln(1 + harga)`) sebelum dilatih, lalu dikembalikan ke Rupiah saat prediksi.
 
-**Hasil perbandingan model:**
-
-| Algoritma | MAE | R² Score | MAPE | Keterangan |
-|---|---|---|---|---|
-| Ridge Regression | Rp 342.500.000 | 0.7210 | 28.40% | Baseline |
-| LightGBM | Rp 198.400.000 | 0.8520 | 18.15% | Komparasi |
-| **Random Forest** | **Rp 174.200.000** | **0.8712** | **15.42%** | Model terpilih |
-
-Model terbaik disimpan ke `models/best_model.joblib` dan langsung dipakai oleh Django untuk prediksi real-time.
-
 ---
 
 ## Instalasi & Menjalankan
@@ -86,7 +76,7 @@ Model terbaik disimpan ke `models/best_model.joblib` dan langsung dipakai oleh D
 ### 1. Clone repositori
 
 ```bash
-git clone https://github.com/username/IndoPrice.git
+git clone https://github.com/FerdinandAndreas/IndoPrice.git
 cd IndoPrice
 ```
 
